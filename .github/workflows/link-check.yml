@@ -1,13 +1,14 @@
 name: link-check
 on:
-  schedule: [ { cron: '0 7 1 * *' } ]
+  schedule: [{ cron: '0 7 1 * *' }]
   workflow_dispatch:
+
 jobs:
   lychee:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: lycheeverse/lycheeverse/lychee-action@v1
+      - uses: lycheeverse/lychee-action@v1
         with:
           args: --config .lychee.toml --verbose --no-progress --max-redirects 10 './**/*.md' './**/*.html'
       - name: Save report
@@ -21,4 +22,3 @@ jobs:
         with:
           name: link-check-report
           path: reports/link-check.md
-
