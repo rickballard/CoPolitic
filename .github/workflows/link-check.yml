@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: lycheeverse/lychee-action@v1
+      - uses: lycheeverse/lycheeverse/lychee-action@v1
         with:
-          args: --verbose --no-progress --max-redirects 10 './**/*.md' './**/*.html'
+          args: --config .lychee.toml --verbose --no-progress --max-redirects 10 './**/*.md' './**/*.html'
       - name: Save report
         if: always()
         run: |
@@ -21,3 +21,4 @@ jobs:
         with:
           name: link-check-report
           path: reports/link-check.md
+
