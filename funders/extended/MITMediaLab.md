@@ -1,5 +1,8 @@
 # MIT Media Lab — Extended Note
 
+[← Back to case note](/funders/MITMediaLab.md) · [Exemplar Advocates](/#exemplars)
+
+
 > Complimentary overview based on public materials. No images or personal details; please propose edits via PR if anything should be clarified.
 
 ## Public Profile (selected)
@@ -28,3 +31,4 @@
 ## References (selected)
 - * [media.mit.edu](https://www.media.mit.edu)
 * Civic media & interactive systems
+

@@ -1,5 +1,8 @@
 # Centre for the Governance of AI (GovAI) — Extended Note
 
+[← Back to case note](/funders/GovAI.md) · [Exemplar Advocates](/#exemplars)
+
+
 > Complimentary overview based on public materials. No images or personal details; please propose edits via PR if anything should be clarified.
 
 ## Public Profile (selected)
@@ -28,3 +31,4 @@
 ## References (selected)
 - * [govai.org](https://govai.org)
 * Working papers & briefs
+

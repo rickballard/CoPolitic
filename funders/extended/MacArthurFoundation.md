@@ -1,5 +1,8 @@
 # MacArthur Foundation — Extended Note
 
+[← Back to case note](/funders/MacArthurFoundation.md) · [Exemplar Advocates](/#exemplars)
+
+
 > Complimentary overview based on public materials. No images or personal details; please propose edits via PR if anything should be clarified.
 
 ## Public Profile (selected)
@@ -28,3 +31,4 @@
 ## References (selected)
 - * [macfound.org](https://www.macfound.org)
 * Democracy & climate initiatives
+

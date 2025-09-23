@@ -1,5 +1,8 @@
 # GitHub — Extended Note
 
+[← Back to case note](/funders/GitHub.md) · [Exemplar Advocates](/#exemplars)
+
+
 > Complimentary overview based on public materials. No images or personal details; please propose edits via PR if anything should be clarified.
 
 ## Public Profile (selected)
@@ -29,3 +32,4 @@
 - * [github.com](https://github.com)
 * Open governance workflows (issues/PRs)
 * Civic repos & standards (various)
+

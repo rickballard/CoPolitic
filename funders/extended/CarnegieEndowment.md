@@ -1,5 +1,8 @@
 # Carnegie Endowment — Extended Note
 
+[← Back to case note](/funders/CarnegieEndowment.md) · [Exemplar Advocates](/#exemplars)
+
+
 > Complimentary overview based on public materials. No images or personal details; please propose edits via PR if anything should be clarified.
 
 ## Public Profile (selected)
@@ -28,3 +31,4 @@
 ## References (selected)
 - * [carnegieendowment.org](https://carnegieendowment.org)
 * Tech & international affairs
+

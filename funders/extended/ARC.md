@@ -1,5 +1,8 @@
 # Alignment Research Center (ARC) — Extended Note
 
+[← Back to case note](/funders/ARC.md) · [Exemplar Advocates](/#exemplars)
+
+
 > Complimentary overview based on public materials. No images or personal details; please propose edits via PR if anything should be clarified.
 
 ## Public Profile (selected)
@@ -28,3 +31,4 @@
 ## References (selected)
 - * [alignment.org](https://alignment.org/)
 * Public write-ups & evals (selected)
+

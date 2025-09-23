@@ -1,5 +1,8 @@
 # Anthropic — Extended Note
 
+[← Back to case note](/funders/Anthropic.md) · [Exemplar Advocates](/#exemplars)
+
+
 > Complimentary overview based on public materials. No images or personal details; please propose edits via PR if anything should be clarified.
 
 ## Public Profile (selected)
@@ -29,3 +32,4 @@
 - * [anthropic.com](https://www.anthropic.com)
 * Research & interpretability
 * Policy resources
+
