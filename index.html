@@ -147,7 +147,40 @@ document.addEventListener('DOMContentLoaded', () => {
     <span class="text-slate-400">·</span>
     <a class="underline hover:text-slate-900" href="/.well-known/security.txt">Security</a>
   <span class="ml-auto text-xs text-slate-400">Deployed: 2025-09-23T15:16:12 · 010536b</span></div></footer>
+<script id="legacy-exemplar-stripper">
+  (function () {
+    try {
+      // Find the first H3 that reads "Exemplar Advocates"
+      const hs = [...document.querySelectorAll('h3')];
+      const ex = hs.find(h => /Exemplar\s+Advocates/i.test(h.textContent || ''));
+      const ln = hs.find(h => /Link\s+Integrity/i.test(h.textContent || ''));
+
+      if (!ex || !ln) return;
+
+      // Remove everything between them if there is a UL (legacy block)
+      const parent = ex.parentNode;
+      let n = ex.nextSibling, removed = false;
+      while (n && n !== ln) {
+        const next = n.nextSibling;
+        if (n.nodeType === 1) { // element
+          if (n.tagName === 'UL' || n.matches('p, ul, small, div, hr')) {
+            parent.removeChild(n);
+            removed = true;
+          }
+        }
+        n = next;
+      }
+      if (removed) {
+        // Optional: tidy up stray whitespace nodes
+        while (ex.nextSibling && ex.nextSibling.nodeType === 3 && !ex.nextSibling.textContent.trim()) {
+          ex.parentNode.removeChild(ex.nextSibling);
+        }
+      }
+    } catch (e) {}
+  })();
+</script>
 </body></html>
+
 
 
 
