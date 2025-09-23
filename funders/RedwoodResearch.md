@@ -1,5 +1,7 @@
 # Redwood Research
 
+> Concrete alignment experiments that make abstract risks measurable.
+
 **Philosophical frame**  
 Public-interest work guided by transparent, testable progress.
 
@@ -22,3 +24,4 @@ Known for Alignment experiments; provides artifacts others can adopt or build up
 
 
 **Related exemplars:** [ARC](/funders/ARC.md), [CHAI](/funders/CHAI.md), [OpenAI](/funders/OpenAI.md)
+

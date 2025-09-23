@@ -1,5 +1,7 @@
 # Chris Lehane
 
+> Strategic narratives that translate complex policy into civic action.
+
 **Philosophical frame**  
 Public-interest work guided by transparent, testable progress.
 
@@ -22,3 +24,4 @@ Known for Strategic civic narratives; provides artifacts others can adopt or bui
 
 
 **Related exemplars:** [OpenAI](/funders/OpenAI.md), [OSF](/funders/OSF.md), [GovAI](/funders/GovAI.md)
+

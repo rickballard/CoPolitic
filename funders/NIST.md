@@ -2,6 +2,8 @@
 **Philosophical frame**  
 Standards-first approach to safety and trust.
 
+> Shared language for risk, measurement, and assurance.
+
 **Operational fit**  
 Risk management frameworks, evaluations, benchmarks.
 
@@ -18,3 +20,4 @@ Provides the measurement substrate others adopt: ARC evals, OpenAI reporting, OS
 
 
 **Related exemplars:** [GovAI](/funders/GovAI.md), [OpenAI](/funders/OpenAI.md), [Anthropic](/funders/Anthropic.md), [ARC](/funders/ARC.md)
+

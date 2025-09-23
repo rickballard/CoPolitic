@@ -2,6 +2,8 @@
 **Philosophical frame**  
 Pluralist, rights-based democracy worldwide.
 
+> Pluralist legitimacy and global civic know-how.
+
 **Operational fit**  
 Supports civic institutions, law/policy, journalism.
 
@@ -18,3 +20,4 @@ Bridges technical alignment (OpenAI/ARC) and capital (SFF) with civic legitimacy
 
 
 **Related exemplars:** [GovAI](/funders/GovAI.md), [RAND](/funders/RAND.md), [CarnegieEndowment](/funders/CarnegieEndowment.md), [NIST](/funders/NIST.md)
+

@@ -1,5 +1,7 @@
 # MacArthur Foundation
 
+> Serious capital for democracy, climate, and resilient institutions.
+
 **Philosophical frame**  
 Public-interest work guided by transparent, testable progress.
 
@@ -22,3 +24,4 @@ Known for Democracy & resilience; provides artifacts others can adopt or build u
 
 
 **Related exemplars:** [OSF](/funders/OSF.md), [SkollFoundation](/funders/SkollFoundation.md), [RAND](/funders/RAND.md)
+

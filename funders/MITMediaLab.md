@@ -1,5 +1,7 @@
 # MIT Media Lab
 
+> Interactive futures where people experience the policy, not just read it.
+
 **Philosophical frame**  
 Public-interest work guided by transparent, testable progress.
 
@@ -22,3 +24,4 @@ Known for Interactive civic futures; provides artifacts others can adopt or buil
 
 
 **Related exemplars:** [BretVictor](/funders/BretVictor.md), [GovAI](/funders/GovAI.md), [GitHub](/funders/GitHub.md)
+

@@ -1,5 +1,7 @@
 # Gates Foundation
 
+> Evidence-led storytelling for global health and equity.
+
 **Philosophical frame**  
 Public-interest work guided by transparent, testable progress.
 
@@ -22,3 +24,4 @@ Known for Global health & equity stories; provides artifacts others can adopt or
 
 
 **Related exemplars:** [OSF](/funders/OSF.md), [SkollFoundation](/funders/SkollFoundation.md), [EmersonCollective](/funders/EmersonCollective.md)
+

@@ -1,5 +1,7 @@
 # OECD.AI
 
+> International coordination and comparable policy baselines.
+
 **Philosophical frame**  
 Public-interest work guided by transparent, testable progress.
 
@@ -22,3 +24,4 @@ Known for International coordination; provides artifacts others can adopt or bui
 
 
 **Related exemplars:** [GovAI](/funders/GovAI.md), [NIST](/funders/NIST.md), [CarnegieEndowment](/funders/CarnegieEndowment.md), [RAND](/funders/RAND.md)
+

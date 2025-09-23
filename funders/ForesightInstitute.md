@@ -1,5 +1,7 @@
 # Foresight Institute
 
+> Long-termist convenings that turn foresight into research agendas.
+
 **Philosophical frame**  
 Public-interest work guided by transparent, testable progress.
 
@@ -22,3 +24,4 @@ Known for Long-term stewardship; provides artifacts others can adopt or build up
 
 
 **Related exemplars:** [SFF](/funders/SFF.md), [InSeed](/funders/InSeed.md), [CHAI](/funders/CHAI.md), [RedwoodResearch](/funders/RedwoodResearch.md)
+

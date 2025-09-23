@@ -2,6 +2,8 @@
 **Philosophical frame**  
 Independent, nonpartisan analysis for public good.
 
+> Nonpartisan analysis that stress-tests proposals before they matter.
+
 **Operational fit**  
 Risk assessments, scenario planning, policy evaluation.
 
@@ -18,3 +20,4 @@ Pairs with GovAI/OSF on policy; gives SFF/OpenAI/ARC a credible venue for outsid
 
 
 **Related exemplars:** [GovAI](/funders/GovAI.md), [OSF](/funders/OSF.md), [NIST](/funders/NIST.md), [CarnegieEndowment](/funders/CarnegieEndowment.md)
+

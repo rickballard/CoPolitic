@@ -1,5 +1,7 @@
 # Carnegie Endowment
 
+> Geopolitical context for tech governance that actually travels.
+
 **Philosophical frame**  
 Public-interest work guided by transparent, testable progress.
 
@@ -22,3 +24,4 @@ Known for Global governance; provides artifacts others can adopt or build upon.
 
 
 **Related exemplars:** [GovAI](/funders/GovAI.md), [OSF](/funders/OSF.md), [RAND](/funders/RAND.md), [OECDai](/funders/OECDai.md)
+

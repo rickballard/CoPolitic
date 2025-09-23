@@ -1,5 +1,7 @@
 # InSeed
 
+> Values-first venture craft meeting public-interest infrastructure.
+
 **What it is**  
 A values-first venture studio and seed platform.
 
@@ -21,3 +23,4 @@ Pairs with **SFF** (capital diversity), **OSF** (civic legitimacy), **GovAI/RAND
 
 
 **Related exemplars:** [SFF](/funders/SFF.md), [ForesightInstitute](/funders/ForesightInstitute.md), [SkollFoundation](/funders/SkollFoundation.md), [GitHub](/funders/GitHub.md)
+

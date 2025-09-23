@@ -1,5 +1,7 @@
 # GitHub
 
+> The collaboration backbone—issues, PRs, and provenance for civic code.
+
 **Philosophical frame**  
 Code is civic infrastructure. Open collaboration can govern more than software.
 
@@ -24,3 +26,4 @@ Backbone environment for *all* exemplars to interact openly.
 
 
 **Related exemplars:** [OpenAI](/funders/OpenAI.md), [GovAI](/funders/GovAI.md), [OSF](/funders/OSF.md), [SFF](/funders/SFF.md)
+

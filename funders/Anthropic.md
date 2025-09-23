@@ -1,5 +1,7 @@
 # Anthropic
 
+> Interpretability and reliability research shaping frontier safety norms.
+
 **Philosophical frame**  
 Public-interest work guided by transparent, testable progress.
 
@@ -22,3 +24,4 @@ Known for Interpretability & safety; provides artifacts others can adopt or buil
 
 
 **Related exemplars:** [OpenAI](/funders/OpenAI.md), [ARC](/funders/ARC.md), [CHAI](/funders/CHAI.md), [GovAI](/funders/GovAI.md), [NIST](/funders/NIST.md)
+

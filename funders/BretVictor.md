@@ -1,5 +1,7 @@
 # Bret Victor
 
+> Explorable explanations that turn understanding into participation.
+
 **Philosophical frame**  
 Public-interest work guided by transparent, testable progress.
 
@@ -22,3 +24,4 @@ Known for Explorable explanations; provides artifacts others can adopt or build 
 
 
 **Related exemplars:** [MaxBarry](/funders/MaxBarry.md), [MITMediaLab](/funders/MITMediaLab.md), [GitHub](/funders/GitHub.md)
+

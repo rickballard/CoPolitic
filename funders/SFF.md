@@ -2,6 +2,8 @@
 **Philosophical frame**  
 Plural visions of flourishing; pragmatic risk reduction.
 
+> Risk-tolerant grants that turn promising ideas into durable institutions.
+
 **Operational fit**  
 Flexible, catalytic grants into alignment/civic orgs.
 
@@ -18,3 +20,4 @@ Backstops ARC rigor, fuels OpenAI-scale experiments, complements OSF’s global 
 
 
 **Related exemplars:** [OpenAI](/funders/OpenAI.md), [ARC](/funders/ARC.md), [CHAI](/funders/CHAI.md), [ForesightInstitute](/funders/ForesightInstitute.md), [SkollFoundation](/funders/SkollFoundation.md)
+

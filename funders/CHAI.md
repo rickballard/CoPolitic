@@ -2,6 +2,8 @@
 **Philosophical frame**  
 Eliminate misalignment by designing human-compatible systems.
 
+> Human-compatible AI fundamentals that ground downstream alignment practice.
+
 **Operational fit**  
 Foundational research, benchmarks, mentoring.
 
@@ -18,3 +20,4 @@ Grounds ARC/industry evals in fundamentals; strengthens the scientific spine of 
 
 
 **Related exemplars:** [OpenAI](/funders/OpenAI.md), [Anthropic](/funders/Anthropic.md), [ARC](/funders/ARC.md), [RedwoodResearch](/funders/RedwoodResearch.md)
+

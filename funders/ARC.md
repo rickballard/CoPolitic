@@ -2,6 +2,8 @@
 **Philosophical frame**  
 Test assumptions early; surface failure modes.
 
+> Independent adversarial evals that turn safety claims into testable propositions.
+
 **Operational fit**  
 Adversarial evals, theory-grounded audits.
 
@@ -18,3 +20,4 @@ Strengthens credibility of OpenAI-scale experiments; guides SFF deployment; pair
 
 
 **Related exemplars:** [OpenAI](/funders/OpenAI.md), [Anthropic](/funders/Anthropic.md), [RedwoodResearch](/funders/RedwoodResearch.md), [GovAI](/funders/GovAI.md), [NIST](/funders/NIST.md)
+

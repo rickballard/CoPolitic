@@ -1,5 +1,7 @@
 # Skoll Foundation
 
+> Entrepreneurial philanthropy that scales what works for the commons.
+
 **Philosophical frame**  
 Public-interest work guided by transparent, testable progress.
 
@@ -22,3 +24,4 @@ Known for Social entrepreneurship; provides artifacts others can adopt or build 
 
 
 **Related exemplars:** [SFF](/funders/SFF.md), [MacArthurFoundation](/funders/MacArthurFoundation.md), [EmersonCollective](/funders/EmersonCollective.md)
+

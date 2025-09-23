@@ -2,6 +2,8 @@
 **Philosophical frame**  
 Evidence-based governance for frontier AI.
 
+> Decision-ready policy analysis for frontier AI governance.
+
 **Operational fit**  
 Policy research, institutional design, international governance options.
 
@@ -18,3 +20,4 @@ Translates ARC findings into policy; informs OpenAI-style disclosures; helps OSF
 
 
 **Related exemplars:** [OSF](/funders/OSF.md), [RAND](/funders/RAND.md), [NIST](/funders/NIST.md), [OpenAI](/funders/OpenAI.md), [Anthropic](/funders/Anthropic.md)
+

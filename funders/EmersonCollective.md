@@ -1,5 +1,7 @@
 # Emerson Collective
 
+> Education and civic renewal with cultural reach.
+
 **Philosophical frame**  
 Public-interest work guided by transparent, testable progress.
 
@@ -22,3 +24,4 @@ Known for Education & civic renewal; provides artifacts others can adopt or buil
 
 
 **Related exemplars:** [SkollFoundation](/funders/SkollFoundation.md), [GatesFoundation](/funders/GatesFoundation.md), [OSF](/funders/OSF.md)
+
