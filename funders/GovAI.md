@@ -15,3 +15,6 @@ Translates ARC findings into policy; informs OpenAI-style disclosures; helps OSF
 
 
 **Further reading:** [Extended note](/funders/extended/GovAI.md)
+
+
+**Related exemplars:** [OSF](/funders/OSF.md), [RAND](/funders/RAND.md), [NIST](/funders/NIST.md), [OpenAI](/funders/OpenAI.md), [Anthropic](/funders/Anthropic.md)

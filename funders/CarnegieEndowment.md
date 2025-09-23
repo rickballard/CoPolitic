@@ -19,3 +19,6 @@ Known for Global governance; provides artifacts others can adopt or build upon.
 - Works alongside the Exemplar Advocates network to balance technical rigor, civic legitimacy, funding stewardship, and cultural narrative.
 
 **Further reading:** [Extended note](/funders/extended/CarnegieEndowment.md)
+
+
+**Related exemplars:** [GovAI](/funders/GovAI.md), [OSF](/funders/OSF.md), [RAND](/funders/RAND.md), [OECDai](/funders/OECDai.md)

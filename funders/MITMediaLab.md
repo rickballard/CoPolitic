@@ -19,3 +19,6 @@ Known for Interactive civic futures; provides artifacts others can adopt or buil
 - Works alongside the Exemplar Advocates network to balance technical rigor, civic legitimacy, funding stewardship, and cultural narrative.
 
 **Further reading:** [Extended note](/funders/extended/MITMediaLab.md)
+
+
+**Related exemplars:** [BretVictor](/funders/BretVictor.md), [GovAI](/funders/GovAI.md), [GitHub](/funders/GitHub.md)

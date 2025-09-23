@@ -19,3 +19,6 @@ Known for International coordination; provides artifacts others can adopt or bui
 - Works alongside the Exemplar Advocates network to balance technical rigor, civic legitimacy, funding stewardship, and cultural narrative.
 
 **Further reading:** [Extended note](/funders/extended/OECDai.md)
+
+
+**Related exemplars:** [GovAI](/funders/GovAI.md), [NIST](/funders/NIST.md), [CarnegieEndowment](/funders/CarnegieEndowment.md), [RAND](/funders/RAND.md)

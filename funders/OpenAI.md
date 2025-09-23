@@ -15,3 +15,6 @@ Pairs with ARC’s eval rigor, SFF’s capital, OSF’s civic reach. Together: c
 
 
 **Further reading:** [Extended note](/funders/extended/OpenAI.md)
+
+
+**Related exemplars:** [ARC](/funders/ARC.md), [Anthropic](/funders/Anthropic.md), [CHAI](/funders/CHAI.md), [GovAI](/funders/GovAI.md), [NIST](/funders/NIST.md), [GitHub](/funders/GitHub.md)

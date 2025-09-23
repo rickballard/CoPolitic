@@ -1,25 +1,30 @@
-# SFF — Extended Note
+# Survival & Flourishing Fund (SFF) — Extended Note
 
-> Complimentary overview based on public profiles and records. No images; no headshots.
+> Complimentary overview based on public materials. No images or personal details; please propose edits via PR if anything should be clarified.
 
-## Public Profile (selected highlights)
-- Roles & affiliations:
-- Notable works:
-- Areas of focus:
-- Public values/ethos (from talks/writing):
+## Public Profile (selected)
+- Known for: **Catalytic capital**
+- Programs / publications: see references below
+- Areas of focus: methods, artifacts, and practices that others can **inspect, reuse, and build upon**
 
 ## Civic Relevance
-- How their work improves institutional legibility:
-- How their methods transfer to open governance workflows:
+- **Institutional legibility:** produces work that is auditable and citable (papers, code, standards, guidance)
+- **Public on-ramps:** invites external critique and collaboration in ways aligned with open governance
+- **Signal value:** track record that lowers coordination costs for civic, academic, and industry partners
 
 ## Strategic Fit with CoPolitic / CoCivium
-- Features/benefits:
-- Risks avoided (non-partisan, non-coercive framing):
-- Complementarities with the Exemplar Network:
+- **Benefits:** complementary strengths that balance technical rigor, policy legitimacy, funding stewardship, and cultural narrative
+- **Safeguards:** non-partisan, non-coercive; inclusion is complimentary and does not imply coordination
+- **Interfaces:** clear “good first issues” for participation (briefs, metrics, disclosures, evaluations)
 
-## Suggested Collaborations (lightweight)
-- Joint brief / Q&A topic:
-- Open metrics or evaluations:
-- “Good first issue” for public contribution:
+## Suggested Lightweight Collaborations
+- Joint brief or open Q&A on how Survival & Flourishing Fund (SFF)’s methods translate into **transparent civic workflows**
+- Open metrics or evaluations suitable for public replication
+- “Good first issue” for contributors: surface terminology, provenance, or disclosure templates
 
-*Prepared as a respectful, positive summary; please propose edits via PR if anything should be clarified.*
+## Related Exemplars
+[OpenAI](/funders/OpenAI.md), [ARC](/funders/ARC.md), [CHAI](/funders/CHAI.md), [ForesightInstitute](/funders/ForesightInstitute.md), [SkollFoundation](/funders/SkollFoundation.md)
+
+## References (selected)
+- * [survivalandflourishing.fund](https://survivalandflourishing.fund)
+* Public grantmaking info

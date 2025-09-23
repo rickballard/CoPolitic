@@ -18,3 +18,6 @@ Pairs with **SFF** (capital diversity), **OSF** (civic legitimacy), **GovAI/RAND
 - Website: [inseed.com](https://inseed.com/)
 
 **Further reading:** [Extended note](/funders/extended/InSeed.md)
+
+
+**Related exemplars:** [SFF](/funders/SFF.md), [ForesightInstitute](/funders/ForesightInstitute.md), [SkollFoundation](/funders/SkollFoundation.md), [GitHub](/funders/GitHub.md)

@@ -19,3 +19,6 @@ Known for Social entrepreneurship; provides artifacts others can adopt or build 
 - Works alongside the Exemplar Advocates network to balance technical rigor, civic legitimacy, funding stewardship, and cultural narrative.
 
 **Further reading:** [Extended note](/funders/extended/SkollFoundation.md)
+
+
+**Related exemplars:** [SFF](/funders/SFF.md), [MacArthurFoundation](/funders/MacArthurFoundation.md), [EmersonCollective](/funders/EmersonCollective.md)

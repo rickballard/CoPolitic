@@ -19,3 +19,6 @@ Known for Strategic civic narratives; provides artifacts others can adopt or bui
 - Works alongside the Exemplar Advocates network to balance technical rigor, civic legitimacy, funding stewardship, and cultural narrative.
 
 **Further reading:** [Extended note](/funders/extended/ChrisLehane.md)
+
+
+**Related exemplars:** [OpenAI](/funders/OpenAI.md), [OSF](/funders/OSF.md), [GovAI](/funders/GovAI.md)

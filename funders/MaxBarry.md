@@ -21,3 +21,6 @@ Narrative prototyping; public imagination; translation of complex civics/alignme
 
 
 **Further reading:** [Extended note](/funders/extended/MaxBarry.md)
+
+
+**Related exemplars:** [BretVictor](/funders/BretVictor.md), [GitHub](/funders/GitHub.md), [OSF](/funders/OSF.md)

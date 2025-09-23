@@ -19,3 +19,6 @@ Known for Alignment experiments; provides artifacts others can adopt or build up
 - Works alongside the Exemplar Advocates network to balance technical rigor, civic legitimacy, funding stewardship, and cultural narrative.
 
 **Further reading:** [Extended note](/funders/extended/RedwoodResearch.md)
+
+
+**Related exemplars:** [ARC](/funders/ARC.md), [CHAI](/funders/CHAI.md), [OpenAI](/funders/OpenAI.md)

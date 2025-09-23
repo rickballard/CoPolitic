@@ -21,3 +21,6 @@ Backbone environment for *all* exemplars to interact openly.
 
 
 **Further reading:** [Extended note](/funders/extended/GitHub.md)
+
+
+**Related exemplars:** [OpenAI](/funders/OpenAI.md), [GovAI](/funders/GovAI.md), [OSF](/funders/OSF.md), [SFF](/funders/SFF.md)

@@ -15,3 +15,6 @@ Grounds ARC/industry evals in fundamentals; strengthens the scientific spine of 
 
 
 **Further reading:** [Extended note](/funders/extended/CHAI.md)
+
+
+**Related exemplars:** [OpenAI](/funders/OpenAI.md), [Anthropic](/funders/Anthropic.md), [ARC](/funders/ARC.md), [RedwoodResearch](/funders/RedwoodResearch.md)

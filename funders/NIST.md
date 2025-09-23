@@ -15,3 +15,6 @@ Provides the measurement substrate others adopt: ARC evals, OpenAI reporting, OS
 
 
 **Further reading:** [Extended note](/funders/extended/NIST.md)
+
+
+**Related exemplars:** [GovAI](/funders/GovAI.md), [OpenAI](/funders/OpenAI.md), [Anthropic](/funders/Anthropic.md), [ARC](/funders/ARC.md)

@@ -19,3 +19,6 @@ Known for Interpretability & safety; provides artifacts others can adopt or buil
 - Works alongside the Exemplar Advocates network to balance technical rigor, civic legitimacy, funding stewardship, and cultural narrative.
 
 **Further reading:** [Extended note](/funders/extended/Anthropic.md)
+
+
+**Related exemplars:** [OpenAI](/funders/OpenAI.md), [ARC](/funders/ARC.md), [CHAI](/funders/CHAI.md), [GovAI](/funders/GovAI.md), [NIST](/funders/NIST.md)

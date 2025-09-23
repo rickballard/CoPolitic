@@ -1,9 +1,9 @@
-# GitHub — Extended Note
+# MIT Media Lab — Extended Note
 
 > Complimentary overview based on public materials. No images or personal details; please propose edits via PR if anything should be clarified.
 
 ## Public Profile (selected)
-- Known for: **Collaboration backbone**
+- Known for: **Interactive civic futures**
 - Programs / publications: see references below
 - Areas of focus: methods, artifacts, and practices that others can **inspect, reuse, and build upon**
 
@@ -18,14 +18,13 @@
 - **Interfaces:** clear “good first issues” for participation (briefs, metrics, disclosures, evaluations)
 
 ## Suggested Lightweight Collaborations
-- Joint brief or open Q&A on how GitHub’s methods translate into **transparent civic workflows**
+- Joint brief or open Q&A on how MIT Media Lab’s methods translate into **transparent civic workflows**
 - Open metrics or evaluations suitable for public replication
 - “Good first issue” for contributors: surface terminology, provenance, or disclosure templates
 
 ## Related Exemplars
-[OpenAI](/funders/OpenAI.md), [GovAI](/funders/GovAI.md), [OSF](/funders/OSF.md), [SFF](/funders/SFF.md)
+[BretVictor](/funders/BretVictor.md), [GovAI](/funders/GovAI.md), [GitHub](/funders/GitHub.md)
 
 ## References (selected)
-- * [github.com](https://github.com)
-* Open governance workflows (issues/PRs)
-* Civic repos & standards (various)
+- * [media.mit.edu](https://www.media.mit.edu)
+* Civic media & interactive systems

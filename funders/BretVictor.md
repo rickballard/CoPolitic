@@ -19,3 +19,6 @@ Known for Explorable explanations; provides artifacts others can adopt or build 
 - Works alongside the Exemplar Advocates network to balance technical rigor, civic legitimacy, funding stewardship, and cultural narrative.
 
 **Further reading:** [Extended note](/funders/extended/BretVictor.md)
+
+
+**Related exemplars:** [MaxBarry](/funders/MaxBarry.md), [MITMediaLab](/funders/MITMediaLab.md), [GitHub](/funders/GitHub.md)

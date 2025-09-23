@@ -15,3 +15,6 @@ Pairs with GovAI/OSF on policy; gives SFF/OpenAI/ARC a credible venue for outsid
 
 
 **Further reading:** [Extended note](/funders/extended/RAND.md)
+
+
+**Related exemplars:** [GovAI](/funders/GovAI.md), [OSF](/funders/OSF.md), [NIST](/funders/NIST.md), [CarnegieEndowment](/funders/CarnegieEndowment.md)

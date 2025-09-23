@@ -19,3 +19,6 @@ Known for Education & civic renewal; provides artifacts others can adopt or buil
 - Works alongside the Exemplar Advocates network to balance technical rigor, civic legitimacy, funding stewardship, and cultural narrative.
 
 **Further reading:** [Extended note](/funders/extended/EmersonCollective.md)
+
+
+**Related exemplars:** [SkollFoundation](/funders/SkollFoundation.md), [GatesFoundation](/funders/GatesFoundation.md), [OSF](/funders/OSF.md)

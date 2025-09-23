@@ -15,3 +15,6 @@ Bridges technical alignment (OpenAI/ARC) and capital (SFF) with civic legitimacy
 
 
 **Further reading:** [Extended note](/funders/extended/OSF.md)
+
+
+**Related exemplars:** [GovAI](/funders/GovAI.md), [RAND](/funders/RAND.md), [CarnegieEndowment](/funders/CarnegieEndowment.md), [NIST](/funders/NIST.md)

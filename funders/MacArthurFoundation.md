@@ -19,3 +19,6 @@ Known for Democracy & resilience; provides artifacts others can adopt or build u
 - Works alongside the Exemplar Advocates network to balance technical rigor, civic legitimacy, funding stewardship, and cultural narrative.
 
 **Further reading:** [Extended note](/funders/extended/MacArthurFoundation.md)
+
+
+**Related exemplars:** [OSF](/funders/OSF.md), [SkollFoundation](/funders/SkollFoundation.md), [RAND](/funders/RAND.md)

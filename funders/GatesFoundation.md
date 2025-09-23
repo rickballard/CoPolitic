@@ -19,3 +19,6 @@ Known for Global health & equity stories; provides artifacts others can adopt or
 - Works alongside the Exemplar Advocates network to balance technical rigor, civic legitimacy, funding stewardship, and cultural narrative.
 
 **Further reading:** [Extended note](/funders/extended/GatesFoundation.md)
+
+
+**Related exemplars:** [OSF](/funders/OSF.md), [SkollFoundation](/funders/SkollFoundation.md), [EmersonCollective](/funders/EmersonCollective.md)
