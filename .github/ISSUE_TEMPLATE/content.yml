@@ -1,0 +1,14 @@
+name: Content suggestion
+about: Propose copy or exemplar updates
+labels: content
+body:
+  - type: textarea
+    id: change
+    attributes:
+      label: What to change
+      description: Link the page(s) and include proposed text.
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why
+      description: Keep it complimentary, neutral, and non-affiliative.

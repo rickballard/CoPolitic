@@ -1,0 +1,12 @@
+name: Bug report
+about: Broken link, layout issue, or typo
+labels: bug
+body:
+  - type: input
+    id: url
+    attributes:
+      label: URL
+  - type: textarea
+    id: repro
+    attributes:
+      label: What happened?
