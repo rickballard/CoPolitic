@@ -1,21 +1,14 @@
 # Alignment Research Center (ARC)
-
 **Philosophical frame**  
-Devoted to testing alignment assumptions before they are too late.
+Test assumptions early; surface failure modes.
 
 **Operational fit**  
-Runs adversarial evals, governance experiments, and theory-grounded audits.
+Adversarial evals, theory-grounded audits.
 
-**Features / Benefits / ROI**  
-- Provides epistemic depth and independent testing.  
-- Offers assurance value to funders and civic partners.  
-- Supplies counterbalances to optimistic scaling narratives.  
+**Benefits / ROI**  
+- Independent assurance to funders/public bodies  
+- Sharper governance metrics and thresholds  
+- Counterweights optimistic scaling narratives
 
-**Alignment**  
-Directly strengthens CoPolitic’s oversight mission.  
-
-**Complementarity**  
-Interlocks with OpenAI’s capacity, OSF’s legitimacy, SFF’s resourcing.  
-
-**Synergy**  
-Creates a “watchdog and partner” role that upgrades collective credibility.
+**Complementarity & synergy**  
+Strengthens credibility of OpenAI-scale experiments; guides SFF deployment; pairs with OSF on accountability.

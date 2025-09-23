@@ -1,21 +1,14 @@
 # Open Society Foundations (OSF)
-
 **Philosophical frame**  
-Anchored in pluralism and rights-based democracy worldwide.
+Pluralist, rights-based democracy worldwide.
 
 **Operational fit**  
-Funds civic institutions, journalism, and systemic reform.
+Supports civic institutions, law/policy, journalism.
 
-**Features / Benefits / ROI**  
-- Provides governance and legal credibility.  
-- Extends civic reach into regions beyond tech’s natural orbit.  
-- Ensures pluralist safeguards are embedded in experiments.  
+**Benefits / ROI**  
+- Governance & legal credibility  
+- Global reach beyond tech circles  
+- Safeguards against technocracy drift
 
-**Alignment**  
-Brings global legitimacy to CoPolitic’s civic charter.  
-
-**Complementarity**  
-Bridges technical alignment (OpenAI, ARC) and capital flows (SFF).  
-
-**Synergy**  
-Adds political and civic grounding, preventing technocracy drift in the exemplar set.
+**Complementarity & synergy**  
+Bridges technical alignment (OpenAI/ARC) and capital (SFF) with civic legitimacy.

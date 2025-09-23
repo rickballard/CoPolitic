@@ -1,21 +1,14 @@
 # OpenAI
-
 **Philosophical frame**  
-Pursues AGI to benefit all humanity, balancing boldness and restraint.
+Benefit-all-humans mandate; balance boldness/restraint.
 
 **Operational fit**  
-Ships research + platforms (ChatGPT, API) and pioneers new institutional forms.
+Ships research + platforms that others can build on.
 
-**Features / Benefits / ROI**  
-- Scales infrastructure others can build upon.  
-- Opens API ecosystems for civic experimentation.  
-- Provides reputational gravity with governments and academia.  
+**Benefits / ROI**  
+- Scalable infra and APIs for civic pilots  
+- Draws policy/academic attention to governance pilots  
+- Testbed for safety + oversight practices
 
-**Alignment**  
-Shares CoPolitic’s emphasis on safety, stewardship, and co-evolution.  
-
-**Complementarity**  
-Pairs with ARC’s rigor, SFF’s capital, and OSF’s global legitimacy.  
-
-**Synergy**  
-With ARC, SFF, and OSF, contributes to a distributed governance constellation that is more resilient than any one actor.
+**Complementarity & synergy**  
+Pairs with ARC’s eval rigor, SFF’s capital, OSF’s civic reach. Together: capacity + checks + legitimacy.
