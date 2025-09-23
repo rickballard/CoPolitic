@@ -12,3 +12,6 @@ Foundational research, benchmarks, mentoring.
 
 **Complementarity & synergy**  
 Grounds ARC/industry evals in fundamentals; strengthens the scientific spine of the constellation.
+
+
+**Further reading:** [Extended note](/funders/extended/CHAI.md)

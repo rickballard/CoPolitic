@@ -12,3 +12,6 @@ Risk management frameworks, evaluations, benchmarks.
 
 **Complementarity & synergy**  
 Provides the measurement substrate others adopt: ARC evals, OpenAI reporting, OSF advocacy, SFF grant conditions.
+
+
+**Further reading:** [Extended note](/funders/extended/NIST.md)

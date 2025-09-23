@@ -18,3 +18,6 @@ Narrative prototyping; public imagination; translation of complex civics/alignme
 
 **Signals / Credibility**
 - Site: https://www.maxbarry.com  ·  Author of *Jennifer Government*, *Lexicon*, *Providence*.
+
+
+**Further reading:** [Extended note](/funders/extended/MaxBarry.md)

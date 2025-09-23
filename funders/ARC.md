@@ -12,3 +12,6 @@ Adversarial evals, theory-grounded audits.
 
 **Complementarity & synergy**  
 Strengthens credibility of OpenAI-scale experiments; guides SFF deployment; pairs with OSF on accountability.
+
+
+**Further reading:** [Extended note](/funders/extended/ARC.md)

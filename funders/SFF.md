@@ -12,3 +12,6 @@ Flexible, catalytic grants into alignment/civic orgs.
 
 **Complementarity & synergy**  
 Backstops ARC rigor, fuels OpenAI-scale experiments, complements OSF’s global networks.
+
+
+**Further reading:** [Extended note](/funders/extended/SFF.md)

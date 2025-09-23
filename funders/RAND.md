@@ -12,3 +12,6 @@ Risk assessments, scenario planning, policy evaluation.
 
 **Complementarity & synergy**  
 Pairs with GovAI/OSF on policy; gives SFF/OpenAI/ARC a credible venue for outside-in critique.
+
+
+**Further reading:** [Extended note](/funders/extended/RAND.md)

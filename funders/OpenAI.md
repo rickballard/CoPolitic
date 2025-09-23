@@ -12,3 +12,6 @@ Ships research + platforms that others can build on.
 
 **Complementarity & synergy**  
 Pairs with ARC’s eval rigor, SFF’s capital, OSF’s civic reach. Together: capacity + checks + legitimacy.
+
+
+**Further reading:** [Extended note](/funders/extended/OpenAI.md)

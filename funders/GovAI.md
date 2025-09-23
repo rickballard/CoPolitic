@@ -12,3 +12,6 @@ Policy research, institutional design, international governance options.
 
 **Complementarity & synergy**  
 Translates ARC findings into policy; informs OpenAI-style disclosures; helps OSF align coalitions; guides SFF grants.
+
+
+**Further reading:** [Extended note](/funders/extended/GovAI.md)

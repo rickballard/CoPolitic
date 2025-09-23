@@ -12,3 +12,6 @@ Supports civic institutions, law/policy, journalism.
 
 **Complementarity & synergy**  
 Bridges technical alignment (OpenAI/ARC) and capital (SFF) with civic legitimacy.
+
+
+**Further reading:** [Extended note](/funders/extended/OSF.md)

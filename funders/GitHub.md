@@ -18,3 +18,6 @@ Backbone environment for *all* exemplars to interact openly.
 **Signals / Credibility**  
 - Repo: https://github.com/rickballard/CoPolitic  
 - Community ethos: https://dogsnhomes.org.uk/
+
+
+**Further reading:** [Extended note](/funders/extended/GitHub.md)
