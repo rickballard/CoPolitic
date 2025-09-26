@@ -24,6 +24,12 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 <style>#pillars-subnav a:focus-visible{outline:2px solid #2563eb; outline-offset:2px;}</style>
 <!-- Deployed-Commit: 26d6f4e -->
+<style>
+.exemplar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin:12px 0 24px}
+.exemplar-grid img{width:160px;height:160px;object-fit:contain;background:#fff;border:1px solid #e4e7ee;border-radius:12px;padding:18px;box-shadow:0 0 0 1px #eef1f6 inset}
+.exemplar-grid .tile{display:flex;flex-direction:column;gap:8px;align-items:center}
+.exemplar-grid .cap{font:600 12px/1.2 system-ui;color:#55607a}
+</style>
 </head>
 <body class="bg-white text-gray-900"><a id="skip" href="#main" class="sr-only focus:not-sr-only underline px-3 py-2">Skip to content</a>
 <picture>
@@ -432,7 +438,50 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+<script>
+(async () => {
+  try {
+    const r = await fetch('/assets/img/exemplars/_manifest.json',{cache:'no-store'});
+    if(!r.ok) return;
+    const m = await r.json();
+    const files = (m.files||[]).slice(0, 36);   // show first 36; adjust as needed
+    if(!files.length) return;
+
+    // Create section if missing
+    let host = document.getElementById('exemplar-grid-section');
+    if(!host){
+      host = document.createElement('section');
+      host.id = 'exemplar-grid-section';
+      const h2 = document.createElement('h2'); h2.textContent = 'Exemplar advocates (non-affiliative)';
+      const note = document.createElement('p'); note.style.color = '#6d7891';
+      note.textContent = 'Identification only; listing ≠ endorsement ≠ influence.';
+      const grid = document.createElement('div'); grid.className = 'exemplar-grid'; grid.id = 'exemplar-grid';
+      host.append(h2,note,grid);
+      // Append near the end of main content (fallback to body)
+      (document.querySelector('main') || document.body).appendChild(host);
+    }
+    const grid = document.getElementById('exemplar-grid') || host.querySelector('.exemplar-grid');
+    if(!grid) return;
+
+    // Render tiles
+    grid.innerHTML = '';
+    for(const f of files){
+      const tile = document.createElement('div'); tile.className='tile';
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.src = '/assets/img/exemplars/' + f;
+      img.alt = f.replace(/[-_]/g,' ').replace(/\.png$/,'') + ' logo';
+      const cap = document.createElement('div'); cap.className='cap';
+      cap.textContent = img.alt.replace(/ logo$/,'');
+      tile.append(img, cap);
+      grid.appendChild(tile);
+    }
+  } catch(e) { /* silent */ }
+})();
+</script>
 </body></html>
+
 
 
 
