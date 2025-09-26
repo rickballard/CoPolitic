@@ -1,67 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
- <url><loc>https://copolitic.org/</loc></url>
- <url><loc>https://copolitic.org/docs/CHARTER.md</loc></url>
- <url><loc>https://copolitic.org/docs/COVENANT.md</loc></url>
- <url><loc>https://copolitic.org/docs/STRUCTURE.md</loc></url>
- <url><loc>https://copolitic.org/docs/SEQUENCING.md</loc></url>
- <url><loc>https://copolitic.org/initiatives/README.md</loc></url>
- <url><loc>https://copolitic.org/funders/SFF.md</loc></url>
- <url><loc>https://copolitic.org/funders/ARC.md</loc></url>
- <url><loc>https://copolitic.org/funders/OpenAI.md</loc></url>
- <url><loc>https://copolitic.org/funders/OSF.md</loc></url>
-  <url><loc>https://copolitic.org/funders/GovAI.md</loc></url>
-  <url><loc>https://copolitic.org/funders/CHAI.md</loc></url>
-  <url><loc>https://copolitic.org/funders/RAND.md</loc></url>
-  <url><loc>https://copolitic.org/funders/NIST.md</loc></url>
-  <url><loc>https://copolitic.org/funders/GitHub.md</loc></url>
-  <url><loc>https://copolitic.org/join.html</loc></url>
-  <url><loc>https://copolitic.org/funders/MaxBarry.md</loc></url>
-  <url><loc>https://copolitic.org/README.md</loc></url>
-  <url><loc>https://copolitic.org/ABOUT.md</loc></url>
-  <url><loc>https://copolitic.org/CONTRIBUTING.md</loc></url>
-  <url><loc>https://copolitic.org/docs/EXEMPLARS.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/OpenAI.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/ARC.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/SFF.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/OSF.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/GovAI.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/CHAI.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/RAND.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/NIST.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/GitHub.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/MaxBarry.md</loc></url>
-  <url><loc>https://copolitic.org/funders/InSeed.md</loc></url>
-  <url><loc>https://copolitic.org/funders/Anthropic.md</loc></url>
-  <url><loc>https://copolitic.org/funders/RedwoodResearch.md</loc></url>
-  <url><loc>https://copolitic.org/funders/ForesightInstitute.md</loc></url>
-  <url><loc>https://copolitic.org/funders/MacArthurFoundation.md</loc></url>
-  <url><loc>https://copolitic.org/funders/SkollFoundation.md</loc></url>
-  <url><loc>https://copolitic.org/funders/OECDai.md</loc></url>
-  <url><loc>https://copolitic.org/funders/CarnegieEndowment.md</loc></url>
-  <url><loc>https://copolitic.org/funders/BretVictor.md</loc></url>
-  <url><loc>https://copolitic.org/funders/ChrisLehane.md</loc></url>
-  <url><loc>https://copolitic.org/funders/GatesFoundation.md</loc></url>
-  <url><loc>https://copolitic.org/funders/EmersonCollective.md</loc></url>
-  <url><loc>https://copolitic.org/funders/MITMediaLab.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/Anthropic.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/RedwoodResearch.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/InSeed.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/ForesightInstitute.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/MacArthurFoundation.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/SkollFoundation.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/OECDai.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/CarnegieEndowment.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/BretVictor.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/ChrisLehane.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/GatesFoundation.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/EmersonCollective.md</loc></url>
-  <url><loc>https://copolitic.org/funders/extended/MITMediaLab.md</loc></url>
+  <url><loc>https://copolitic.org/</loc></url>
+  <url><loc>https://copolitic.org/roles/</loc></url>
+  <url><loc>https://copolitic.org/sponsors/</loc></url>
+  <url><loc>https://copolitic.org/docs/defs/TOS-AI_OnePager.html</loc></url>
 </urlset>
-
-
-
-
-
-
-
