@@ -1,0 +1,64 @@
+name: Daily analytics email
+on:
+  schedule: [{ cron: "15 12 * * *" }]  # 12:15 UTC daily
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch aggregate
+        run: |
+          curl -s "https://plausible.io/api/v1/stats/aggregate?site_id=copolitic.org&period=24h&metrics=visitors,pageviews,bounce_rate,visit_duration" \
+            -H "Authorization: Bearer ${{ secrets.PLAUSIBLE_API_KEY }}" > agg.json
+
+      - name: Fetch breakdowns
+        run: |
+          curl -s "https://plausible.io/api/v1/stats/breakdown?site_id=copolitic.org&period=24h&property=page&limit=10"      -H "Authorization: Bearer ${{ secrets.PLAUSIBLE_API_KEY }}" > pages.json
+          curl -s "https://plausible.io/api/v1/stats/breakdown?site_id=copolitic.org&period=24h&property=referrer&limit=10"  -H "Authorization: Bearer ${{ secrets.PLAUSIBLE_API_KEY }}" > refs.json
+          curl -s "https://plausible.io/api/v1/stats/breakdown?site_id=copolitic.org&period=24h&property=visit:country&limit=10" -H "Authorization: Bearer ${{ secrets.PLAUSIBLE_API_KEY }}" > countries.json
+          curl -s "https://plausible.io/api/v1/stats/breakdown?site_id=copolitic.org&period=24h&property=event:name&limit=10" -H "Authorization: Bearer ${{ secrets.PLAUSIBLE_API_KEY }}" > events.json
+
+      - name: Build text report
+        run: |
+          sudo apt-get update >/dev/null && sudo apt-get install -y jq >/dev/null
+          V=$(jq -r '.results.visitors.value' agg.json)
+          P=$(jq -r '.results.pageviews.value' agg.json)
+          B=$(jq -r '.results.bounce_rate.value' agg.json)
+          D=$(jq -r '.results.visit_duration.value' agg.json)
+          {
+            echo "CoPolitic.org — last 24h"
+            echo
+            echo "Visitors: $V"
+            echo "Pageviews: $P"
+            echo "Bounce: ${B}%"
+            echo "Avg visit: ${D}s"
+            echo
+            echo "Top pages:"
+            jq -r '.results[] | "\(.page) — \(.visitors) v, \(.pageviews) pv"' pages.json 2>/dev/null | head -10
+            echo
+            echo "Top referrers:"
+            jq -r '.results[] | "\(.referrer) — \(.visitors) v"' refs.json 2>/dev/null | head -10
+            echo
+            echo "Top countries:"
+            jq -r '.results[] | "\(.["visit:country"]) — \(.visitors) v"' countries.json 2>/dev/null | head -10
+            echo
+            echo "Events:"
+            jq -r '.results[] | "\(.["event:name"]) — \(.events) events"' events.json 2>/dev/null | head -10
+            echo
+            echo "—"
+            echo "Dashboard: https://plausible.io/copolitic.org"
+          } > body.txt
+
+      - name: Email it
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "CoPolitic.org analytics (last 24h)"
+          to: ${{ secrets.MAIL_TO }}
+          from: CoPolitic Reports <${{ secrets.MAIL_FROM }}>
+          body: file://body.txt
+          content_type: text/plain
