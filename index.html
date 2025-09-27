@@ -570,7 +570,29 @@ t.append(img,cap);grid.appendChild(t);avgL(img).then(l=>{if(l>0.80)t.dataset.ton
   });
 })();
 </script>
+<!-- Company enrichment (Worker) -->
+<script>
+(() => {
+  const key = 'cap:company:revealed';
+  const path = location.pathname;
+  const isLeadPage = path.startsWith('/sponsors') || path.includes('TOS-AI_OnePager');
+  if (!isLeadPage || sessionStorage.getItem(key)) return;
+
+  (async () => {
+    try {
+      const r = await fetch("https://copolitic-reveal.YOURNAME.workers.dev", {mode:"cors", credentials:"omit"});
+      if (!r.ok) return;
+      const {company, domain} = await r.json();
+      if (company && window.plausible) {
+        sessionStorage.setItem(key, '1');
+        plausible('Company Revealed', {props:{company, domain}});
+      }
+    } catch {}
+  })();
+})();
+</script>
 </body></html>
+
 
 
 
