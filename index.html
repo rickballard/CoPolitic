@@ -70,6 +70,9 @@ ul{margin:0 0 1rem 1.2rem}
 <meta property="og:url" content="https://copolitic.org/">
 <meta property="og:image" content="https://copolitic.org/assets/img/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<!-- Analytics (Plausible) -->
+<script defer data-domain="copolitic.org" src="https://plausible.io/js/script.js"></script>
+<script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};</script>
 </head>
 <body class="bg-white text-gray-900"><a id="skip" href="#main" class="sr-only focus:not-sr-only underline px-3 py-2">Skip to content</a>
 <picture>
@@ -529,7 +532,42 @@ t.append(img,cap);grid.appendChild(t);avgL(img).then(l=>{if(l>0.80)t.dataset.ton
 (async()=>{const files=await readFiles();if(files.length){cleanup();render(files)}})();})();
 </script>
 <!-- EXEMPLARS v2 JS END -->
+<!-- Analytics events + UTM capture -->
+<script>
+(() => {
+  const qs = new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(k=>{
+    const v = qs.get(k); if(v) localStorage.setItem(k,v);
+  });
+  if (document.referrer) localStorage.setItem('referrer', document.referrer);
+
+  if (location.pathname.startsWith('/sponsors')) plausible('Sponsor Page');
+  if (location.pathname.includes('/docs/defs/TOS-AI_OnePager')) plausible('One-Pager Read');
+
+  document.addEventListener('click',(e)=>{
+    const a = e.target.closest('a'); if(!a) return;
+    const href = a.getAttribute('href')||'';
+    if (href.startsWith('mailto:')) {
+      plausible('Email Click',{props:{to:href}});
+    } else if (/^https?:\/\//.test(href) && !href.includes(location.host)) {
+      try { plausible('Outbound Link',{props:{to:new URL(href).hostname}}) } catch {}
+    } else if (href.includes('github.com/rickballard/CoPolitic/issues/new') && href.includes('labels=sponsor')) {
+      plausible('Sponsor Issue Open');
+      try{
+        const url  = new URL(href, location.origin);
+        const body = url.searchParams.get('body')||'';
+        const ref  = decodeURIComponent(localStorage.getItem('referrer')||'');
+        const utms = ['utm_source','utm_medium','utm_campaign','utm_content']
+          .map(k=>`${k}=${encodeURIComponent(localStorage.getItem(k)||'')}`).join('&');
+        url.searchParams.set('body', body + `\n\n—\nReferrer: ${ref}\n${utms}`);
+        a.setAttribute('href', url.toString());
+      }catch{}
+    }
+  });
+})();
+</script>
 </body></html>
+
 
 
 
