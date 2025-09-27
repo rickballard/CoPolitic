@@ -30,6 +30,30 @@
 .exemplar-grid .tile{display:flex;flex-direction:column;gap:8px;align-items:center}
 .exemplar-grid .cap{font:600 12px/1.2 system-ui;color:#55607a}
 </style>
+<!-- EXEMPLARS v2 CSS BEGIN -->
+<style>
+.exemplar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin:26px 0}
+.exemplar-grid img{width:160px;height:160px;object-fit:contain;background:#fff;border:1px solid #e4e7ee;border-radius:12px;padding:18px;box-shadow:0 0 0 1px #eef1f6 inset}
+.exemplar-grid .tile{display:flex;flex-direction:column;gap:8px;align-items:center}
+.exemplar-grid .cap{font:600 12px/1.2 system-ui;color:#55607a}
+.exemplar-grid .tile[data-tone="light"]{background:#0e1117;border:1px solid #1f2430;border-radius:12px;padding:12px}
+.exemplar-grid .tile[data-tone="light"] img{filter:drop-shadow(0 0 1px rgba(255,255,255,.25))}
+.exemplar-grid .tile[data-tone="light"] .cap{color:#a8b3c4}
+</style>
+<script id="exemplar-files" type="application/json">[
+  "arc.png",
+  "chai.png",
+  "github.png",
+  "govai.png",
+  "inseed.png",
+  "nist.png",
+  "openai.png",
+  "osf.png",
+  "rand.png",
+  "sff.png",
+  "skollfoundation.png"
+]</script>
+<!-- EXEMPLARS v2 CSS END -->
 </head>
 <body class="bg-white text-gray-900"><a id="skip" href="#main" class="sr-only focus:not-sr-only underline px-3 py-2">Skip to content</a>
 <picture>
@@ -466,7 +490,31 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch(e) { /* silent */ }
 })();
 </script>
+<!-- EXEMPLARS v2 JS BEGIN -->
+<script>
+(()=>{const INLINE_ID='exemplar-files',HOST_ID='exemplar-grid-section',GRID_ID='exemplar-grid';
+const label=s=>s.replace(/\.png$/,'').replace(/[-_]/g,' ').replace(/\b(?:logo|icon)\b/gi,'').replace(/\b\w/g,m=>m.toUpperCase()).trim();
+const readFiles=async()=>{const n=document.getElementById(INLINE_ID);if(n&&n.textContent.trim()){try{return JSON.parse(n.textContent)}catch{}}
+for(const u of ['/assets/img/exemplars/manifest.json','/assets/img/exemplars/_manifest.json']){try{const r=await fetch(u,{cache:'no-store'});if(r.ok){const m=await r.json();if(m.files?.length)return m.files}}catch{}}
+return[]};
+const avgL=(img)=>new Promise(res=>{const c=document.createElement('canvas');c.width=c.height=24;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,24,24);(img.decode?img.decode():Promise.resolve()).finally(()=>{const w=Math.min(24,img.naturalWidth||24),h=Math.min(24,img.naturalHeight||24);x.drawImage(img,0,0,w,h);const d=x.getImageData(0,0,24,24).data;let s=0,n=0;for(let i=0;i<d.length;i+=4){const a=d[i+3]/255,R=d[i]*a+255*(1-a),G=d[i+1]*a+255*(1-a),B=d[i+2]*a+255*(1-a);s+=0.2126*R+0.7152*G+0.0722*B;n++}res((s/n)/255)})});
+const cleanup=()=>{const olds=[...document.querySelectorAll('img[src*="/assets/img/exemplars/"]')].filter(n=>!n.closest('#'+HOST_ID));
+const kill=new Set(olds.map(n=>n.closest('section,div,ul,ol')||n.parentElement));kill.forEach(p=>p&&p.remove());
+document.querySelectorAll('ul').forEach(ul=>{ if(ul.querySelectorAll('li').length>25) ul.remove(); });};
+const render=async(files)=>{let host=document.getElementById(HOST_ID);if(!host){host=document.createElement('section');host.id=HOST_ID;
+const h2=document.createElement('h2');h2.textContent='Exemplar advocates (non-affiliative)';
+const p=document.createElement('p');p.textContent='Identification only; listing ≠ endorsement ≠ influence.';p.style.color='#6d7891';
+const grid=document.createElement('div');grid.className='exemplar-grid';grid.id=GRID_ID;host.append(h2,p,grid);
+(document.querySelector('main')||document.body).appendChild(host);}
+const grid=document.getElementById(GRID_ID)||host.querySelector('.exemplar-grid');grid.textContent='';
+files.forEach(f=>{const t=document.createElement('div');t.className='tile';const img=new Image();img.loading='lazy';img.decoding='async';
+img.src='/assets/img/exemplars/'+f;img.alt=label(f)+' logo';const cap=document.createElement('div');cap.className='cap';cap.textContent=label(f);
+t.append(img,cap);grid.appendChild(t);avgL(img).then(l=>{if(l>0.80)t.dataset.tone='light'})});};
+(async()=>{const files=await readFiles();if(files.length){cleanup();render(files)}})();})();
+</script>
+<!-- EXEMPLARS v2 JS END -->
 </body></html>
+
 
 
 
