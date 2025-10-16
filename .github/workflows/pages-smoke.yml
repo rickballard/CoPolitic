@@ -16,8 +16,8 @@ jobs:
           curl -fsSL "$URL" -o page.html
       - name: Assert deprecated block is gone
         run: |
-          if grep -E 'id="tosai-(explainer|checklist)"|Request a TOS-AI' page.html; then
-            echo "Found deprecated TOS-AI block in live HTML"; exit 1
+          if grep -E 'id="tosai-(explainer|checklist|cta)"|Request a TOS-AI' page.html; then
+            echo "Found deprecated hero block in live HTML"; exit 1
           fi
       - name: Show first lines on failure
         if: failure()
