@@ -14,9 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .   # site is in repo root
+      - name: Inject served commit marker
+  run: |
+    TS=$(date -u +%FT%TZ)
+    printf "<!-- served-commit: %s @ %s -->\n" "${GITHUB_SHA::7}" "$TS" > .well-known/served-commit.html
+    mkdir -p assets && echo "$TS" > assets/build.ts
+- uses: actions/upload-pages-artifact@v3
+  with:
+    path: .   # site is in repo root
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -26,3 +31,22 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  smoke:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hit live site with a cache-bust
+        run: |
+          TS=$(date +%s)
+          URL="https://copolitic.org/?bust=$TS"
+          echo "URL=$URL"
+          curl -sS -L "$URL" -o page.html
+      - name: Ensure deprecated TOS-AI block is gone
+        run: |
+          if grep -E 'id="tosai-(explainer|checklist)"' page.html; then
+            echo "Found deprecated TOS-AI block in live HTML"; exit 1
+          fi
+      - name: Emit first lines on failure
+        if: failure()
+        run: head -n 120 page.html
