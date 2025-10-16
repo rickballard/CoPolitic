@@ -29,7 +29,14 @@ jobs:
           else
             sed -i -E "0,/<head[^>]*>/s//&\n<!-- Deployed-Commit: ${sha} -->/" index.html
           fi
-      - uses: actions/upload-pages-artifact@v3
+            - name: Add cache-bust to assets
+        run: |
+          sha="${GITHUB_SHA::7}"
+          # add ?v=sha to CSS hrefs
+          sed -i -E 's/(<link[^>]+href="[^"?]+)(\?[^"]*)?"/\1?v='"$sha"'"/g' index.html || true
+          # add ?v=sha to JS src
+          sed -i -E 's/(<script[^>]+src="[^"?]+)(\?[^"]*)?"/\1?v='"$sha"'"/g' index.html || true
+- uses: actions/upload-pages-artifact@v3
         with:
           path: .
   deploy:
@@ -41,3 +48,4 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
