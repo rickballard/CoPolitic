@@ -17,9 +17,13 @@ jobs:
       - uses: actions/checkout@v4
       # This step prepares the Pages env and fixes a bunch of subtle failures
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .   # site at repo root
+      - name: Write served commit marker
+  run: |
+    mkdir -p .well-known
+    echo "${GITHUB_SHA::7}" > .well-known/served-commit.txt
+- uses: actions/upload-pages-artifact@v3
+  with:
+    path: .   # site at repo root
 
   deploy:
     needs: build
@@ -30,3 +34,4 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
