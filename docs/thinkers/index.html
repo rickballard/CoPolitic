@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thinkers · CoPolitic</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 0; background:#0e0e10; color:#eee; }
+    header { padding: 24px 16px; border-bottom: 1px solid #222; }
+    main { max-width: 1080px; margin: 0 auto; padding: 24px 16px 80px; }
+    h1 { font-size: 28px; margin: 0 0 8px; }
+    p.sub { opacity: .8; margin: 0 0 16px; }
+    .controls { display:flex; gap:12px; margin: 24px 0; flex-wrap:wrap; }
+    input, select { padding:10px 12px; background:#121216; color:#eee; border:1px solid #2a2a2f; border-radius:10px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+    .card { background:#141418; border:1px solid #23232a; border-radius:16px; padding:16px; box-shadow: 0 1px 0 #1b1b20 inset; }
+    .badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid #2b2b32; margin-right:6px; opacity:.9 }
+    .pill { display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; background:#1c1c22; margin:2px 6px 0 0 }
+    a { color:#74b9ff; text-decoration:none }
+    a:hover { text-decoration:underline }
+    .meta { font-size:12px; opacity:.8; margin-top:10px }
+    footer { opacity:.7; font-size:12px; margin-top: 32px; }
+  </style>
+</head>
+<body>
+  <header>
+    <main>
+      <h1>Influential Thinkers (Alignment with CoCivium)</h1>
+      <p class="sub">Snapshot of public thinkers whose work intersects with CoCivium. Data lives in <code>/assets/thinkers/thinkers.json</code>. Keep the website dumb; keep the evidence tight.</p>
+      <div class="controls">
+        <input id="q" placeholder="Search names, ideas, domains…" />
+        <select id="domain"><option value="">All domains</option></select>
+        <select id="fit"><option value="">Any fit</option><option>Strong</option><option>Medium</option><option>Weak</option></select>
+      </div>
+      <div id="grid" class="grid"></div>
+      <footer>License: Page & scripts MIT · Data CC-BY 4.0 · Last build renders client-side</footer>
+    </main>
+  </header>
+  <script>
+    const state = { data: [], q: "", domain: "", fit: "" };
+    const grid = document.getElementById('grid');
+    const q = document.getElementById('q');
+    const domain = document.getElementById('domain');
+    const fit = document.getElementById('fit');
+
+    q.addEventListener('input', ()=>{ state.q = q.value.toLowerCase(); render(); });
+    domain.addEventListener('change', ()=>{ state.domain = domain.value; render(); });
+    fit.addEventListener('change', ()=>{ state.fit = fit.value; render(); });
+
+    function matches(t, needle){ return (t||"").toLowerCase().includes(needle); }
+
+    function render(){
+      let rows = state.data;
+      if(state.q){
+        rows = rows.filter(r => matches(r.name, state.q) || matches(r.key_ideas?.join(" "), state.q) || matches(r.alignment?.summary, state.q));
+      }
+      if(state.domain){
+        rows = rows.filter(r => (r.domains||[]).includes(state.domain));
+      }
+      if(state.fit){
+        rows = rows.filter(r => (r.alignment?.fit||"").toLowerCase() === state.fit.toLowerCase());
+      }
+      grid.innerHTML = rows.map(r => `
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3 style="margin:0">${r.name}</h3>
+            <span class="badge">${r.alignment?.fit||"n/a"}</span>
+          </div>
+          <div class="meta">${(r.domains||[]).map(d=>`<span class="pill">${d}</span>`).join("")}</div>
+          <p style="margin-top:10px">${r.alignment?.summary||""}</p>
+          <div class="meta"><strong>Key ideas:</strong> ${(r.key_ideas||[]).join(" · ")}</div>
+          ${r.co_modules?.length ? `<div class="meta"><strong>CoCivium modules:</strong> ${r.co_modules.join(", ")}</div>` : ""}
+          ${r.sources?.length ? `<div class="meta"><strong>Sources:</strong> ${r.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${s.label||s.url}</a>`).join(" · ")}</div>` : ""}
+          <div class="meta">Last-checked: ${r.provenance?.last_checked||"n/a"}</div>
+        </div>
+      `).join("");
+      // domains dropdown
+      const uniq = [...new Set(state.data.flatMap(r => r.domains||[]))].sort();
+      domain.innerHTML = '<option value="">All domains</option>' + uniq.map(d=>`<option ${d===state.domain?'selected':''}>${d}</option>`).join("");
+    }
+
+    fetch('/assets/thinkers/thinkers.json', {cache:'no-store'})
+      .then(r => r.json())
+      .then(data => { state.data = data; render(); })
+      .catch(_ => { grid.innerHTML = '<div style="opacity:.8">Could not load thinkers.json (ensure it is deployed).</div>'; });
+  </script>
+</body>
+</html>

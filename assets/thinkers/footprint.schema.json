@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CoPolitic Thinker Footprint",
+  "type": "object",
+  "required": [
+    "name",
+    "domains",
+    "alignment",
+    "sources",
+    "provenance"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "key_ideas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "alignment": {
+      "type": "object",
+      "required": [
+        "fit",
+        "summary"
+      ],
+      "properties": {
+        "fit": {
+          "type": "string",
+          "enum": [
+            "Strong",
+            "Medium",
+            "Weak"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    },
+    "co_modules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "last_checked"
+      ],
+      "properties": {
+        "last_checked": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
