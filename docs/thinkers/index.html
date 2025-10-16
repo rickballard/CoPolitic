@@ -26,7 +26,7 @@
   <header>
     <main>
       <h1>Influential Thinkers (Alignment with CoCivium)</h1>
-      <p class="sub">Snapshot of public thinkers whose work intersects with CoCivium. Data lives in <code>../assets/thinkers/thinkers.json</code>. Keep the website dumb; keep the evidence tight.</p>
+      <p class="sub">Snapshot of public thinkers whose work intersects with CoCivium. Data lives in <code>..../assets/thinkers/thinkers.json</code>. Keep the website dumb; keep the evidence tight.</p>
       <div class="controls">
         <input id="q" placeholder="Search names, ideas, domains…" />
         <select id="domain"><option value="">All domains</option></select>
@@ -79,7 +79,7 @@
       domain.innerHTML = '<option value="">All domains</option>' + uniq.map(d=>`<option ${d===state.domain?'selected':''}>${d}</option>`).join("");
     }
 
-    fetch('../assets/thinkers/thinkers.json', {cache:'no-store'})
+    fetch('..../assets/thinkers/thinkers.json', {cache:'no-store'})
       .then(r => r.json())
       .then(data => { state.data = data; render(); })
       .catch(_ => { grid.innerHTML = '<div style="opacity:.8">Could not load thinkers.json (ensure it is deployed).</div>'; });
