@@ -23,7 +23,17 @@ jobs:
     echo "${GITHUB_SHA::7}" > .well-known/served-commit.txt
 - uses: actions/upload-pages-artifact@v3
   with:
-    path: .   # site at repo root
+    path: .
+- name: Update HTML Deployed-Commit comment
+  run: |
+    test -f index.html || exit 0
+    sha="${GITHUB_SHA::7}"
+    # replace existing or insert after <head>
+    if grep -qE "<!--[[:space:]]*Deployed-Commit:" index.html; then
+      sed -i -E "s/<!--[[:space:]]*Deployed-Commit:[[:space:]]*[0-9a-f]{7,}[[:space:]]*-->/<!-- Deployed-Commit: ${sha} -->/" index.html
+    else
+      sed -i -E "0,/<head[^>]*>/s//&\n<!-- Deployed-Commit: ${sha} -->/" index.html
+    fi   # site at repo root
 
   deploy:
     needs: build
@@ -34,4 +44,5 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
 
