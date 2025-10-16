@@ -10,7 +10,8 @@ if (-not (Test-Path $OutDir)) { New-Item -ItemType Directory -Force -Path $OutDi
 
 Write-Host "apply-logos: staged=$Staged out=$OutDir magick=$magick"
 $exts = @('.svg','.png','.jpg','.jpeg','.webp','.pdf')
-$files = Get-ChildItem -Path $Staged -Recurse -File -ErrorAction SilentlyContinue | Where-Object { $exts -contains $_.Extension.ToLower() }
+$files = Get-ChildItem -Path $Staged -Recurse -File -ErrorAction SilentlyContinue |
+         Where-Object { $exts -contains $_.Extension.ToLower() }
 Write-Host ("apply-logos: found {0} staged files" -f $files.Count)
 
 $processed=0; $skipped=0; $warns=@(); $made=@()
@@ -20,10 +21,17 @@ foreach($f in $files){
   $out  = Join-Path $OutDir ($slug + '.png')
 
   if ($magick) {
-    # For PDFs, pick a sane density so small vector PDFs don’t render blurry
     $args = @()
     if ($f.Extension -match 'pdf') { $args += @('-density','256') }
-    $args += @($f.FullName, '-resize','160x160','-gravity','center','-background','none','-extent','160x160','-strip','PNG32:' + $out)
+    $args += @(
+      $f.FullName,
+      '-alpha','on',
+      '-fuzz','2%','-trim','+repage',
+      '-resize','148x148',
+      '-gravity','center','-background','none','-extent','160x160',
+      '-strip',
+      'PNG32:' + $out
+    )
     $p = Start-Process -FilePath 'magick' -ArgumentList $args -PassThru -Wait -NoNewWindow
     if ($p.ExitCode -ne 0) { $warns += "magick failed: $($f.Name)"; $skipped++; continue }
   } else {
@@ -38,7 +46,7 @@ foreach($f in $files){
       $g.SmoothingMode=[System.Drawing.Drawing2D.SmoothingMode]::HighQuality
       $g.PixelOffsetMode=[System.Drawing.Drawing2D.PixelOffsetMode]::HighQuality
       $g.CompositingQuality=[System.Drawing.Drawing2D.CompositingQuality]::HighQuality
-      $scale = [Math]::Min(160.0/$src.Width,160.0/$src.Height)
+      $scale = [Math]::Min(148.0/$src.Width,148.0/$src.Height)
       $nw=[int]([Math]::Round($src.Width*$scale)); $nh=[int]([Math]::Round($src.Height*$scale))
       $x=[int]((160-$nw)/2); $y=[int]((160-$nh)/2)
       $g.DrawImage($src,$x,$y,$nw,$nh); $src.Dispose(); $g.Dispose()
@@ -60,7 +68,7 @@ if($CommitAndPush){
   try{
     git add --all assets/img/exemplars
     if((git status --porcelain).Trim().Length -gt 0){
-      git commit -m "assets: normalize exemplar logos (160x160 png) — recursive"
+      git commit -m "assets: trim + normalize logos (160x160 with consistent padding)"
       git push origin HEAD:main
     } else { Write-Host "apply-logos: no changes to commit." }
   } finally { Pop-Location }
