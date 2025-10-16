@@ -1,0 +1,32 @@
+{
+  "DO Block (PS)": {
+    "prefix": "do-ps",
+    "body": [
+      "DO-${1:001} ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}Z (PS)",
+      "```powershell",
+      "$0",
+      "```"
+    ],
+    "description": "BPOE DO block for PowerShell"
+  },
+  "DO Block (FILE)": {
+    "prefix": "do-file",
+    "body": [
+      "DO-${1:002} ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}Z (FILE ${2:path/to/file})",
+      "```",
+      "$0",
+      "```"
+    ],
+    "description": "BPOE DO block with exact file bytes"
+  },
+  "DO Block (VERIFY)": {
+    "prefix": "do-verify",
+    "body": [
+      "DO-${1:003} ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}Z (VERIFY)",
+      "```powershell",
+      "$0",
+      "```"
+    ],
+    "description": "BPOE DO block for checks/asserters"
+  }
+}
