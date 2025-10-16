@@ -13,3 +13,4 @@
   Don’t retrigger repeatedly; wait for one run to complete, then verify `served-commit`.
 - Hero CTA/list must be removed in `index.html`. The smoke test enforces this.
 
+See also: **[BPOE](./BPOE.md)** for DO block rules and live determinism.
