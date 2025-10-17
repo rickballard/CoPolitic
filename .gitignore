@@ -1,3 +1,5 @@
 # Local backups & scratch
 index.html.bak*
 live*.html
+
+*.backup.*

@@ -1,0 +1,235 @@
+[
+  {
+    "name": "Tristan Harris",
+    "domains": [
+      "Humane Tech",
+      "AI Governance",
+      "Incentives"
+    ],
+    "key_ideas": [
+      "Time Well Spent",
+      "Attention harms",
+      "AI Dilemma"
+    ],
+    "alignment": {
+      "fit": "Strong",
+      "summary": "Diagnoses incentive misalignment in attention markets; evidence-based harms; governance proposals compatible with CoCivium\u2019s Congruence metrics and humane defaults."
+    },
+    "co_modules": [
+      "CoAgent UX",
+      "CoCore Evidence",
+      "CoPolitic Briefs"
+    ],
+    "sources": [
+      {
+        "label": "Center for Humane Technology",
+        "url": "https://www.humanetech.com/"
+      },
+      {
+        "label": "The Social Dilemma",
+        "url": "https://www.thesocialdilemma.com/"
+      }
+    ],
+    "provenance": {
+      "last_checked": "2025-10-16T20:17:45.588849Z"
+    }
+  },
+  {
+    "name": "Aza Raskin",
+    "domains": [
+      "Humane Tech",
+      "UX Patterns",
+      "AI Safety"
+    ],
+    "key_ideas": [
+      "Dark patterns \u2192 humane patterns",
+      "AI Dilemma"
+    ],
+    "alignment": {
+      "fit": "Strong",
+      "summary": "Translates harms into concrete design patterns; ideal for CoAgent\u2019s anti-addiction defaults and UX guardrails."
+    },
+    "co_modules": [
+      "CoAgent UX",
+      "Design Standards"
+    ],
+    "sources": [
+      {
+        "label": "CHT Profile",
+        "url": "https://www.humanetech.com/"
+      }
+    ],
+    "provenance": {
+      "last_checked": "2025-10-16T20:17:45.588849Z"
+    }
+  },
+  {
+    "name": "Audrey Tang",
+    "domains": [
+      "Digital Democracy",
+      "Open Government",
+      "Deliberation"
+    ],
+    "key_ideas": [
+      "vTaiwan",
+      "pol.is crowd deliberation"
+    ],
+    "alignment": {
+      "fit": "Strong",
+      "summary": "Operational playbook for mass-participation policymaking; maps directly onto CoPolitic and CoAgent deliberation modules."
+    },
+    "co_modules": [
+      "CoPolitic",
+      "Deliberation Engine"
+    ],
+    "sources": [
+      {
+        "label": "vTaiwan overview",
+        "url": "https://vtaiwan.tw/"
+      }
+    ],
+    "provenance": {
+      "last_checked": "2025-10-16T20:17:45.588849Z"
+    }
+  },
+  {
+    "name": "H\u00e9l\u00e8ne Landemore",
+    "domains": [
+      "Open Democracy",
+      "Governance"
+    ],
+    "key_ideas": [
+      "Sortition",
+      "Crowd wisdom"
+    ],
+    "alignment": {
+      "fit": "Medium",
+      "summary": "Provides theory and pilots for open, randomly selected citizen bodies; useful for governance experiments in CoNeura."
+    },
+    "co_modules": [
+      "CoNeura Governance",
+      "Policy Labs"
+    ],
+    "sources": [
+      {
+        "label": "Open Democracy (book)",
+        "url": "https://press.princeton.edu/books/hardcover/9780691181998/open-democracy"
+      }
+    ],
+    "provenance": {
+      "last_checked": "2025-10-16T20:17:45.588849Z"
+    }
+  },
+  {
+    "name": "Elinor Ostrom",
+    "domains": [
+      "Commons",
+      "Polycentric Governance"
+    ],
+    "key_ideas": [
+      "Ostrom Principles",
+      "Self-governance"
+    ],
+    "alignment": {
+      "fit": "Strong",
+      "summary": "Design principles for durable commons; use as guardrails for CoCivium shared resources and repos."
+    },
+    "co_modules": [
+      "CoCore Principles",
+      "CoCivium Governance"
+    ],
+    "sources": [
+      {
+        "label": "Governing the Commons",
+        "url": "https://www.cambridge.org/9780521405997"
+      }
+    ],
+    "provenance": {
+      "last_checked": "2025-10-16T20:17:45.588849Z"
+    }
+  },
+  {
+    "name": "Glen Weyl & Vitalik Buterin",
+    "domains": [
+      "Mechanism Design",
+      "Public Goods Funding"
+    ],
+    "key_ideas": [
+      "Quadratic Voting",
+      "Quadratic Funding"
+    ],
+    "alignment": {
+      "fit": "Medium",
+      "summary": "Modern mechanisms for preference aggregation and grants; pilot for CoModules micro-grants and roadmap voting."
+    },
+    "co_modules": [
+      "Funding",
+      "Prioritization"
+    ],
+    "sources": [
+      {
+        "label": "Liberal Radicalism",
+        "url": "https://vitalik.ca/general/2019/12/07/quadratic.html"
+      }
+    ],
+    "provenance": {
+      "last_checked": "2025-10-16T20:17:45.588849Z"
+    }
+  },
+  {
+    "name": "Kate Raworth",
+    "domains": [
+      "Sustainability",
+      "Macroeconomics"
+    ],
+    "key_ideas": [
+      "Doughnut Economics"
+    ],
+    "alignment": {
+      "fit": "Medium",
+      "summary": "Boundary framework (social foundation & planetary ceiling) for Congruence scoring with city partners."
+    },
+    "co_modules": [
+      "Congruence Metrics",
+      "City Pilots"
+    ],
+    "sources": [
+      {
+        "label": "Doughnut Economics",
+        "url": "https://www.kateraworth.com/doughnut/"
+      }
+    ],
+    "provenance": {
+      "last_checked": "2025-10-16T20:17:45.588849Z"
+    }
+  },
+  {
+    "name": "Cory Doctorow",
+    "domains": [
+      "Interoperability",
+      "Antitrust",
+      "User Agency"
+    ],
+    "key_ideas": [
+      "Adversarial Interop",
+      "Disenshittification"
+    ],
+    "alignment": {
+      "fit": "Strong",
+      "summary": "Hard requirements for interop/portability; aligns with no-lock-in, forkable CoSuite standards."
+    },
+    "co_modules": [
+      "Standards",
+      "Data Portability"
+    ],
+    "sources": [
+      {
+        "label": "Pluralistic",
+        "url": "https://pluralistic.net/"
+      }
+    ],
+    "provenance": {
+      "last_checked": "2025-10-16T20:17:45.588849Z"
+    }
+  }
+]
