@@ -1,3 +1,5 @@
+[![CoCivium™ Control Room](https://raw.githubusercontent.com/rickballard/CoCache/main/docs/assets/brand/cocivium_logo_green_tm.svg)](https://github.com/rickballard/CoCache/blob/main/docs/CONSOLE.md)
+[![Giant Metrics Index](https://raw.githubusercontent.com/rickballard/CoCache/main/docs/assets/brand/cocivium_logo_amber_tm.svg)](https://github.com/rickballard/CoCache/blob/main/docs/METRICS_INDEX.md)
 # CoPolitic
 
 **A civic “GitHub for governance.”** Open, transparent collaboration on public-interest ideas—built by citizens and AI, with safety and accountability.
@@ -28,3 +30,4 @@ See **[CONTRIBUTING.md](CONTRIBUTING.md)** — propose changes via pull request,
 
 ## Stewardship
 See **[ABOUT.md](ABOUT.md)**.
+
