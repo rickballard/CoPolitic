@@ -19,7 +19,19 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
 .explain{white-space:pre-wrap;background:#0d1219;border:1px solid #213046;border-radius:10px;padding:10px;max-height:240px;overflow:auto}
 .mono{font-family:ui-monospace,Menlo,Consolas,monospace}.hr{height:1px;background:#233043;margin:10px 0}
 .kbd{font:12px ui-monospace,Menlo,Consolas;background:#0d1219;border:1px solid #213046;padding:1px 6px;border-radius:6px;color:#c7d6ea}
-</style></head><body>
+</style><style>
+  :root{--cp-bg:#0b1220;--cp-card:#0f1623;--cp-border:#2a3b55;--cp-text:#e5f0ff;--cp-sub:#9fb7dd;--cp-accent:#0b3d91}
+  .card{background:var(--cp-card);border:1px solid var(--cp-border);border-radius:14px;padding:16px;color:var(--cp-text);box-shadow:0 2px 12px rgba(0,0,0,.25)}
+  .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid var(--cp-border);border-radius:999px;margin:4px;background:rgba(255,255,255,.03);font:13px/1.2 system-ui}
+  .panel{display:grid;grid-template-columns:1fr;gap:12px}
+  .row{display:grid;grid-template-columns:170px 1fr 48px;gap:8px;align-items:center}
+  input[type="range"]{accent-color:var(--cp-accent)}
+  .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .toolbar label{display:flex;gap:6px;align-items:center;color:var(--cp-sub)}
+  #explain{white-space:pre-wrap;font:13px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;background:#0b1220;border:1px dashed #2a3b55;border-radius:12px;padding:12px;color:#cfe3ff}
+  @media (max-width:720px){.row{grid-template-columns:130px 1fr 42px}.toolbar{flex-direction:column;align-items:flex-start}canvas#plane{max-width:100%;height:auto}}
+</style>
+</head><body>
 <div class="wrap">
   <div class="card">
     <h1>Perspective Plane</h1>
