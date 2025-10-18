@@ -79,7 +79,29 @@ p,li{max-width:72ch}
 </style>
 <style id="cap-polish-hero">.hero-wrap{max-width:980px;margin:0 auto;padding:0 16px}.hero-sub{max-width:72ch;margin-top:.5rem;color:#475569}</style>
 </head>
-<body class="bg-white text-gray-900"><a id="skip" href="#main" class="sr-only focus:not-sr-only underline px-3 py-2">Skip to content</a>
+<body class="bg-white text-gray-900">
+<!-- Simple top header (non-invasive) -->
+<style>
+  .cp-topnav {
+    position: sticky; top: 0; z-index: 1000;
+    display: flex; gap: 16px; align-items: center; justify-content: flex-start;
+    padding: 10px 16px; background: #0b3d91; color: #fff; border-bottom: 1px solid rgba(255,255,255,.3);
+    font: 15px/1.4 system-ui, Segoe UI, Roboto, Inter, Arial;
+  }
+  .cp-topnav a { color: #fff; text-decoration: none; }
+  .cp-topnav a:hover { text-decoration: underline; }
+  .cp-topnav .spacer { flex: 1; }
+</style>
+<div class="cp-topnav">
+  <a href="/">CoPolitic</a>
+  <a href="/docs/">Docs</a>
+  <a href="/roles/">Roles</a>
+  <a href="/sponsors/">Sponsors</a>
+  <a href="/perspective/"><strong>Perspective Plane</strong></a>
+  <span class="spacer"></span>
+  <a href="/sitemap.xml">Sitemap</a>
+  <a href="/.well-known/security.txt">Security</a>
+</div><a id="skip" href="#main" class="sr-only focus:not-sr-only underline px-3 py-2">Skip to content</a>
 <picture>
   <source srcset="/assets/img/hero_roundtable.webp" type="image/webp" />
   <img src="/assets/img/copolitic_hero.png" alt="Neutral roundtable discussing civic governance and AI"
