@@ -1,0 +1,37 @@
+{
+  "notes": "Demo coordinates for sandbox. Replace with data-backed values as needed.",
+  "entities": [
+    {"id":"CoCivium","group":"core","label":"CoCivium (CG)","color":"#82cfff",
+     "coords":{"speech":[0.60,0.30],"health":[0.35,0.35],"energy":[0.45,0.40],"data":[0.25,0.30],"policing":[0.40,0.45],"market":[0.65,0.35]},
+     "notes":"Club–Commons default; markets at the edge; narrow, time-boxed crown."},
+    {"id":"CoCivium_Guardrails","group":"mode","label":"CoCivium – Guardrails","color":"#ff7eb6",
+     "coords":{"speech":[0.58,0.50],"health":[0.38,0.60],"energy":[0.48,0.58],"data":[0.28,0.62],"policing":[0.42,0.68],"market":[0.60,0.52]},
+     "notes":"Safety/compliance: slight Crown shift; time-boxed, appealable."},
+    {"id":"CoCivium_Market","group":"mode","label":"CoCivium – Market","color":"#3ddbd9",
+     "coords":{"speech":[0.70,0.32],"health":[0.48,0.38],"energy":[0.60,0.40],"data":[0.38,0.34],"policing":[0.48,0.46],"market":[0.78,0.34]},
+     "notes":"Partner/edge competition: rightward (Commerce) while keeping Club."},
+    {"id":"CoCivium_Emergency","group":"mode","label":"CoCivium – Emergency","color":"#fa4d56",
+     "coords":{"speech":[0.62,0.62],"health":[0.32,0.72],"energy":[0.40,0.78],"data":[0.22,0.78],"policing":[0.36,0.80],"market":[0.58,0.62]},
+     "notes":"Emergency ops: temporary Crown+Commons; auto-sunset required."},
+
+    {"id":"Sweden","group":"country","label":"Sweden","color":"#f1c21b",
+     "coords":{"speech":[0.35,0.28],"health":[0.20,0.35],"energy":[0.30,0.40],"data":[0.28,0.32],"policing":[0.35,0.38],"market":[0.45,0.32]},
+     "notes":"High commons + liberties; robust standards."},
+    {"id":"UnitedStates","group":"country","label":"United States","color":"#08bdba",
+     "coords":{"speech":[0.65,0.35],"health":[0.70,0.40],"energy":[0.60,0.45],"data":[0.62,0.38],"policing":[0.58,0.55],"market":[0.72,0.38]},
+     "notes":"Market-led tilt; strong liberties, stricter policing vs peers."},
+    {"id":"Singapore","group":"country","label":"Singapore","color":"#ee5396",
+     "coords":{"speech":[0.70,0.70],"health":[0.45,0.65],"energy":[0.55,0.58],"data":[0.60,0.70],"policing":[0.68,0.78],"market":[0.80,0.65]},
+     "notes":"Market-forward; tighter civic controls."},
+    {"id":"China","group":"country","label":"China","color":"#33b1ff",
+     "coords":{"speech":[0.20,0.80],"health":[0.18,0.78],"energy":[0.22,0.82],"data":[0.18,0.88],"policing":[0.20,0.90],"market":[0.35,0.78]},
+     "notes":"State-led provisioning; centralized controls."},
+
+    {"id":"Democrats","group":"party","label":"US Democrats","color":"#4589ff",
+     "coords":{"speech":[0.55,0.42],"health":[0.35,0.45],"energy":[0.40,0.50],"data":[0.40,0.45],"policing":[0.50,0.58],"market":[0.60,0.45]},
+     "notes":"More commons on welfare/climate; somewhat more club vs GOP."},
+    {"id":"Republicans","group":"party","label":"US Republicans","color":"#ff6f00",
+     "coords":{"speech":[0.70,0.48],"health":[0.78,0.48],"energy":[0.70,0.55],"data":[0.72,0.50],"policing":[0.72,0.62],"market":[0.82,0.48]},
+     "notes":"More commerce emphasis; more crown on order & national standards."}
+  ]
+}

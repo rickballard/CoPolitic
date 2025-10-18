@@ -1,0 +1,10 @@
+
+const BUILD = Date.now().toString();
+const BASE = new URL('.', document.currentScript?.src || location.href);
+/* --- BEGIN Perspective Plane upgraded script (CoPolitic) --- */
+/* paste the full upgraded script BETWEEN these <script> const BUILD = Date.now().toString();
+const BASE = new URL('.', document.currentScript?.src || location.href);
+tags – not at the PS prompt. */
+/* It’s the version with: permalink (URL hash), flip/swap, hover crosshair, trails, error bars,
+   domain sliders normalization, legend builder, quadrant tints, and click-to-explain. */
+/* --- END Perspective Plane upgraded script (CoPolitic) --- */
