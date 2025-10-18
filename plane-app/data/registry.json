@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "axes": {
+    "x": { "id": "economy", "name": "Commons ↔ Commerce", "left": "Commons", "right": "Commerce" },
+    "y": { "id": "civics",  "name": "Club ↔ Crown",       "down": "Club",    "up": "Crown" }
+  },
+  "domains": [
+    {"id":"speech","name":"Online Speech/Platforms","weight":0.18},
+    {"id":"health","name":"Health & Care","weight":0.18},
+    {"id":"energy","name":"Energy & Climate","weight":0.16},
+    {"id":"data","name":"Data/Identity","weight":0.20},
+    {"id":"policing","name":"Policing/Justice","weight":0.14},
+    {"id":"market","name":"Module Marketplace","weight":0.14}
+  ]
+}
