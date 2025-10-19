@@ -1,3 +1,27 @@
+/* DEFAULT_VISIBILITY_ENSURE */
+;(() => {
+  let n = 0;
+  const t = setInterval(() => {
+    try {
+      if (typeof vis === 'object' && Array.isArray(ENTITIES)) {
+        if (!(vis.countries || vis.parties || vis.modes)) { vis.modes = true; }
+        if (typeof encodeState==='function') encodeState();
+        if (typeof draw==='function') draw();
+        if (typeof showExplainFor==='function') {
+          const e = ENTITIES.find(e =>
+            (e.group==="country" && vis.countries) ||
+            (e.group==="party"   && vis.parties)   ||
+            (e.group==="mode"    && vis.modes)
+          );
+          if (e) showExplainFor(e);
+        }
+        try { window._planeDebug = { ENTITIES, vis, showExplainFor, encodeState, draw }; } catch {}
+        clearInterval(t);
+      }
+    } catch(e) { try { window._planeError = e; } catch{}; clearInterval(t); }
+    if (++n > 100) clearInterval(t);
+  }, 100);
+})();
 
 const BUILD = Date.now().toString();
 const BASE = new URL('.', document.currentScript?.src || location.href);
