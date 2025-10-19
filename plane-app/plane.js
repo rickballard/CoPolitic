@@ -1,3 +1,42 @@
+/* DEFAULT_VISIBILITY_AND_WEIGHTS */
+;(() => {
+  let tries = 0;
+  const tick = setInterval(() => {
+    try {
+      // wait until globals exist
+      if (typeof vis==='object' && Array.isArray(ENTITIES)) {
+        // 1) ensure one group is visible
+        if (!(vis.countries || vis.parties || vis.modes)) { vis.modes = true; }
+
+        // 2) if weights sum to zero, call equalize() if available
+        if (typeof total==='function' && typeof equalize==='function') {
+          // total() should update UI text and return sum (or we recompute on next draw)
+          const before = total();
+          if (!before || before===0) { equalize(); }
+        }
+
+        // 3) persist + draw
+        if (typeof encodeState==='function') encodeState();
+        if (typeof draw==='function') draw();
+
+        // 4) show an explanation for the first visible entity
+        if (typeof showExplainFor==='function') {
+          const e = (Array.isArray(ENTITIES)?ENTITIES:[]).find(e =>
+            (e.group==="country" && vis.countries) ||
+            (e.group==="party"   && vis.parties)   ||
+            (e.group==="mode"    && vis.modes)
+          );
+          if (e) showExplainFor(e);
+        }
+
+        // small debug handle
+        try { window._planeDebug = { ENTITIES, vis, showExplainFor, encodeState, draw, total }; } catch {}
+        clearInterval(tick);
+      }
+    } catch (err) { try { window._planeError = err; } catch {}; clearInterval(tick); }
+    if (++tries > 120) clearInterval(tick); // ~12s cutoff
+  }, 100);
+})();
 /* DEFAULT_VISIBILITY_ENSURE */
 ;(() => {
   let n = 0;
