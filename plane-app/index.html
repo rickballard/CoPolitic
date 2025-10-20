@@ -63,6 +63,7 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
   </div>
 </div>
 <script src="plane.js?v=1760937296" defer></script>
+<script src="plane-explain.js?v=1760937724" defer></script>
 
 
 <script id="wire-plane-buttons">
@@ -140,4 +141,23 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
   (document.readyState==='loading') ? document.addEventListener('DOMContentLoaded', run) : run();
   window.addEventListener('load', () => setTimeout(run, 60));
 } catch(e){ try{ window._planeBootError=e }catch{} } )();
-</script></body></html>
+</script><section id="plane-notes" style="margin:20px 8px 60px">
+  <div id="plane-explain" style="background:#0d1422;border:1px solid #233047;border-radius:10px;padding:14px;max-width:980px">
+    <h3 style="margin:0 0 8px;font-weight:600">Notes & sources</h3>
+    <div id="plane-explain-body" style="opacity:.9">
+      Click a point to see why it’s there. You’ll get per-domain contributions and citations.
+    </div>
+  </div>
+  <div id="plane-disclaimer" style="color:#9fb0c6;margin-top:12px;max-width:980px">
+    <small>
+      This chart is a modeled estimate based on public sources and editorial judgment.
+      Positions may be incomplete or out-of-date. Treat this as a starting point; read the sources
+      and decide for yourself. <span id="plane-last-updated"></span>
+    </small>
+  </div>
+  <div style="margin-top:16px">
+    <a href="/cocivium" style="display:inline-block;background:#2b72ff;color:white;padding:10px 14px;border-radius:10px;text-decoration:none">
+      Discuss & improve this in CoCivium →
+    </a>
+  </div>
+</section></body></html>
