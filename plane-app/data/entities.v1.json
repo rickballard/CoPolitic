@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "updated": "2025-10-20",
+  "weights": { "commons": 1, "commerce": 1, "club": 1, "crown": 1 },
+  "entities": [
+    {
+      "id": "us-democrats",
+      "label": "US Democrats",
+      "group": "party",
+      "scores": { "commons": 0.55, "commerce": 0.52, "club": 0.48, "crown": 0.45 },
+      "sources": [
+        { "title": "Example explainer", "url": "https://example.org", "date": "2024-10-01", "note": "Placeholder; replace with real citations." }
+      ]
+    },
+    {
+      "id": "us-republicans",
+      "label": "US Republicans",
+      "group": "party",
+      "scores": { "commons": 0.42, "commerce": 0.56, "club": 0.51, "crown": 0.58 },
+      "sources": [
+        { "title": "Example explainer", "url": "https://example.org", "date": "2024-10-01", "note": "Placeholder; replace with real citations." }
+      ]
+    }
+  ]
+}
