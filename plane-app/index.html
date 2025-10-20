@@ -62,4 +62,40 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
     <div class="hr"></div><h2>Explanation</h2><div class="explain mono" id="explain">Click a point to see per-domain contributions and notes.</div>
   </div>
 </div>
-<script src="plane.js?v=1760887665"></script></body></html>
+<script src="plane.js?v=1760932036"></script>
+<script id="plane-boot-ensure">
+(() => {
+  const run = () => {
+    try {
+      // 1) ensure one visible group
+      window.vis = window.vis || {};
+      if (!(window.vis.countries || window.vis.parties || window.vis.modes)) {
+        window.vis.modes = true;
+      }
+      // 2) equalize if total weights are 0
+      if (typeof window.total === 'function' && typeof window.equalize === 'function') {
+        try { const t = window.total(); if (!t || t === 0) window.equalize(); } catch {}
+      }
+      // 3) persist + draw
+      try { window.encodeState && window.encodeState(); } catch {}
+      try { window.draw && window.draw(); } catch {}
+      // 4) show an explanation for first visible
+      try {
+        if (Array.isArray(window.ENTITIES) && typeof window.showExplainFor === 'function') {
+          const e = window.ENTITIES.find(e =>
+            (e.group === 'country' && window.vis.countries) ||
+            (e.group === 'party'   && window.vis.parties)   ||
+            (e.group === 'mode'    && window.vis.modes)
+          );
+          if (e) window.showExplainFor(e);
+        }
+      } catch {}
+      try { window._planeDebug = { ENTITIES: window.ENTITIES, vis: window.vis, draw: window.draw, total: window.total }; } catch {}
+    } catch (err) { try { window._planeError = err; } catch {} }
+  };
+  // run once DOM is ready, again after load (module timing)
+  if (document.readyState !== 'loading') run();
+  else document.addEventListener('DOMContentLoaded', run);
+  window.addEventListener('load', () => { setTimeout(run, 50); setTimeout(run, 300); });
+})();
+</script></body></html>

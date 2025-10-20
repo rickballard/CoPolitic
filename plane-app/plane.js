@@ -86,3 +86,21 @@ tags – not at the PS prompt. */
     window._planeDebug = { ENTITIES, vis, showExplainFor, encodeState, draw };
   } catch(e){ window._planeError = e; }
 }); }catch(_e){}
+/* WINDOW_BRIDGE (safe, idempotent) */
+;(() => {
+  try {
+    const g = (typeof window === 'object') ? window : null;
+    if (!g) return;
+    // Try to hoist common internal symbols if present
+    const bag = {};
+    try { if (typeof ENTITIES !== 'undefined') { g.ENTITIES = ENTITIES; bag.ENTITIES = ENTITIES; } } catch {}
+    try { if (typeof REGISTRY !== 'undefined') { g.REGISTRY = REGISTRY; bag.REGISTRY = REGISTRY; } } catch {}
+    try { if (typeof vis      !== 'undefined') { g.vis = vis;             bag.vis      = vis;      } } catch {}
+    try { if (typeof draw     === 'function')  { g.draw = draw;           bag.draw     = draw;     } } catch {}
+    try { if (typeof equalize === 'function')  { g.equalize = equalize;   bag.equalize = equalize; } } catch {}
+    try { if (typeof total    === 'function')  { g.total = total;         bag.total    = total;    } } catch {}
+    try { if (typeof encodeState === 'function') { g.encodeState = encodeState; bag.encodeState = encodeState; } } catch {}
+    try { if (typeof showExplainFor === 'function') { g.showExplainFor = showExplainFor; bag.showExplainFor = showExplainFor; } } catch {}
+    try { g.PLANE = Object.assign(g.PLANE || {}, bag); } catch {}
+  } catch (e) { try { window._planeError = e; } catch {} }
+})();
