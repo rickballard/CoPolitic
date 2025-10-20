@@ -1,25 +1,50 @@
 {
-  "version": 1,
   "updated": "2025-10-20",
-  "weights": { "commons": 1, "commerce": 1, "club": 1, "crown": 1 },
+  "weights": {
+    "commerce": 1,
+    "club": 1,
+    "crown": 1,
+    "commons": 1
+  },
+  "version": 1,
   "entities": [
     {
       "id": "us-democrats",
-      "label": "US Democrats",
       "group": "party",
-      "scores": { "commons": 0.55, "commerce": 0.52, "club": 0.48, "crown": 0.45 },
       "sources": [
-        { "title": "Example explainer", "url": "https://example.org", "date": "2024-10-01", "note": "Placeholder; replace with real citations." }
-      ]
+        {
+          "date": "2025-10-20",
+          "url": "https://example.org/dems",
+          "title": "Party platform overview (placeholder)",
+          "note": "Replace with real citations."
+        }
+      ],
+      "scores": {
+        "commerce": 0.5,
+        "club": 0.46,
+        "crown": 0.41,
+        "commons": 0.58
+      },
+      "label": "US Democrats"
     },
     {
       "id": "us-republicans",
-      "label": "US Republicans",
       "group": "party",
-      "scores": { "commons": 0.42, "commerce": 0.56, "club": 0.51, "crown": 0.58 },
       "sources": [
-        { "title": "Example explainer", "url": "https://example.org", "date": "2024-10-01", "note": "Placeholder; replace with real citations." }
-      ]
+        {
+          "date": "2025-10-20",
+          "url": "https://example.org/gop",
+          "title": "Party platform overview (placeholder)",
+          "note": "Replace with real citations."
+        }
+      ],
+      "scores": {
+        "commerce": 0.59,
+        "club": 0.52,
+        "crown": 0.62,
+        "commons": 0.4
+      },
+      "label": "US Republicans"
     }
   ]
 }
