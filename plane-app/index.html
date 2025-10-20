@@ -62,7 +62,50 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
     <div class="hr"></div><h2>Explanation</h2><div class="explain mono" id="explain">Click a point to see per-domain contributions and notes.</div>
   </div>
 </div>
-<script src="plane.js?v=1760935561"></script>
+<script src="plane.js?v=1760936121"></script>
+<script id="wire-plane-buttons">
+(()=>{ try{
+  const q = (s) => Array.from(document.querySelectorAll(s));
+  const findBtn = (txt) => q('button,input[type=button]').find(b => (b.textContent||b.value||'').toLowerCase().includes(txt));
+  const clicky = (name,fn) => { const b = findBtn(name); if(b && !b.__wired){ b.__wired = true; b.addEventListener('click', fn); } };
+
+  const safe = (f)=>{ try{ return typeof f==='function' ? f : null; }catch{ return null; } };
+
+  // Exported/safe handles (WINDOW_EXPORTS already adds these to window.PLANE)
+  const draw         = window.draw         || window.PLANE?.draw;
+  const total        = window.total        || window.PLANE?.total;
+  const equalize     = window.equalize     || window.PLANE?.equalize;
+  const encodeState  = window.encodeState  || window.PLANE?.encodeState;
+
+  // Equalize: if equalize() exists use it; else, just force a redraw with default weights
+  clicky('equalize', (e)=>{
+    e.preventDefault();
+    if (safe(total) && safe(equalize)) { try{ if(!total() || total()===0) equalize(); else equalize(); }catch{} }
+    if (safe(encodeState)) try{ encodeState(); }catch{}
+    if (safe(draw))        try{ draw(); }catch{}
+  });
+
+  // Reset: zero weights then redraw (or fallback to a redraw only)
+  clicky('reset', (e)=>{
+    e.preventDefault();
+    try{
+      // simple reset: set all domain sliders to 0 if present
+      q('input[type=range][name^=w-]').forEach(r=>{ r.value='0'; r.dispatchEvent(new Event('input',{bubbles:true})); });
+    }catch{}
+    if (safe(encodeState)) try{ encodeState(); }catch{}
+    if (safe(draw))        try{ draw(); }catch{}
+  });
+
+  // Toggle groups: flip vis flags and redraw
+  const ensureVis = ()=>{ window.vis = window.vis || { countries:false, parties:false, modes:false }; };
+  const flip = (key)=>{ ensureVis(); window.vis[key] = !window.vis[key]; if (safe(encodeState)) try{ encodeState(); }catch{} if (safe(draw)) try{ draw(); }catch{} };
+
+  clicky('toggle countries', ()=>flip('countries'));
+  clicky('toggle us parties', ()=>flip('parties'));
+  clicky('toggle cocivium',   ()=>flip('modes'));
+
+}catch(e){ try{ window._planeWireError = e; }catch{} }})();
+</script>
 <script id="plane-boot-ensure">
 (() => {
   const run = () => {
