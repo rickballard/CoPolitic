@@ -62,50 +62,8 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
     <div class="hr"></div><h2>Explanation</h2><div class="explain mono" id="explain">Click a point to see per-domain contributions and notes.</div>
   </div>
 </div>
-<script src="plane.js?v=1760936121" defer></script>
-<script id="wire-plane-buttons">
-(()=>{ try{
-  const q = (s) => Array.from(document.querySelectorAll(s));
-  const findBtn = (txt) => q('button,input[type=button]').find(b => (b.textContent||b.value||'').toLowerCase().includes(txt));
-  const clicky = (name,fn) => { const b = findBtn(name); if(b && !b.__wired){ b.__wired = true; b.addEventListener('click', fn); } };
+<script src="plane.js?v=1760936541" defer></script>
 
-  const safe = (f)=>{ try{ return typeof f==='function' ? f : null; }catch{ return null; } };
-
-  // Exported/safe handles (WINDOW_EXPORTS already adds these to window.PLANE)
-  const draw         = window.draw         || window.PLANE?.draw;
-  const total        = window.total        || window.PLANE?.total;
-  const equalize     = window.equalize     || window.PLANE?.equalize;
-  const encodeState  = window.encodeState  || window.PLANE?.encodeState;
-
-  // Equalize: if equalize() exists use it; else, just force a redraw with default weights
-  clicky('equalize', (e)=>{
-    e.preventDefault();
-    if (safe(total) && safe(equalize)) { try{ if(!total() || total()===0) equalize(); else equalize(); }catch{} }
-    if (safe(encodeState)) try{ encodeState(); }catch{}
-    if (safe(draw))        try{ draw(); }catch{}
-  });
-
-  // Reset: zero weights then redraw (or fallback to a redraw only)
-  clicky('reset', (e)=>{
-    e.preventDefault();
-    try{
-      // simple reset: set all domain sliders to 0 if present
-      q('input[type=range][name^=w-]').forEach(r=>{ r.value='0'; r.dispatchEvent(new Event('input',{bubbles:true})); });
-    }catch{}
-    if (safe(encodeState)) try{ encodeState(); }catch{}
-    if (safe(draw))        try{ draw(); }catch{}
-  });
-
-  // Toggle groups: flip vis flags and redraw
-  const ensureVis = ()=>{ window.vis = window.vis || { countries:false, parties:false, modes:false }; };
-  const flip = (key)=>{ ensureVis(); window.vis[key] = !window.vis[key]; if (safe(encodeState)) try{ encodeState(); }catch{} if (safe(draw)) try{ draw(); }catch{} };
-
-  clicky('toggle countries', ()=>flip('countries'));
-  clicky('toggle us parties', ()=>flip('parties'));
-  clicky('toggle cocivium',   ()=>flip('modes'));
-
-}catch(e){ try{ window._planeWireError = e; }catch{} }})();
-</script>
 <script id="plane-boot-ensure">
 (() => {
   const run = () => {
@@ -141,4 +99,79 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
   else document.addEventListener('DOMContentLoaded', run);
   window.addEventListener('load', () => { setTimeout(run, 50); setTimeout(run, 300); });
 })();
+</script><script id="wire-plane-buttons">
+(()=>{ try{
+  const safe = f => { try { return typeof f === 'function' ? f : null } catch { return null } };
+  const api = {
+    draw        : window.draw        || window.PLANE?.draw,
+    total       : window.total       || window.PLANE?.total,
+    equalize    : window.equalize    || window.PLANE?.equalize,
+    encodeState : window.encodeState || window.PLANE?.encodeState,
+  };
+  const ensureVis = () => { window.vis = window.vis || { countries:false, parties:false, modes:false } };
+  const qAll = s => Array.from(document.querySelectorAll(s));
+  const findBtn = (txt) => qAll('button,input[type=button]').find(b => (b.textContent||b.value||'').toLowerCase().includes((txt||'').toLowerCase()));
+
+  const wireOnce = () => {
+    let wired = 0;
+
+    const beq = findBtn('equalize');
+    if (beq && !beq.__wired) { beq.__wired = true; wired++; beq.addEventListener('click', e => {
+      e.preventDefault();
+      try { if (safe(api.total) && safe(api.equalize)) api.equalize(); } catch {}
+      try { safe(api.encodeState)?.(); } catch {}
+      try { safe(api.draw)?.(); } catch {}
+    }); }
+
+    const brs = findBtn('reset');
+    if (brs && !brs.__wired) { brs.__wired = true; wired++; brs.addEventListener('click', e => {
+      e.preventDefault();
+      try { qAll('input[type=range][name^=w-]').forEach(r=>{ r.value='0'; r.dispatchEvent(new Event('input',{bubbles:true})) }); } catch {}
+      try { safe(api.encodeState)?.(); } catch {}
+      try { safe(api.draw)?.(); } catch {}
+    }); }
+
+    const flip = key => { ensureVis(); window.vis[key] = !window.vis[key]; try { safe(api.encodeState)?.(); } catch {} try { safe(api.draw)?.(); } catch {} };
+
+    const bc = findBtn('toggle countries'); if (bc && !bc.__wired) { bc.__wired = true; wired++; bc.addEventListener('click', e => { e.preventDefault(); flip('countries'); }); }
+    const bp = findBtn('toggle us parties'); if (bp && !bp.__wired) { bp.__wired = true; wired++; bp.addEventListener('click', e => { e.preventDefault(); flip('parties');   }); }
+    const bm = findBtn('toggle cocivium');   if (bm && !bm.__wired) { bm.__wired = true; wired++; bm.addEventListener('click', e => { e.preventDefault(); flip('modes');     }); }
+
+    return wired;
+  };
+
+  const start = () => {
+    let tries = 0; const t = setInterval(()=>{ const c=wireOnce(); if (c>0 || ++tries>50) clearInterval(t); },100);
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+
+  const mo = new MutationObserver(()=>wireOnce());
+  mo.observe(document.body, { childList:true, subtree:true });
+} catch(e){ try{ window._planeWireError=e }catch{} }})();
+</script>
+<script id="plane-rescue">
+(()=>{ try{
+  const drawFallback = () => {
+    const c = document.querySelector('canvas'); if (!c) return;
+    const rect = c.getBoundingClientRect(); const dpr = window.devicePixelRatio || 1;
+    const w = Math.max(800, Math.round(rect.width  * dpr) || 800);
+    const h = Math.max(520, Math.round(rect.height * dpr) || 520);
+    c.width = w; c.height = h;
+    const ctx = c.getContext('2d'); if (!ctx) return;
+    // If app draw exists, let it handle
+    if (typeof window.draw === 'function') { try { window.encodeState && window.encodeState(); window.draw(); return; } catch {} }
+    // Otherwise render something visible
+    const ents = Array.isArray(window.ENTITIES) ? window.ENTITIES.slice(0,24) : [];
+    ctx.fillStyle = '#0e1726'; ctx.fillRect(0,0,w,h);
+    const pts = ents.length
+      ? ents.map((e,i)=>({x:(i+1)/(ents.length+1), y:0.3 + 0.4*((i*9301+49297)%10000)/10000}))
+      : Array.from({length:9},(_,i)=>({x:(i%3+1)/4, y:(Math.floor(i/3)+1)/4}));
+    ctx.fillStyle = '#87bdff';
+    pts.forEach(p=>{ const x = 20 + p.x*(w-40); const y = 20 + p.y*(h-40); ctx.beginPath(); ctx.arc(x,y,3*dpr,0,Math.PI*2); ctx.fill(); });
+    try { window._planeRescueRan = true; } catch {}
+  };
+  const boot = () => { try { drawFallback(); } catch(e){ try{ window._planeRescueErr=e }catch{} } };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+  window.addEventListener('load', ()=> setTimeout(boot, 60));
+} catch(e){ try{ window._planeRescueErr=e }catch{} }})();
 </script></body></html>
