@@ -62,7 +62,7 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
     <div class="hr"></div><h2>Explanation</h2><div class="explain mono" id="explain">Click a point to see per-domain contributions and notes.</div>
   </div>
 </div>
-<script src="plane.js?v=1760936541" defer></script>
+<script src="plane.js?v=1760936694" defer></script>
 
 <script id="plane-boot-ensure">
 (() => {
@@ -99,55 +99,6 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
   else document.addEventListener('DOMContentLoaded', run);
   window.addEventListener('load', () => { setTimeout(run, 50); setTimeout(run, 300); });
 })();
-</script><script id="wire-plane-buttons">
-(()=>{ try{
-  const safe = f => { try { return typeof f === 'function' ? f : null } catch { return null } };
-  const api = {
-    draw        : window.draw        || window.PLANE?.draw,
-    total       : window.total       || window.PLANE?.total,
-    equalize    : window.equalize    || window.PLANE?.equalize,
-    encodeState : window.encodeState || window.PLANE?.encodeState,
-  };
-  const ensureVis = () => { window.vis = window.vis || { countries:false, parties:false, modes:false } };
-  const qAll = s => Array.from(document.querySelectorAll(s));
-  const findBtn = (txt) => qAll('button,input[type=button]').find(b => (b.textContent||b.value||'').toLowerCase().includes((txt||'').toLowerCase()));
-
-  const wireOnce = () => {
-    let wired = 0;
-
-    const beq = findBtn('equalize');
-    if (beq && !beq.__wired) { beq.__wired = true; wired++; beq.addEventListener('click', e => {
-      e.preventDefault();
-      try { if (safe(api.total) && safe(api.equalize)) api.equalize(); } catch {}
-      try { safe(api.encodeState)?.(); } catch {}
-      try { safe(api.draw)?.(); } catch {}
-    }); }
-
-    const brs = findBtn('reset');
-    if (brs && !brs.__wired) { brs.__wired = true; wired++; brs.addEventListener('click', e => {
-      e.preventDefault();
-      try { qAll('input[type=range][name^=w-]').forEach(r=>{ r.value='0'; r.dispatchEvent(new Event('input',{bubbles:true})) }); } catch {}
-      try { safe(api.encodeState)?.(); } catch {}
-      try { safe(api.draw)?.(); } catch {}
-    }); }
-
-    const flip = key => { ensureVis(); window.vis[key] = !window.vis[key]; try { safe(api.encodeState)?.(); } catch {} try { safe(api.draw)?.(); } catch {} };
-
-    const bc = findBtn('toggle countries'); if (bc && !bc.__wired) { bc.__wired = true; wired++; bc.addEventListener('click', e => { e.preventDefault(); flip('countries'); }); }
-    const bp = findBtn('toggle us parties'); if (bp && !bp.__wired) { bp.__wired = true; wired++; bp.addEventListener('click', e => { e.preventDefault(); flip('parties');   }); }
-    const bm = findBtn('toggle cocivium');   if (bm && !bm.__wired) { bm.__wired = true; wired++; bm.addEventListener('click', e => { e.preventDefault(); flip('modes');     }); }
-
-    return wired;
-  };
-
-  const start = () => {
-    let tries = 0; const t = setInterval(()=>{ const c=wireOnce(); if (c>0 || ++tries>50) clearInterval(t); },100);
-  };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-
-  const mo = new MutationObserver(()=>wireOnce());
-  mo.observe(document.body, { childList:true, subtree:true });
-} catch(e){ try{ window._planeWireError=e }catch{} }})();
 </script>
 <script id="plane-rescue">
 (()=>{ try{
@@ -174,4 +125,51 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
   window.addEventListener('load', ()=> setTimeout(boot, 60));
 } catch(e){ try{ window._planeRescueErr=e }catch{} }})();
+</script><script id="wire-plane-buttons">
+(()=>{ try{
+  const safe = f => { try { return typeof f==='function' ? f : null } catch { return null } };
+  const api  = {
+    draw        : window.draw        || window.PLANE?.draw,
+    total       : window.total       || window.PLANE?.total,
+    equalize    : window.equalize    || window.PLANE?.equalize,
+    encodeState : window.encodeState || window.PLANE?.encodeState,
+  };
+  const ensureVis = ()=>{ window.vis = window.vis || { countries:false, parties:false, modes:false } };
+  const q  = s => document.querySelector(s);
+  const qa = s => Array.from(document.querySelectorAll(s));
+  const findBtnText = (txt)=> qa('button,input[type=button]').find(b => (b.textContent||b.value||'').toLowerCase().includes((txt||'').toLowerCase()));
+
+  const targetMap = [
+    {id:'#eq-btn',    text:'equalize', handler:()=>{ try{ if (safe(api.total)&&safe(api.equalize)) api.equalize(); }catch{} try{ safe(api.encodeState)?.(); }catch{} try{ safe(api.draw)?.(); }catch{} }},
+    {id:'#reset-btn', text:'reset',    handler:()=>{ try{ qa('input[type=range][name^=w-]').forEach(r=>{ r.value='0'; r.dispatchEvent(new Event('input',{bubbles:true})) }); }catch{} try{ safe(api.encodeState)?.(); }catch{} try{ safe(api.draw)?.(); }catch{} }},
+    {id:'#toggle-countries-btn', text:'toggle countr', handler:()=>{ ensureVis(); window.vis.countries=!window.vis.countries; try{ safe(api.encodeState)?.(); }catch{} try{ safe(api.draw)?.(); }catch{} }},
+    {id:'#toggle-parties-btn',   text:'toggle us part',handler:()=>{ ensureVis(); window.vis.parties  =!window.vis.parties;   try{ safe(api.encodeState)?.(); }catch{} try{ safe(api.draw)?.(); }catch{} }},
+    {id:'#toggle-modes-btn',     text:'toggle cociv',  handler:()=>{ ensureVis(); window.vis.modes    =!window.vis.modes;     try{ safe(api.encodeState)?.(); }catch{} try{ safe(api.draw)?.(); }catch{} }},
+  ];
+
+  const wireOnce = () => {
+    let wired=0;
+    for (const t of targetMap){
+      let btn = q(t.id);
+      if (!btn) btn = findBtnText(t.text);
+      if (btn && !btn.__wired){ btn.__wired=true; btn.addEventListener('click', e=>{ e.preventDefault(); t.handler(); }); wired++; }
+    }
+    if (wired) console.log('[wire] bound', wired, 'controls');
+    return wired;
+  };
+
+  // Wire on DOM ready with retries, and re-wire on DOM mutations
+  const start=()=>{ let tries=0; const iv=setInterval(()=>{ const c=wireOnce(); if(c>0||++tries>50) clearInterval(iv); },100); };
+  (document.readyState==='loading') ? document.addEventListener('DOMContentLoaded', start) : start();
+  new MutationObserver(()=>wireOnce()).observe(document.body, {childList:true, subtree:true});
+
+  // Keyboard: E=equalize, 1/2/3 toggle countries/parties/modes
+  window.addEventListener('keydown', (ev)=>{
+    const k = ev.key.toLowerCase();
+    if (k==='e'){ ev.preventDefault(); targetMap[0].handler(); }
+    if (k==='1'){ ev.preventDefault(); targetMap[2].handler(); }
+    if (k==='2'){ ev.preventDefault(); targetMap[3].handler(); }
+    if (k==='3'){ ev.preventDefault(); targetMap[4].handler(); }
+  });
+} catch(e){ try{ window._planeWireError=e }catch{} }})();
 </script></body></html>
