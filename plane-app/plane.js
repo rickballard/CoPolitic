@@ -104,3 +104,25 @@ tags – not at the PS prompt. */
     try { g.PLANE = Object.assign(g.PLANE || {}, bag); } catch {}
   } catch (e) { try { window._planeError = e; } catch {} }
 })();
+/* WINDOW_EXPORTS (idempotent) */
+(()=>{ try{
+  const g = (typeof window==='object') ? window : null; if(!g) return;
+  g.PLANE = Object.assign(g.PLANE||{}, {
+    vis: (typeof vis!=='undefined') ? vis : undefined,
+    draw: (typeof draw==='function') ? draw : undefined,
+    total: (typeof total==='function') ? total : undefined,
+    equalize: (typeof equalize==='function') ? equalize : undefined,
+    encodeState: (typeof encodeState==='function') ? encodeState : undefined,
+    showExplainFor: (typeof showExplainFor==='function') ? showExplainFor : undefined,
+    ENTITIES: (typeof ENTITIES!=='undefined') ? ENTITIES : undefined,
+    REGISTRY: (typeof REGISTRY!=='undefined') ? REGISTRY : undefined,
+  });
+} catch {} })();
+/* END WINDOW_EXPORTS */
+/* BOOT_GUARD (ensure visible group, then persist+draw; idempotent) */
+(()=>{ try{
+  if (!(vis?.countries || vis?.parties || vis?.modes)) { vis = vis||{}; vis.modes = true; }
+  try { typeof encodeState==='function' && encodeState(); } catch {}
+  try { typeof draw==='function' && draw(); } catch {}
+} catch {} })();
+/* END BOOT_GUARD */
