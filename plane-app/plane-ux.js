@@ -91,3 +91,73 @@
     }
   } catch (e) { try { window._planeUXErr = e } catch {} }
 })();
+/* === ID-FIRST WIRING & CLICK FLASH === */
+(function(){
+  try{
+    const g=window;
+    const safe=f=>{try{return typeof f==='function'?f:null}catch{return null}};
+    const api={draw:g.draw||g.PLANE?.draw,total:g.total||g.PLANE?.total,equalize:g.equalize||g.PLANE?.equalize,encodeState:g.encodeState||g.PLANE?.encodeState};
+    const ensureVis=()=>{g.vis=g.vis||{countries:false,parties:false,modes:false}};
+    const redraw=()=>{try{safe(api.encodeState)?.()}catch{} try{safe(api.draw)?.()}catch{}};
+    const flash=(el)=>{try{el?.classList?.add('plane-flash'); setTimeout(()=>el?.classList?.remove('plane-flash'),180);}catch{}};
+
+    // add flash style once
+    if(!document.getElementById('plane-flash-style')){
+      const s=document.createElement('style'); s.id='plane-flash-style';
+      s.textContent='.plane-flash{outline:2px solid #3da5ff; transition:outline .18s ease}';
+      document.head.appendChild(s);
+    }
+
+    const handlers={
+      equalize:(el)=>{console.log('[ux] click equalize'); try{safe(api.equalize)?.()}catch{} redraw(); flash(el)},
+      reset:(el)=>{console.log('[ux] click reset'); try{document.querySelectorAll('input[type=range][name^=w-]').forEach(r=>{r.value='0'; r.dispatchEvent(new Event('input',{bubbles:true}))})}catch{} redraw(); flash(el)},
+      countries:(el)=>{console.log('[ux] click countries'); ensureVis(); g.vis.countries=!g.vis.countries; redraw(); flash(el)},
+      parties:(el)=>{console.log('[ux] click parties'); ensureVis(); g.vis.parties=!g.vis.parties; redraw(); flash(el)},
+      modes:(el)=>{console.log('[ux] click modes'); ensureVis(); g.vis.modes=!g.vis.modes; redraw(); flash(el)}
+    };
+
+    // ID-first binding (runs once, and on mutations)
+    const bindById=()=>{
+      const map=[
+        ['#eq-btn','equalize'],
+        ['#reset-btn','reset'],
+        ['#toggle-countries-btn','countries'],
+        ['#toggle-parties-btn','parties'],
+        ['#toggle-modes-btn','modes'],
+      ];
+      let bound=0;
+      for(const [sel,act] of map){
+        const el=document.querySelector(sel);
+        if(el && !el.__planeBound){
+          el.__planeBound=true;
+          el.addEventListener('click',e=>{e.preventDefault(); handlers[act](el)});
+          console.log('[ux] wired by id:', sel);
+          bound++;
+        }
+      }
+      return bound;
+    };
+
+    // Keep existing delegation as fallback by text
+    const delegated=(ev)=>{
+      const el=ev.target.closest('button, input[type=button], a, *[role=button]'); if(!el) return;
+      const txt=(el.textContent||el.value||'').toLowerCase();
+      const act = txt.includes('equalize')?'equalize':
+                  txt.includes('reset')?'reset':
+                  txt.includes('toggle countr')?'countries':
+                  txt.includes('toggle us part')?'parties':
+                  txt.includes('toggle cociv')?'modes':null;
+      if(!act) return;
+      ev.preventDefault();
+      handlers[act](el);
+    };
+
+    document.removeEventListener('click', delegated, true); // avoid dup if present
+    document.addEventListener('click', delegated, true);
+
+    const start=()=>{ bindById(); };
+    (document.readyState==='loading')?document.addEventListener('DOMContentLoaded',start):start();
+    new MutationObserver(()=>bindById()).observe(document.body,{childList:true,subtree:true});
+
+  }catch(e){ try{window._planeIdWireErr=e}catch{} }
+})();
