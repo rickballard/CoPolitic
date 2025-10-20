@@ -62,114 +62,82 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
     <div class="hr"></div><h2>Explanation</h2><div class="explain mono" id="explain">Click a point to see per-domain contributions and notes.</div>
   </div>
 </div>
-<script src="plane.js?v=1760936694" defer></script>
+<script src="plane.js?v=1760937296" defer></script>
 
-<script id="plane-boot-ensure">
-(() => {
-  const run = () => {
-    try {
-      // 1) ensure one visible group
-      window.vis = window.vis || {};
-      if (!(window.vis.countries || window.vis.parties || window.vis.modes)) {
-        window.vis.modes = true;
-      }
-      // 2) equalize if total weights are 0
-      if (typeof window.total === 'function' && typeof window.equalize === 'function') {
-        try { const t = window.total(); if (!t || t === 0) window.equalize(); } catch {}
-      }
-      // 3) persist + draw
-      try { window.encodeState && window.encodeState(); } catch {}
-      try { window.draw && window.draw(); } catch {}
-      // 4) show an explanation for first visible
-      try {
-        if (Array.isArray(window.ENTITIES) && typeof window.showExplainFor === 'function') {
-          const e = window.ENTITIES.find(e =>
-            (e.group === 'country' && window.vis.countries) ||
-            (e.group === 'party'   && window.vis.parties)   ||
-            (e.group === 'mode'    && window.vis.modes)
-          );
-          if (e) window.showExplainFor(e);
-        }
-      } catch {}
-      try { window._planeDebug = { ENTITIES: window.ENTITIES, vis: window.vis, draw: window.draw, total: window.total }; } catch {}
-    } catch (err) { try { window._planeError = err; } catch {} }
-  };
-  // run once DOM is ready, again after load (module timing)
-  if (document.readyState !== 'loading') run();
-  else document.addEventListener('DOMContentLoaded', run);
-  window.addEventListener('load', () => { setTimeout(run, 50); setTimeout(run, 300); });
-})();
-</script>
-<script id="plane-rescue">
-(()=>{ try{
-  const drawFallback = () => {
-    const c = document.querySelector('canvas'); if (!c) return;
-    const rect = c.getBoundingClientRect(); const dpr = window.devicePixelRatio || 1;
-    const w = Math.max(800, Math.round(rect.width  * dpr) || 800);
-    const h = Math.max(520, Math.round(rect.height * dpr) || 520);
-    c.width = w; c.height = h;
-    const ctx = c.getContext('2d'); if (!ctx) return;
-    // If app draw exists, let it handle
-    if (typeof window.draw === 'function') { try { window.encodeState && window.encodeState(); window.draw(); return; } catch {} }
-    // Otherwise render something visible
-    const ents = Array.isArray(window.ENTITIES) ? window.ENTITIES.slice(0,24) : [];
-    ctx.fillStyle = '#0e1726'; ctx.fillRect(0,0,w,h);
-    const pts = ents.length
-      ? ents.map((e,i)=>({x:(i+1)/(ents.length+1), y:0.3 + 0.4*((i*9301+49297)%10000)/10000}))
-      : Array.from({length:9},(_,i)=>({x:(i%3+1)/4, y:(Math.floor(i/3)+1)/4}));
-    ctx.fillStyle = '#87bdff';
-    pts.forEach(p=>{ const x = 20 + p.x*(w-40); const y = 20 + p.y*(h-40); ctx.beginPath(); ctx.arc(x,y,3*dpr,0,Math.PI*2); ctx.fill(); });
-    try { window._planeRescueRan = true; } catch {}
-  };
-  const boot = () => { try { drawFallback(); } catch(e){ try{ window._planeRescueErr=e }catch{} } };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
-  window.addEventListener('load', ()=> setTimeout(boot, 60));
-} catch(e){ try{ window._planeRescueErr=e }catch{} }})();
-</script><script id="wire-plane-buttons">
-(()=>{ try{
-  const safe = f => { try { return typeof f==='function' ? f : null } catch { return null } };
+
+<script id="wire-plane-buttons">
+(() => { try {
+  const safe = f => { try { return typeof f === 'function' ? f : null } catch { return null } };
   const api  = {
     draw        : window.draw        || window.PLANE?.draw,
     total       : window.total       || window.PLANE?.total,
     equalize    : window.equalize    || window.PLANE?.equalize,
     encodeState : window.encodeState || window.PLANE?.encodeState,
   };
-  const ensureVis = ()=>{ window.vis = window.vis || { countries:false, parties:false, modes:false } };
-  const q  = s => document.querySelector(s);
-  const qa = s => Array.from(document.querySelectorAll(s));
-  const findBtnText = (txt)=> qa('button,input[type=button]').find(b => (b.textContent||b.value||'').toLowerCase().includes((txt||'').toLowerCase()));
+  const ensureVis = () => { window.vis = window.vis || { countries:false, parties:false, modes:false } };
+  const qa  = s => Array.from(document.querySelectorAll(s));
+  const byText = (txt) => qa('button,input[type=button]').find(b => (b.textContent||b.value||'').toLowerCase().includes((txt||'').toLowerCase()));
 
-  const targetMap = [
-    {id:'#eq-btn',    text:'equalize', handler:()=>{ try{ if (safe(api.total)&&safe(api.equalize)) api.equalize(); }catch{} try{ safe(api.encodeState)?.(); }catch{} try{ safe(api.draw)?.(); }catch{} }},
-    {id:'#reset-btn', text:'reset',    handler:()=>{ try{ qa('input[type=range][name^=w-]').forEach(r=>{ r.value='0'; r.dispatchEvent(new Event('input',{bubbles:true})) }); }catch{} try{ safe(api.encodeState)?.(); }catch{} try{ safe(api.draw)?.(); }catch{} }},
-    {id:'#toggle-countries-btn', text:'toggle countr', handler:()=>{ ensureVis(); window.vis.countries=!window.vis.countries; try{ safe(api.encodeState)?.(); }catch{} try{ safe(api.draw)?.(); }catch{} }},
-    {id:'#toggle-parties-btn',   text:'toggle us part',handler:()=>{ ensureVis(); window.vis.parties  =!window.vis.parties;   try{ safe(api.encodeState)?.(); }catch{} try{ safe(api.draw)?.(); }catch{} }},
-    {id:'#toggle-modes-btn',     text:'toggle cociv',  handler:()=>{ ensureVis(); window.vis.modes    =!window.vis.modes;     try{ safe(api.encodeState)?.(); }catch{} try{ safe(api.draw)?.(); }catch{} }},
-  ];
+  const handlers = {
+    equalize() { try { if (safe(api.total) && safe(api.equalize)) api.equalize(); } catch {} try { safe(api.encodeState)?.(); } catch {} try { safe(api.draw)?.(); } catch {} },
+    reset()    { try { qa('input[type=range][name^=w-]').forEach(r=>{ r.value='0'; r.dispatchEvent(new Event('input',{bubbles:true})) }); } catch {} try { safe(api.encodeState)?.(); } catch {} try { safe(api.draw)?.(); } catch {} },
+    countries(){ ensureVis(); window.vis.countries = !window.vis.countries; try { safe(api.encodeState)?.(); } catch {} try { safe(api.draw)?.(); } catch {} },
+    parties()  { ensureVis(); window.vis.parties   = !window.vis.parties;   try { safe(api.encodeState)?.(); } catch {} try { safe(api.draw)?.(); } catch {} },
+    modes()    { ensureVis(); window.vis.modes     = !window.vis.modes;     try { safe(api.encodeState)?.(); } catch {} try { safe(api.draw)?.(); } catch {} },
+  };
 
   const wireOnce = () => {
-    let wired=0;
-    for (const t of targetMap){
-      let btn = q(t.id);
-      if (!btn) btn = findBtnText(t.text);
-      if (btn && !btn.__wired){ btn.__wired=true; btn.addEventListener('click', e=>{ e.preventDefault(); t.handler(); }); wired++; }
+    let wired = 0;
+    const map = [
+      ['equalize', handlers.equalize],
+      ['reset',    handlers.reset],
+      ['toggle countr', handlers.countries],
+      ['toggle us part', handlers.parties],
+      ['toggle cociv',   handlers.modes],
+    ];
+    for (const [label, fn] of map) {
+      const el = byText(label);
+      if (el && !el.__wired) { el.__wired = true; el.addEventListener('click', e => { e.preventDefault(); fn(); }); wired++; }
     }
     if (wired) console.log('[wire] bound', wired, 'controls');
     return wired;
   };
 
-  // Wire on DOM ready with retries, and re-wire on DOM mutations
-  const start=()=>{ let tries=0; const iv=setInterval(()=>{ const c=wireOnce(); if(c>0||++tries>50) clearInterval(iv); },100); };
+  const start = () => { let tries=0; const t=setInterval(()=>{ const c=wireOnce(); if(c>0 || ++tries>50) clearInterval(t); },100); };
   (document.readyState==='loading') ? document.addEventListener('DOMContentLoaded', start) : start();
   new MutationObserver(()=>wireOnce()).observe(document.body, {childList:true, subtree:true});
 
-  // Keyboard: E=equalize, 1/2/3 toggle countries/parties/modes
-  window.addEventListener('keydown', (ev)=>{
+  // Hotkeys: E=equalize, 1/2/3 toggle groups
+  window.addEventListener('keydown', ev => {
     const k = ev.key.toLowerCase();
-    if (k==='e'){ ev.preventDefault(); targetMap[0].handler(); }
-    if (k==='1'){ ev.preventDefault(); targetMap[2].handler(); }
-    if (k==='2'){ ev.preventDefault(); targetMap[3].handler(); }
-    if (k==='3'){ ev.preventDefault(); targetMap[4].handler(); }
+    if (k==='e') { ev.preventDefault(); handlers.equalize(); }
+    if (k==='1') { ev.preventDefault(); handlers.countries(); }
+    if (k==='2') { ev.preventDefault(); handlers.parties(); }
+    if (k==='3') { ev.preventDefault(); handlers.modes(); }
   });
 } catch(e){ try{ window._planeWireError=e }catch{} }})();
+</script>
+<script id="plane-boot-ensure">
+(() => { try {
+  const run = () => {
+    try {
+      // 1) Ensure one visible group (prefer modes) on first load
+      window.vis = window.vis || {};
+      if (!(window.vis.countries || window.vis.parties || window.vis.modes)) window.vis.modes = true;
+
+      // 2) If weights sum to 0, try equalize (when present)
+      try {
+        if (typeof window.total==='function' && typeof window.equalize==='function') {
+          const t = window.total(); if (!t || t === 0) window.equalize();
+        }
+      } catch {}
+
+      // 3) Persist + draw
+      try { typeof window.encodeState==='function' && window.encodeState(); } catch {}
+      try { typeof window.draw==='function'        && window.draw();        } catch {}
+    } catch (e) { try { window._planeBootError = e } catch {} }
+  };
+  (document.readyState==='loading') ? document.addEventListener('DOMContentLoaded', run) : run();
+  window.addEventListener('load', () => setTimeout(run, 60));
+} catch(e){ try{ window._planeBootError=e }catch{} } )();
 </script></body></html>
