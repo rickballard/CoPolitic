@@ -1,0 +1,9 @@
+idea
+advisory
+advice-bomb
+helper
+script
+doc
+plan
+roadmap
+spec
