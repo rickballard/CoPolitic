@@ -32,7 +32,9 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
   #explain{white-space:pre-wrap;font:13px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;background:#0b1220;border:1px dashed #2a3b55;border-radius:12px;padding:12px;color:#cfe3ff}
   @media (max-width:720px){.row{grid-template-columns:130px 1fr 42px}.toolbar{flex-direction:column;align-items:flex-start}canvas#plane{max-width:100%;height:auto}}
 </style>
-</head><body>
+<style id="plane-pointer-fix">
+  button, input[type=button], [role=button] { pointer-events:auto !important; }
+</style></head><body>
 <div class="wrap">
   <div class="card">
     <h1>Perspective Plane</h1>
