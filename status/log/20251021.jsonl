@@ -1,0 +1,4 @@
+{"ts":"2025-10-21T18:50:28-04:00","area":"plane-app","type":"status","summary":"Data loader + filtered safe draw shipped","data":{"visFlags":["countries","parties","modes"],"files":["plane-data.js","plane-safe.js","plane-model.js"]}}
+{"ts":"2025-10-21T18:50:28-04:00","area":"plane-app","type":"status","summary":"ID-first control wiring + delegate fallback + hotkeys","data":{"ids":["eq-btn","reset-btn","toggle-countries-btn","toggle-parties-btn","toggle-modes-btn"],"hotkeys":["E","1","2","3"]}}
+{"ts":"2025-10-21T18:50:28-04:00","area":"plane-app","type":"status","summary":"Notes/Sources panel, disclaimer, CTA under chart","data":{"files":["plane-explain.js","index.html"]}}
+{"ts":"2025-10-21T18:50:28-04:00","area":"site","type":"status","summary":"Added top-nav + footer CTA link to /plane-app/","data":{"file":"index.html"}}
