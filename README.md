@@ -28,7 +28,6 @@ See **[CONTRIBUTING.md](CONTRIBUTING.md)** — propose changes via pull request,
 
 ## Stewardship
 See **[ABOUT.md](ABOUT.md)**.
-
 <!-- BEGIN: STATUS -->
 ### Operational Status
 CoDrift Index: n/a% (n/a)
