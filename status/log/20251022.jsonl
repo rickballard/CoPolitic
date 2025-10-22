@@ -1,1 +1,5 @@
 {"ts":"2025-10-22T11:04:01-04:00","area":"plane-app","type":"status","summary":"Selection→explain wired; v2 data preference","data":{"files":["plane-safe.js","plane-data.js"],"mode":"v2-first"}}
+{"ts":"2025-10-22T13:43:54-04:00","area":"plane-app","type":"status","summary":"UX binder: id-first + delegated + hotkeys","data":{"files":["plane-ux.js","index.html"],"hotkeys":["E","1","2","3"]}}
+{"ts":"2025-10-22T13:43:54-04:00","area":"plane-app","type":"status","summary":"Dots larger, DPI-aware; thicker selection ring; contrast outline","data":{"file":"plane-safe.js","pad":48,"dpiAware":true}}
+{"ts":"2025-10-22T13:43:54-04:00","area":"plane-app","type":"status","summary":"Hover labels for rendered points","data":{"feature":"hover-labels","file":"plane-safe.js"}}
+{"ts":"2025-10-22T13:43:54-04:00","area":"plane-app","type":"status","summary":"Prefer entities.v2.json; fallback to v1","data":{"file":"plane-data.js","mode":"v2-first"}}

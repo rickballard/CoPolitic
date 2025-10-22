@@ -1,13 +1,10 @@
 {
-  "ts": "2025-10-22T11:04:01-04:00",
+  "ts": "2025-10-22T13:43:54-04:00",
   "area": "plane-app",
   "type": "status",
-  "summary": "Selection→explain wired; v2 data preference",
+  "summary": "Prefer entities.v2.json; fallback to v1",
   "data": {
-    "files": [
-      "plane-safe.js",
-      "plane-data.js"
-    ],
+    "file": "plane-data.js",
     "mode": "v2-first"
   }
 }
