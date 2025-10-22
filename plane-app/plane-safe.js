@@ -88,13 +88,13 @@
           ctx.fillStyle = '#87bdff';
           const pad = 48;
           // dynamic dot radius (≈0.8% of min side, clamped 4..9) scaled by devicePixelRatio
-          const DOT_R = Math.max(4, Math.min(9, Math.round(Math.min(wpx,hpx)*0.010))) * dpr;
+          const DOT_R = Math.max(4, Math.min(9, Math.round(Math.min(wpx,hpx)*0.018))) * dpr;
           for (const p of pts) {
             const x = pad + ((p.x + 1) / 2)      * (wpx - 2*pad);
             const y = pad + ((1 - (p.y + 1) / 2)) * (hpx - 2*pad);
             ctx.beginPath(); ctx.arc(x, y, DOT_R, 0, Math.PI*2); ctx.fill();
            // subtle outline for contrast
-           ctx.lineWidth = Math.max(1, 1*dpr); ctx.strokeStyle = "#dbe7ff33"; ctx.stroke();
+           ctx.lineWidth = Math.max(1.25, 1.25*dpr); ctx.strokeStyle = "#dbe7ff33"; ctx.stroke();
            }
 
           console.log('[safe] drew', pts.length, 'points; weights=', wts);
@@ -181,8 +181,8 @@
     const pad=40,w=c.width,h=c.height,dpr=Math.max(1,devicePixelRatio||1);
     const x = pad + ((e.x+1)/2)*(w-2*pad);
     const y = pad + ((1-(e.y+1)/2))*(h-2*pad);
-    ctx.strokeStyle = "#3da5ff"; const SEL_R = Math.max(8, Math.min(14, Math.round(Math.min(w,h)*0.015))) * dpr;
-     ctx.lineWidth = 4*dpr; ctx.beginPath(); ctx.arc(x, y, SEL_R,0,Math.PI*2); ctx.stroke();
+    ctx.strokeStyle = "#3da5ff"; const SEL_R = Math.max(8, Math.min(14, Math.round(Math.min(w,h)*0.028))) * dpr;
+     ctx.lineWidth = 5*dpr; ctx.beginPath(); ctx.arc(x, y, SEL_R,0,Math.PI*2); ctx.stroke();
   }
   const bootSelect=()=> {
     const c=document.querySelector('canvas'); if(!c||c.__planeClickWired) return;
