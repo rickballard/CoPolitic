@@ -1,11 +1,13 @@
 {
-  "ts": "2025-10-22T16:58:28-04:00",
+  "ts": "2025-10-22T17:18:16-04:00",
   "area": "plane-app",
   "type": "status",
-  "summary": "Visuals: PLANE_UI_SCALE knob (default 1.6×) for dots & selection ring",
+  "summary": "UI scale persists; add setPlaneUiScale(v) helper",
   "data": {
+    "persist": "localStorage",
     "key": "PLANE_UI_SCALE",
     "file": "plane-safe.js",
+    "helper": "setPlaneUiScale(v)",
     "default": 1.6
   }
 }
