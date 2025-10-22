@@ -1,13 +1,16 @@
 {
-  "ts": "2025-10-22T17:18:16-04:00",
+  "ts": "2025-10-22T17:28:21-04:00",
   "area": "plane-app",
   "type": "status",
-  "summary": "UI scale persists; add setPlaneUiScale(v) helper",
+  "summary": "UI: size slider + larger defaults; cache-bust",
   "data": {
-    "persist": "localStorage",
-    "key": "PLANE_UI_SCALE",
-    "file": "plane-safe.js",
-    "helper": "setPlaneUiScale(v)",
-    "default": 1.6
+    "rails": "8..20px",
+    "ring": "~3.2% @ 6*dpr",
+    "files": [
+      "plane-ux.js",
+      "plane-safe.js",
+      "index.html"
+    ],
+    "control": "plane-size-ctrl"
   }
 }
