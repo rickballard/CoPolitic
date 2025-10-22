@@ -11,3 +11,4 @@
 {"ts":"2025-10-22T16:28:44-04:00","area":"plane-app","type":"status","summary":"Binder: data-action tagging + delegated click (label-agnostic)","data":{"files":["plane-ux.js","index.html"],"actions":["eq","reset","countries","parties","modes"]}}
 {"ts":"2025-10-22T16:28:44-04:00","area":"plane-app","type":"status","summary":"Markers enlarged; DPI-aware radius; thicker selection ring; hover labels","data":{"dotR":"~1.0% min side","file":"plane-safe.js","pad":48,"ringR":"~1.5% min side"}}
 {"ts":"2025-10-22T16:28:44-04:00","area":"plane-app","type":"status","summary":"Data loader: v2-first (silent), fallback to v1","data":{"file":"plane-data.js","mode":"v2-first"}}
+{"ts":"2025-10-22T16:58:28-04:00","area":"plane-app","type":"status","summary":"Visuals: PLANE_UI_SCALE knob (default 1.6×) for dots & selection ring","data":{"key":"PLANE_UI_SCALE","file":"plane-safe.js","default":1.6}}
