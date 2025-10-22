@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="en"><head>
+<!-- data: plane-app/data/entities.v1.json (versioned) -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perspective Plane — Commons↔Commerce × Club↔Crown</title>
+<style>
+:root{--bg:#0b0f14;--panel:#121821;--ink:#e6edf3;--muted:#9fb0c3;--accent:#82cfff}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,Segoe UI,Roboto,Inter,Arial}
+h1{font-size:18px;margin:12px 0} h2{font-size:16px;margin:10px 0}
+.wrap{display:grid;grid-template-columns:340px 1fr;gap:14px;padding:14px}
+.card{background:var(--panel);border-radius:14px;padding:12px;box-shadow:0 2px 12px rgba(0,0,0,.35)}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+label{color:var(--muted)} input[type="range"]{width:120px}
+.small{font-size:12px;color:var(--muted)}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px}
+.pill{display:inline-flex;gap:6px;align-items:center;border:1px solid #233043;padding:3px 8px;border-radius:999px}
+.sw{display:inline-flex;gap:8px;align-items:center;margin:6px 0}
+button,select{background:#1a2432;color:var(--ink);border:1px solid #2a3a51;border-radius:8px;padding:6px 10px;cursor:pointer}
+button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
+.gridlab{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:4px}
+.explain{white-space:pre-wrap;background:#0d1219;border:1px solid #213046;border-radius:10px;padding:10px;max-height:240px;overflow:auto}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace}.hr{height:1px;background:#233043;margin:10px 0}
+.kbd{font:12px ui-monospace,Menlo,Consolas;background:#0d1219;border:1px solid #213046;padding:1px 6px;border-radius:6px;color:#c7d6ea}
+</style><style>
+  :root{--cp-bg:#0b1220;--cp-card:#0f1623;--cp-border:#2a3b55;--cp-text:#e5f0ff;--cp-sub:#9fb7dd;--cp-accent:#0b3d91}
+  .card{background:var(--cp-card);border:1px solid var(--cp-border);border-radius:14px;padding:16px;color:var(--cp-text);box-shadow:0 2px 12px rgba(0,0,0,.25)}
+  .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid var(--cp-border);border-radius:999px;margin:4px;background:rgba(255,255,255,.03);font:13px/1.2 system-ui}
+  .panel{display:grid;grid-template-columns:1fr;gap:12px}
+  .row{display:grid;grid-template-columns:170px 1fr 48px;gap:8px;align-items:center}
+  input[type="range"]{accent-color:var(--cp-accent)}
+  .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .toolbar label{display:flex;gap:6px;align-items:center;color:var(--cp-sub)}
+  #explain{white-space:pre-wrap;font:13px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;background:#0b1220;border:1px dashed #2a3b55;border-radius:12px;padding:12px;color:#cfe3ff}
+  @media (max-width:720px){.row{grid-template-columns:130px 1fr 42px}.toolbar{flex-direction:column;align-items:flex-start}canvas#plane{max-width:100%;height:auto}}
+</style>
+<style id="plane-pointer-fix">
+  button, input[type=button], [role=button] { pointer-events:auto !important; }
+</style></head><body>
+<div class="wrap">
+  <div class="card">
+    <h1>Perspective Plane</h1>
+    <div class="small">Canon axes: <b>X = Commons → Commerce</b>, <b>Y = Club → Crown</b>. Weight domains; click a point to see why it’s there.</div>
+    <div class="hr"></div>
+    <h2>Domain weights</h2><div id="domains"></div>
+    <div class="row"><label>Total = <span id="wTotal">0</span></label><button id="equalize">Equalize</button><button id="resetW">Reset</button></div>
+    <div class="hr"></div>
+    <h2>View & options</h2>
+    <div class="row">
+      <label class="sw"><input type="checkbox" id="flipX"> Flip X</label>
+      <label class="sw"><input type="checkbox" id="flipY"> Flip Y</label>
+      <label class="sw"><input type="checkbox" id="swapXY"> Swap axes</label>
+    </div>
+    <div class="row">
+      <label class="sw"><input type="checkbox" id="trail"> Show trails</label>
+      <label class="sw"><input type="checkbox" id="error"> Show error bars</label>
+    </div>
+    <div class="hr"></div>
+    <h2>Entities</h2><div class="legend" id="legend"></div>
+    <div class="row"><button id="toggleCountries">Toggle countries</button><button id="toggleParties">Toggle US parties</button><button id="toggleModes">Toggle CoCivium modes</button></div>
+    <div class="small">Tip: hold <span class="kbd">Shift</span> while clicking canvas to pin explanations.</div>
+  </div>
+  <div class="card">
+    `<canvas id="plane" role="img" aria-label="Perspective Plane chart. X axis Commons to Commerce. Y axis Club to Crown." width="1000" height="700"></canvas>
+<button id="plane-help" style="margin:6px 0 10px; font-size:12px;">How do I use this?</button>
+<div id="plane-help-box" hidden style="font-size:12px; color:#9fb0c6; border:1px solid #233047; border-radius:8px; padding:8px; max-width:520px;">
+  <b>Quick tips</b>
+  <ul style="margin:6px 0 0 18px">
+    <li>Click a dot to see its per-domain contributions and sources.</li>
+    <li><b>Equalize</b> sets all weights to 1. Move sliders to see the shift.</li>
+    <li>Toggle layers: Countries / US Parties / CoCivium modes. Hotkeys: <code>E</code>, <code>1</code>/<code>2</code>/<code>3</code>.</li>
+  </ul>
+</div>
+<script defer>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('plane-help');
+    const box = document.getElementById('plane-help-box');
+    if (btn && box) btn.addEventListener('click', () => { box.hidden = !box.hidden; });
+  });
+</script>
+    <div class="gridlab"><span>← Commons</span><span>Commerce →</span></div>
+    <div class="gridlab" style="justify-content:center;margin-top:-18px;"><span>↑ Crown</span><span style="margin-left:16px">↓ Club</span></div>
+    <div class="hr"></div><h2>Explanation</h2><div class="explain mono" id="explain">Click a point to see per-domain contributions and notes.</div>
+  </div>
+</div>
+<script src="plane.js?v=1761071473" defer></script>
+<script src="plane-model.js?v=1761071473" defer></script>
+<script src="plane-data.js?v=1761070272" defer></script>
+<script src="plane-explain.js?v=1761071473" defer></script>
+<script src="plane-ux.js?v=1761148188" defer></script>
+
+
+<script id="wire-plane-buttons">
+(() => { try {
+  const safe = f => { try { return typeof f === 'function' ? f : null } catch { return null } };
+  const api  = {
+    draw        : window.draw        || window.PLANE?.draw,
+    total       : window.total       || window.PLANE?.total,
+    equalize    : window.equalize    || window.PLANE?.equalize,
+    encodeState : window.encodeState || window.PLANE?.encodeState,
+  };
+  const ensureVis = () => { window.vis = window.vis || { countries:false, parties:false, modes:false } };
+  const qa  = s => Array.from(document.querySelectorAll(s));
+  const byText = (txt) => qa('button,input[type=button]').find(b => (b.textContent||b.value||'').toLowerCase().includes((txt||'').toLowerCase()));
+
+  const handlers = {
+    equalize() { try { if (safe(api.total) && safe(api.equalize)) api.equalize(); } catch {} try { safe(api.encodeState)?.(); } catch {} try { safe(api.draw)?.(); } catch {} },
+    reset()    { try { qa('input[type=range][name^=w-]').forEach(r=>{ r.value='0'; r.dispatchEvent(new Event('input',{bubbles:true})) }); } catch {} try { safe(api.encodeState)?.(); } catch {} try { safe(api.draw)?.(); } catch {} },
+    countries(){ ensureVis(); window.vis.countries = !window.vis.countries; try { safe(api.encodeState)?.(); } catch {} try { safe(api.draw)?.(); } catch {} },
+    parties()  { ensureVis(); window.vis.parties   = !window.vis.parties;   try { safe(api.encodeState)?.(); } catch {} try { safe(api.draw)?.(); } catch {} },
+    modes()    { ensureVis(); window.vis.modes     = !window.vis.modes;     try { safe(api.encodeState)?.(); } catch {} try { safe(api.draw)?.(); } catch {} },
+  };
+
+  const wireOnce = () => {
+    let wired = 0;
+    const map = [
+      ['equalize', handlers.equalize],
+      ['reset',    handlers.reset],
+      ['toggle countr', handlers.countries],
+      ['toggle us part', handlers.parties],
+      ['toggle cociv',   handlers.modes],
+    ];
+    for (const [label, fn] of map) {
+      const el = byText(label);
+      if (el && !el.__wired) { el.__wired = true; el.addEventListener('click', e => { e.preventDefault(); fn(); }); wired++; }
+    }
+    if (wired) console.log('[wire] bound', wired, 'controls');
+    return wired;
+  };
+
+  const start = () => { let tries=0; const t=setInterval(()=>{ const c=wireOnce(); if(c>0 || ++tries>50) clearInterval(t); },100); };
+  (document.readyState==='loading') ? document.addEventListener('DOMContentLoaded', start) : start();
+  new MutationObserver(()=>wireOnce()).observe(document.body, {childList:true, subtree:true});
+
+  // Hotkeys: E=equalize, 1/2/3 toggle groups
+  window.addEventListener('keydown', ev => {
+    const k = ev.key.toLowerCase();
+    if (k==='e') { ev.preventDefault(); handlers.equalize(); }
+    if (k==='1') { ev.preventDefault(); handlers.countries(); }
+    if (k==='2') { ev.preventDefault(); handlers.parties(); }
+    if (k==='3') { ev.preventDefault(); handlers.modes(); }
+  });
+} catch(e){ try{ window._planeWireError=e }catch{} }})();
+</script>
+<script id="plane-boot-ensure">
+(() => { try {
+  const run = () => {
+    try {
+      // 1) Ensure one visible group (prefer modes) on first load
+      window.vis = window.vis || {};
+      if (!(window.vis.countries || window.vis.parties || window.vis.modes)) window.vis.modes = true;
+
+      // 2) If weights sum to 0, try equalize (when present)
+      try {
+        if (typeof window.total==='function' && typeof window.equalize==='function') {
+          const t = window.total(); if (!t || t === 0) window.equalize();
+        }
+      } catch {}
+
+      // 3) Persist + draw
+      try { typeof window.encodeState==='function' && window.encodeState(); } catch {}
+      try { typeof window.draw==='function'        && window.draw();        } catch {}
+    } catch (e) { try { window._planeBootError = e } catch {} }
+  };
+  (document.readyState==='loading') ? document.addEventListener('DOMContentLoaded', run) : run();
+  window.addEventListener('load', () => setTimeout(run, 60));
+} catch(e){ try{ window._planeBootError=e }catch{} } )();
+</script><section id="plane-notes" style="margin:20px 8px 60px">
+  <div id="plane-explain" style="background:#0d1422;border:1px solid #233047;border-radius:10px;padding:14px;max-width:980px">
+    <h3 style="margin:0 0 8px;font-weight:600">Notes & sources</h3>
+    <div id="plane-explain-body" style="opacity:.9">
+      Click a point to see why it’s there. You’ll get per-domain contributions and citations.
+    </div>
+  </div>
+  <div id="plane-disclaimer" style="color:#9fb0c6;margin-top:12px;max-width:980px">
+    <small>
+      This chart is a modeled estimate based on public sources and editorial judgment.
+      Positions may be incomplete or out-of-date. Treat this as a starting point; read the sources
+      and decide for yourself. <span id="plane-last-updated"></span>
+    </small>
+  </div>
+  <div style="margin-top:16px">
+    <a href="/cocivium" style="display:inline-block;background:#2b72ff;color:white;padding:10px 14px;border-radius:10px;text-decoration:none">
+      Discuss & improve this in CoCivium →
+    </a>
+  </div>
+</section><div id=""plane-hints"" style=""margin:10px 0 6px; font-size:12px; color:#9fb0c6; opacity:.9"">
+  Tip: <kbd>E</kbd> = Equalize · <kbd>1</kbd>/<kbd>2</kbd>/<kbd>3</kbd> toggle Countries/Parties/Modes.
+</div><script src="plane-safe.js?v=1761150166" defer></script></body></html>
