@@ -7,3 +7,4 @@
 {"ts":"2025-10-22T14:10:43-04:00","area":"plane-app","type":"status","summary":"Dots larger, DPI-aware; thicker selection ring; contrast outline","data":{"file":"plane-safe.js","pad":48,"dpiAware":true}}
 {"ts":"2025-10-22T14:10:43-04:00","area":"plane-app","type":"status","summary":"Hover labels for rendered points","data":{"feature":"hover-labels","file":"plane-safe.js"}}
 {"ts":"2025-10-22T14:10:43-04:00","area":"plane-app","type":"status","summary":"Prefer entities.v2.json; fallback to v1","data":{"file":"plane-data.js","mode":"v2-first"}}
+{"ts":"2025-10-22T15:23:55-04:00","area":"plane-app","type":"status","summary":"Preview page added (sandboxed UI/UX)","data":{"canvas":"960x620","help":true,"path":"plane-app/preview/"}}
