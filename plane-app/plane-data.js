@@ -2,7 +2,7 @@
   try {
     const g = window;
     async function load() {
-      const url = "data/entities.v1.json?v=" + Date.now();
+      const urlBase = await (async()=>{ try{ const h=await fetch("data/entities.v2.json",{method:"HEAD",cache:"no-store"}); if(h.ok) return "data/entities.v2.json"; }catch{} return "data/entities.v1.json"; })(); const url = urlBase + "?v=" + Date.now();
       const r = await fetch(url, {cache:"no-store"});
       if (!r.ok) throw new Error("HTTP " + r.status);
       const json = await r.json();
