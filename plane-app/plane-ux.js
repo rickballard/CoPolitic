@@ -210,3 +210,55 @@
   scanAndTag();
   new MutationObserver(scanAndTag).observe(document.body,{childList:true,subtree:true});
 })();
+
+;(() => {
+  // Mini control that lets you tune PLANE_UI_SCALE on-page
+  const boot = () => {
+    const host = document.querySelector('#plane-size-ctrl');
+    if (host) return; // already added
+    const wrap = document.createElement('div');
+    wrap.id = 'plane-size-ctrl';
+    Object.assign(wrap.style, {
+      position:'absolute', right:'10px', top:'10px', zIndex:50,
+      background:'#0b1220', border:'1px solid #233047', borderRadius:'10px',
+      padding:'6px 10px', color:'#9fb0c6', fontSize:'12px',
+      boxShadow:'0 2px 10px rgba(0,0,0,.3)'
+    });
+
+    const label = document.createElement('label');
+    label.textContent = 'Size ';
+    label.style.marginRight = '6px';
+
+    const slider = document.createElement('input');
+    slider.type = 'range'; slider.min = '1.0'; slider.max = '3.5'; slider.step = '0.1';
+    slider.style.width = '160px'; slider.style.verticalAlign = 'middle';
+
+    // read persisted value
+    let cur = Number(localStorage.getItem('PLANE_UI_SCALE'));
+    if (!Number.isFinite(cur) || cur <= 0) cur = (typeof window.PLANE_UI_SCALE === 'number' ? window.PLANE_UI_SCALE : 1.6);
+    slider.value = String(cur);
+
+    const badge = document.createElement('span');
+    badge.textContent = String(cur).replace(/(?<=\.\d)\d+$/, m => m.slice(0,1)); // short value
+    badge.style.marginLeft = '8px'; badge.style.color = '#cfe2ff';
+
+    slider.addEventListener('input', () => {
+      const v = Number(slider.value);
+      badge.textContent = v.toFixed(1);
+      if (typeof window.setPlaneUiScale === 'function') window.setPlaneUiScale(v);
+    }, {passive:true});
+
+    wrap.appendChild(label); wrap.appendChild(slider); wrap.appendChild(badge);
+
+    // place inside the canvas panel
+    const panel = document.querySelector('.panel--canvas, .canvas, #plane-canvas')?.parentElement || document.querySelector('#plane-canvas')?.parentElement;
+    const attachTo = panel || document.body;
+    // Ensure the container can anchor absolute children
+    if (panel && getComputedStyle(panel).position === 'static') panel.style.position = 'relative';
+    attachTo.appendChild(wrap);
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+  new MutationObserver(boot).observe(document.body, {childList:true, subtree:true});
+})();

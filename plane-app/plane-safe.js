@@ -188,9 +188,9 @@
     const pad=40,w=c.width,h=c.height,dpr=Math.max(1,devicePixelRatio||1);
     const x = pad + ((e.x+1)/2)*(w-2*pad);
     const y = pad + ((1-(e.y+1)/2))*(h-2*pad);
-    ctx.strokeStyle = "#3da5ff"; const SEL_R = Math.max(8, Math.min(14, Math.round(Math.min(w,h)*0.028))) * dpr;
+    ctx.strokeStyle = "#3da5ff"; const SEL_R = Math.max(8, Math.min(14, Math.round(Math.min(w,h)*0.032))) * dpr;
     const SEL_R_SCALED = SEL_R * __UIS;
-     ctx.lineWidth = 5*dpr; ctx.beginPath(); ctx.arc(x,y,SEL_R_SCALED,0,Math.PI*2); ctx.stroke();
+     ctx.lineWidth = 6*dpr; ctx.beginPath(); ctx.arc(x,y,SEL_R_SCALED,0,Math.PI*2); ctx.stroke();
   }
   const bootSelect=()=> {
     const c=document.querySelector('canvas'); if(!c||c.__planeClickWired) return;
