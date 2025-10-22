@@ -90,7 +90,11 @@
           // dynamic dot radius (≈0.8% of min side, clamped 4..9) scaled by devicePixelRatio
           const DOT_R = Math.max(4, Math.min(9, Math.round(Math.min(wpx,hpx)*0.018))) * dpr;
     // scale knob (set window.PLANE_UI_SCALE from console if you want): default 1.6
-    const __UIS = (typeof window.PLANE_UI_SCALE === "number" ? window.PLANE_UI_SCALE : 1.6);
+    const __UIS = (() => {
+  const v = Number(localStorage.getItem("PLANE_UI_SCALE"));
+  if (Number.isFinite(v) && v > 0) return v;
+  return (typeof window.PLANE_UI_SCALE === "number" ? window.PLANE_UI_SCALE : 1.6);
+})();
     const DOT_R_SCALED = DOT_R * __UIS;
           for (const p of pts) {
             const x = pad + ((p.x + 1) / 2)      * (wpx - 2*pad);
@@ -275,3 +279,11 @@
   (document.readyState==='loading') ? document.addEventListener('DOMContentLoaded', boot) : boot();
   new MutationObserver(boot).observe(document.body,{childList:true,subtree:true});
 })();
+;window.setPlaneUiScale = function(v){
+  var n = Number(v);
+  if (Number.isFinite(n) && n > 0) {
+    try { localStorage.setItem("PLANE_UI_SCALE", String(n)); } catch(e){}
+    window.PLANE_UI_SCALE = n;
+    try { window.draw && window.draw(); } catch(e){}
+  }
+};
