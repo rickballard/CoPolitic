@@ -1,5 +1,5 @@
 {
-  "ts": "2025-10-22T13:43:54-04:00",
+  "ts": "2025-10-22T14:10:43-04:00",
   "area": "plane-app",
   "type": "status",
   "summary": "Prefer entities.v2.json; fallback to v1",
