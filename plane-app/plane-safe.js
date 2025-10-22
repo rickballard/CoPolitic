@@ -194,3 +194,75 @@
   (document.readyState==='loading')?document.addEventListener('DOMContentLoaded',bootSelect):bootSelect();
   new MutationObserver(bootSelect).observe(document.body,{childList:true,subtree:true});
 })();
+
+/* === rendered hit-test === */
+(() => {
+  const g = window;
+  function pxToPlane(c, x, y) {
+    const pad = 40, w=c.width, h=c.height;
+    const nx = ((x - pad) / Math.max(1,(w-2*pad))) * 2 - 1;
+    const ny = (1 - ((y - pad) / Math.max(1,(h-2*pad)))) * 2 - 1;
+    return {x:nx, y:ny};
+  }
+  function nearestRendered(c, x, y) {
+    const list = Array.isArray(g.PLANE_RENDERED) ? g.PLANE_RENDERED : [];
+    if (!list.length) return null;
+    const pt = pxToPlane(c, x, y);
+    let best=null, bestD=1e9;
+    for (const it of list) {
+      const dx = it.x - pt.x, dy = it.y - pt.y, d2 = dx*dx + dy*dy;
+      if (d2 < bestD) { bestD = d2; best = it; }
+    }
+    return best; // {x,y, entity|null}
+  }
+  function drawSelectionOverlay(c, x, y){
+    if(!c) return; const ctx=c.getContext('2d'); if(!ctx) return;
+    const pad=40,w=c.width,h=c.height,dpr=Math.max(1,devicePixelRatio||1);
+    const sx = pad + ((x+1)/2)*(w-2*pad);
+    const sy = pad + ((1-(y+1)/2))*(h-2*pad);
+    ctx.strokeStyle='#3da5ff'; ctx.lineWidth=2*dpr;
+    ctx.beginPath(); ctx.arc(sx, sy, 6*dpr, 0, Math.PI*2); ctx.stroke();
+  }
+  function renderExplain(e){
+    const box = document.querySelector('#plane-explain,[data-plane-explain]') ||
+                document.querySelector('.explanation,.notes,#explain');
+    if (!box) return;
+    if (!e) {
+      box.innerHTML = '<em>No data for this point.</em>';
+      return;
+    }
+    const s = e.scores || {};
+    const q = n => +document.querySelector(`input[name="${n}"]`)?.value || 1;
+    const w = { commons:q('w-commons'), commerce:q('w-commerce'), club:q('w-club'), crown:q('w-crown') };
+    const contrib = [
+      ['Commons',  -(w.commons  * (+s.commons||0))],
+      ['Commerce', +(w.commerce * (+s.commerce||0))],
+      ['Club',     -(w.club     * (+s.club   ||0))],
+      ['Crown',    +(w.crown    * (+s.crown  ||0))]
+    ].map(([k,v])=>`<li>${k}: <code>${(+v).toFixed(3)}</code></li>`).join('');
+    box.innerHTML = `
+      <div style="font-weight:600;margin-bottom:6px">${e.label||'Selection'}</div>
+      <div style="margin-bottom:8px">
+        <div style="font-weight:600;margin-bottom:4px">Per-domain contributions</div>
+        <ul style="margin:0 0 4px 18px">${contrib}</ul>
+      </div>`;
+  }
+
+  const boot = () => {
+    const c = document.querySelector('canvas'); if (!c || c.__planeHitWired) return;
+    c.__planeHitWired = true;
+    c.addEventListener('click', ev => {
+      const r=c.getBoundingClientRect();
+      const hit = nearestRendered(c, ev.clientX - r.left, ev.clientY - r.top);
+      if (!hit) return;
+      // refresh draw, then overlay at the exact rendered location
+      try { window.draw?.(); } catch {}
+      drawSelectionOverlay(c, hit.x, hit.y);
+      // explain only if this point represents a real entity
+      renderExplain(hit.entity || null);
+      if (hit.entity) window.PLANE_SELECTED = hit.entity;
+    }, {passive:true});
+  };
+  (document.readyState==='loading') ? document.addEventListener('DOMContentLoaded', boot) : boot();
+  new MutationObserver(boot).observe(document.body,{childList:true,subtree:true});
+})();
