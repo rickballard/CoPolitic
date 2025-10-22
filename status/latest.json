@@ -1,11 +1,10 @@
 {
-  "ts": "2025-10-22T15:23:55-04:00",
+  "ts": "2025-10-22T16:28:44-04:00",
   "area": "plane-app",
   "type": "status",
-  "summary": "Preview page added (sandboxed UI/UX)",
+  "summary": "Data loader: v2-first (silent), fallback to v1",
   "data": {
-    "canvas": "960x620",
-    "help": true,
-    "path": "plane-app/preview/"
+    "file": "plane-data.js",
+    "mode": "v2-first"
   }
 }
