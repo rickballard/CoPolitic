@@ -96,3 +96,72 @@
     bind(id('toggle-parties-btn'),   () => { window.vis = window.vis || {}; window.vis.parties   = !window.vis.parties;   window.encodeState?.(); window.draw?.(); });
     bind(id('toggle-modes-btn'),     () => { window.vis = window.vis || {}; window.vis.modes     = !window.vis.modes;     window.encodeState?.(); window.draw?.(); });
   })();
+/* text-based binder */
+;(() => {
+  const g = window;
+  const norm = s => (s||'').replace(/\s+/g,' ').trim().toLowerCase();
+  const labelIs = (el, pred) => pred(norm(el.textContent||''));
+  const firstByText = (pred) => {
+    const els = document.querySelectorAll('button, [role="button"], a, input[type=button]');
+    for (const el of els) if (labelIs(el, pred)) return el;
+    return null;
+  };
+
+  // Find key controls by their **visible labels**
+  const btnEqualize = firstByText(t => t === 'equalize');
+  const btnReset    = firstByText(t => t === 'reset');
+  const btnTogCtry  = firstByText(t => t.startsWith('toggle countries'));
+  const btnTogParty = firstByText(t => t.startsWith('toggle us parties') || t.startsWith('toggle parties'));
+  const btnTogModes = firstByText(t => t.startsWith('toggle cocivium modes') || t.startsWith('toggle modes'));
+
+  // Tag once for future quick binding
+  const tag = (el, id) => { if (el && !el.id) { el.id = id; el.dataset.action = id; } };
+
+  tag(btnEqualize, 'eq-btn');
+  tag(btnReset,    'reset-btn');
+  tag(btnTogCtry,  'toggle-countries-btn');
+  tag(btnTogParty, 'toggle-parties-btn');
+  tag(btnTogModes, 'toggle-modes-btn');
+
+  // Robust onclick fallbacks (works even if passive listeners get ignored)
+  const bind = (el, fn) => {
+    if (!el || el.__planeOnClick) return;
+    el.__planeOnClick = true;
+    el.addEventListener('click', e => { try{ e.preventDefault?.() }catch{}; fn(); });
+    el.onclick = el.onclick || (e => { try{ e.preventDefault?.() }catch{}; fn(); });
+  };
+
+  if (typeof g.equalize !== 'function') {
+    g.equalize = () => {
+      document.querySelectorAll('input[type=range][name^="w-"]')
+        .forEach(r => { r.value = '1'; r.dispatchEvent(new Event('input',{bubbles:true})) });
+      g.draw?.();
+    };
+  }
+
+  const toggle = key => { g.vis = g.vis||{countries:false,parties:false,modes:false}; g.vis[key] = !g.vis[key]; g.encodeState?.(); g.draw?.(); };
+
+  bind(btnEqualize, () => g.equalize?.());
+  bind(btnReset,    () => { try {
+    document.querySelectorAll('input[type=range][name^="w-"]').forEach(r => r.value='1');
+    g.vis = {countries:false,parties:false,modes:false}; g.draw?.();
+  } catch {} });
+  bind(btnTogCtry,  () => toggle('countries'));
+  bind(btnTogParty, () => toggle('parties'));
+  bind(btnTogModes, () => toggle('modes'));
+
+  // Safety net: delegated handler by label (covers rerenders)
+  if (!document.__planeDelegateByText) {
+    document.__planeDelegateByText = true;
+    document.addEventListener('click', e => {
+      const t = e.target?.closest('button,[role="button"],a,input[type=button]');
+      if (!t) return;
+      const txt = norm(t.textContent||'');
+      if (txt === 'equalize') { e.preventDefault(); g.equalize?.(); }
+      else if (txt === 'reset') { e.preventDefault(); document.querySelectorAll('input[type=range][name^="w-"]').forEach(r=>r.value='1'); g.vis={countries:false,parties:false,modes:false}; g.draw?.(); }
+      else if (txt.startsWith('toggle countries')) { e.preventDefault(); toggle('countries'); }
+      else if (txt.startsWith('toggle us parties') || txt.startsWith('toggle parties')) { e.preventDefault(); toggle('parties'); }
+      else if (txt.startsWith('toggle cocivium modes') || txt.startsWith('toggle modes')) { e.preventDefault(); toggle('modes'); }
+    });
+  }
+})();
