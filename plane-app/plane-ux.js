@@ -82,3 +82,17 @@
   (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', boot) : boot();
   new MutationObserver(bindIds).observe(document.body, { childList:true, subtree:true });
 })();
+  // Fallback: direct onclicks (in case delegated binding is bypassed by the browser)
+  ;(() => {
+    const id = s => document.getElementById(s);
+    const bind = (el, fn) => { if (el && !el.__planeOnClick) { el.__planeOnClick = true; el.onclick = (e) => { try{ e.preventDefault?.() }catch{}; fn(); }; } };
+    bind(id('eq-btn'),       () => window.equalize?.());
+    bind(id('reset-btn'),    () => { try {
+      document.querySelectorAll('input[type=range][name^="w-"]').forEach(r => r.value='1');
+      window.vis = {countries:false, parties:false, modes:false};
+      window.draw?.();
+    } catch {} });
+    bind(id('toggle-countries-btn'), () => { window.vis = window.vis || {}; window.vis.countries = !window.vis.countries; window.encodeState?.(); window.draw?.(); });
+    bind(id('toggle-parties-btn'),   () => { window.vis = window.vis || {}; window.vis.parties   = !window.vis.parties;   window.encodeState?.(); window.draw?.(); });
+    bind(id('toggle-modes-btn'),     () => { window.vis = window.vis || {}; window.vis.modes     = !window.vis.modes;     window.encodeState?.(); window.draw?.(); });
+  })();
