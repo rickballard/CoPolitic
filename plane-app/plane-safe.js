@@ -122,3 +122,75 @@
     }
   } catch (e) { try { window._planeSafeErr = e } catch {} }
 })();
+/* === selection + explain === */
+(() => {
+  const g = window;
+  function pxToPlane(c, x, y) {
+    const pad = 40, w=c.width, h=c.height;
+    const nx = ((x - pad) / Math.max(1,(w-2*pad))) * 2 - 1;
+    const ny = (1 - ((y - pad) / Math.max(1,(h-2*pad)))) * 2 - 1;
+    return {x:nx, y:ny};
+  }
+  function nearestEntity(c, x, y) {
+    const ents = Array.isArray(g.ENTITIES)?g.ENTITIES:[];
+    if (!ents.length) return null;
+    const pt = pxToPlane(c,x,y);
+    let best=null, bestD=1e9;
+    for (const e of ents) {
+      if (typeof e.x!=='number'||typeof e.y!=='number') continue;
+      const dx=e.x-pt.x, dy=e.y-pt.y, d2=dx*dx+dy*dy;
+      if (d2<bestD) { bestD=d2; best=e; }
+    }
+    return best && { entity:best, dist2:bestD };
+  }
+  function renderExplain(e){
+    const box = document.querySelector('#plane-explain,[data-plane-explain]') ||
+                document.querySelector('.explanation,.notes,#explain');
+    if (!box) return;
+    const m   = (g.PLANE_META && e && e.id && g.PLANE_META[e.id]) || {};
+    const s   = e?.scores || {};
+    const q   = n => +document.querySelector(`input[name="${n}"]`)?.value || 1;
+    const w   = { commons:q('w-commons'), commerce:q('w-commerce'), club:q('w-club'), crown:q('w-crown') };
+    const contrib = [
+      ['Commons',  -(w.commons  * (+s.commons||0))],
+      ['Commerce', +(w.commerce * (+s.commerce||0))],
+      ['Club',     -(w.club     * (+s.club   ||0))],
+      ['Crown',    +(w.crown    * (+s.crown  ||0))]
+    ].map(([k,v])=>`<li>${k}: <code>${(+v).toFixed(3)}</code></li>`).join('');
+    const sources = Array.isArray(m.sources)?m.sources:[];
+    const srcHtml = sources.length
+      ? `<ul>${sources.map(x=>`<li><a href="${x.url}" target="_blank" rel="noopener">${x.title||x.url}</a>${x.date?` · <small>${x.date}</small>`:''}</li>`).join('')}</ul>`
+      : `<p><em>No citations yet — treat as provisional.</em></p>`;
+    box.innerHTML = `
+      <div style="font-weight:600;margin-bottom:6px">${e?.label||'Selection'}</div>
+      <div style="opacity:.85;margin-bottom:8px">${m.summary||'Modeled position from weighted domains.'}</div>
+      <div style="margin-bottom:8px">
+        <div style="font-weight:600;margin-bottom:4px">Per-domain contributions</div>
+        <ul style="margin:0 0 4px 18px">${contrib}</ul>
+        <div><small>Weights: cmmns=${w.commons}, cmrc=${w.commerce}, club=${w.club}, crwn=${w.crown}</small></div>
+      </div>
+      <div><div style="font-weight:600;margin-bottom:4px">Sources</div>${srcHtml}</div>
+    `;
+  }
+  function drawSelectionOverlay(c,e){
+    if(!c||!e) return; const ctx=c.getContext('2d'); if(!ctx) return;
+    const pad=40,w=c.width,h=c.height,dpr=Math.max(1,devicePixelRatio||1);
+    const x = pad + ((e.x+1)/2)*(w-2*pad);
+    const y = pad + ((1-(e.y+1)/2))*(h-2*pad);
+    ctx.strokeStyle='#3da5ff'; ctx.lineWidth=2*dpr; ctx.beginPath(); ctx.arc(x,y,6*dpr,0,Math.PI*2); ctx.stroke();
+  }
+  const bootSelect=()=> {
+    const c=document.querySelector('canvas'); if(!c||c.__planeClickWired) return;
+    c.__planeClickWired=true;
+    c.addEventListener('click',ev=>{
+      const r=c.getBoundingClientRect();
+      const hit=nearestEntity(c, ev.clientX-r.left, ev.clientY-r.top); if(!hit) return;
+      g.PLANE_SELECTED=hit.entity;
+      try{ g.draw?.(); }catch{}
+      drawSelectionOverlay(c, hit.entity);
+      renderExplain(hit.entity);
+    },{passive:true});
+  };
+  (document.readyState==='loading')?document.addEventListener('DOMContentLoaded',bootSelect):bootSelect();
+  new MutationObserver(bootSelect).observe(document.body,{childList:true,subtree:true});
+})();
