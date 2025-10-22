@@ -165,3 +165,48 @@
     });
   }
 })();
+/* binder: data-action + delegated click */
+;(() => {
+  const g = window;
+  const norm = s => (s||'').replace(/\s+/g,' ').trim().toLowerCase();
+  const scanAndTag = () => {
+    const els = [...document.querySelectorAll('button,[role="button"],a,input[type=button]')];
+    const findByText = (...preds) => els.find(el => preds.some(p => p(norm(el.textContent||''))));
+    const map = {
+      'eq-btn'              : findByText(t => t === 'equalize'),
+      'reset-btn'           : findByText(t => t === 'reset'),
+      'toggle-countries-btn': findByText(t => t.startsWith('toggle countries')),
+      'toggle-parties-btn'  : findByText(t => t.startsWith('toggle us parties') || t.startsWith('toggle parties')),
+      'toggle-modes-btn'    : findByText(t => t.startsWith('toggle cocivium modes') || t.startsWith('toggle modes')),
+    };
+    for (const [id, el] of Object.entries(map)) if (el) { if (!el.id) el.id = id; el.dataset.action = id; }
+    return map;
+  };
+
+  if (typeof g.equalize !== 'function') {
+    g.equalize = () => {
+      document.querySelectorAll('input[type=range][name^="w-"]')
+        .forEach(r => { r.value='1'; r.dispatchEvent(new Event('input',{bubbles:true})) });
+      g.draw?.();
+    };
+  }
+  const toggle = key => { g.vis = g.vis||{countries:false,parties:false,modes:false}; g.vis[key]=!g.vis[key]; g.encodeState?.(); g.draw?.(); };
+
+  if (!document.__planeDelegateByAction) {
+    document.__planeDelegateByAction = true;
+    document.addEventListener('click', e => {
+      const t = e.target?.closest('[data-action]');
+      if (!t) return;
+      e.preventDefault?.();
+      const a = t.dataset.action;
+      if (a === 'eq-btn') g.equalize?.();
+      else if (a === 'reset-btn') { document.querySelectorAll('input[type=range][name^="w-"]').forEach(r=>r.value='1'); g.vis={countries:false,parties:false,modes:false}; g.draw?.(); }
+      else if (a === 'toggle-countries-btn') toggle('countries');
+      else if (a === 'toggle-parties-btn')   toggle('parties');
+      else if (a === 'toggle-modes-btn')     toggle('modes');
+    });
+  }
+
+  scanAndTag();
+  new MutationObserver(scanAndTag).observe(document.body,{childList:true,subtree:true});
+})();
