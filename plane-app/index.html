@@ -217,4 +217,18 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
   </div>
 </section><div id=""plane-hints"" style=""margin:10px 0 6px; font-size:12px; color:#9fb0c6; opacity:.9"">
   Tip: <kbd>E</kbd> = Equalize · <kbd>1</kbd>/<kbd>2</kbd>/<kbd>3</kbd> toggle Countries/Parties/Modes.
-</div><script src="plane-safe.js?v=1761232101" defer></script></body></html>
+</div><script src="plane-safe.js?v=1761232101" defer></script><section id="plane-methods" style="margin:26px 0 40px;">
+  <h2 style="font-size:18px;color:#e7eefc;margin:0 0 8px;">Methods &amp; Sources</h2>
+  <div style="max-width:880px;line-height:1.6;color:#9fb0c6;">
+    <p><b>Axes.</b> X blends <i>Commons → Commerce</i>; Y blends <i>Club → Crown</i>. Raw inputs are normalized per dataset and combined per domain.</p>
+    <p><b>Aggregation.</b> Each point is a weighted aggregation over domains (economy, civic, institutions, culture, etc). The <i>Equalize</i> control sets all domain weights = 1 so you can see a baseline, then try stress-testing by changing weights.</p>
+    <p><b>Interpretation.</b> This is a modeled estimate. Treat positions as directional—not absolute. Use the per-domain notes &amp; citations when available and read the sources yourself.</p>
+    <p><b>Data refresh.</b> When a v2 dataset exists it’s preferred; we fall back to v1. Preload is used to reduce first-interaction latency.</p>
+    <ul style="margin:10px 0 0 18px;">
+      <li><b>Primary sources:</b> <span data-plane-src-primary>(add links)</span></li>
+      <li><b>Secondary/analyses:</b> <span data-plane-src-secondary>(add links)</span></li>
+      <li><b>Model notes:</b> <span data-plane-src-notes>(add a short write-up)</span></li>
+    </ul>
+  </div>
+</section>
+</body></html>
