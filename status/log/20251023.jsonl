@@ -1,0 +1,1 @@
+{"ts":"2025-10-23T11:08:29-04:00","area":"plane-app","type":"status","summary":"Page header + explainer + preload; UX content pass","data":{"files":["plane-app/index.html","plane-app/preview/index.html"],"features":["header","back-link","explainer","preload"]}}

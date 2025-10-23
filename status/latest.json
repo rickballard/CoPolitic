@@ -1,16 +1,18 @@
 {
-  "ts": "2025-10-22T17:28:21-04:00",
+  "ts": "2025-10-23T11:08:29-04:00",
   "area": "plane-app",
   "type": "status",
-  "summary": "UI: size slider + larger defaults; cache-bust",
+  "summary": "Page header + explainer + preload; UX content pass",
   "data": {
-    "rails": "8..20px",
-    "ring": "~3.2% @ 6*dpr",
     "files": [
-      "plane-ux.js",
-      "plane-safe.js",
-      "index.html"
+      "plane-app/index.html",
+      "plane-app/preview/index.html"
     ],
-    "control": "plane-size-ctrl"
+    "features": [
+      "header",
+      "back-link",
+      "explainer",
+      "preload"
+    ]
   }
 }
