@@ -35,6 +35,16 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
 <style id="plane-pointer-fix">
   button, input[type=button], [role=button] { pointer-events:auto !important; }
 </style><link rel="preload" as="fetch" href="data/entities.v2.json" crossorigin="anonymous" />
+
+<style id="plane-axis-bump">
+  #plane-x-left, #plane-x-right, #plane-y-top, #plane-y-bottom,
+  .plane-label, [data-term="commons" title="Shared assets & infrastructures, governed for broad benefit (as countries manage their commons)."], [data-term="commerce" title="Market-first production & exchange (how countries lean into enterprise & price signals)."], [data-term="club" title="Voluntary/peer associations (countries coordinating via federated civic bodies)."], [data-term="crown" title="Central authority/state instruments (countries coordinating via law and executive action)."]{
+    font-size: 15px !important; letter-spacing: .2px;
+  }
+  @media (min-width: 900px){
+    #plane-x-left, #plane-x-right, #plane-y-top, #plane-y-bottom, .plane-label{ font-size: 16px !important; }
+  }
+</style>
 </head><body>
 <!-- plane-app: page header + explainer -->
 <header id="plane-hero" style="margin:16px 0 12px;">
@@ -51,31 +61,30 @@ button:hover{border-color:#3c567a} canvas{background:#0b0f14;border-radius:12px}
     to see how weighting shifts the position. Toggle layer visibility (Countries, US Parties, CoCivium modes)
     to compare groupings. Click a dot to see per-domain notes & sources.
   </p>
-  <details id=""plane-what"" style=""max-width:820px;border:1px solid #233047;border-radius:10px;padding:10px 12px;"">
-  <summary style=""cursor:pointer;color:#cfe2ff;"">What is the Perspective Plane?</summary>
-  <div style=""margin-top:10px;color:#9fb0c6;"">
-    <p><b>CoPolitic</b> isn’t a political org and doesn’t endorse parties. It borrows a <i>modeling</i> frame from CoCivium: we compare positions across two civic axes instead of a 1-D left↔right line.</p>
-    <ul style=""margin:8px 0 0 20px;"">
-      <li><b>X: Commons → Commerce</b> — orientation toward <i>shared resource stewardship</i> vs <i>market-first production & exchange</i>.</li>
-      <li><b>Y: Club → Crown</b> — coordination via <i>voluntary/peer associations</i> vs <i>central authority/state instruments</i>.</li>
-      <li><b>Points</b> aggregate many domains (economy, civic, culture, institutions…). Weights let you stress-test assumptions; <b>Equalize</b> resets them.</li>
-      <li><b>Use</b>: Toggle layers (countries, US parties, CoCivium modes). Click a dot for domain notes & sources.</li>
-    </ul>
-  </div>
-</details>
+  
 </header>
-<details id=""plane-what"" style=""max-width:820px;border:1px solid #233047;border-radius:10px;padding:10px 12px;"">
-  <summary style=""cursor:pointer;color:#cfe2ff;"">What is the Perspective Plane?</summary>
-  <div style=""margin-top:10px;color:#9fb0c6;"">
-    <p><b>CoPolitic</b> isn’t a political org and doesn’t endorse parties. It borrows a <i>modeling</i> frame from CoCivium: we compare positions across two civic axes instead of a 1-D left↔right line.</p>
-    <ul style=""margin:8px 0 0 20px;"">
-      <li><b>X: Commons → Commerce</b> — orientation toward <i>shared resource stewardship</i> vs <i>market-first production & exchange</i>.</li>
-      <li><b>Y: Club → Crown</b> — coordination via <i>voluntary/peer associations</i> vs <i>central authority/state instruments</i>.</li>
-      <li><b>Points</b> aggregate many domains (economy, civic, culture, institutions…). Weights let you stress-test assumptions; <b>Equalize</b> resets them.</li>
-      <li><b>Use</b>: Toggle layers (countries, US parties, CoCivium modes). Click a dot for domain notes & sources.</li>
+<p id="plane-intro" class="muted" style="max-width:880px">
+  This Perspective Plane compares how <b>countries</b> tend to coordinate civic and economic life relative to
+  <b>CoCivium’s strawman best-practice</b>. It’s a two-axis map, useful for contrasting patterns rather than
+  arguing left↔right: the X-axis spans <i>Commons</i> to <i>Commerce</i>, and the Y-axis spans <i>Club</i> to <i>Crown</i>.
+  Use the panel to toggle layers (e.g., <b>Countries</b>) and explore differences. You can later wire in
+  your own sources per dot.
+</p>
+<details id="plane-what" style="max-width:820px;border:1px solid #233047;border-radius:10px;padding:10px 12px;">
+  <summary style="cursor:pointer;color:#cfe2ff;">What is the Perspective Plane?</summary>
+  <div style="margin-top:10px;color:#9fb0c6;">
+    <p><b>What’s being compared?</b> Countries’ overall tendencies (today) vs CoCivium’s strawman best-practice.</p>
+    <ul style="margin:8px 0 0 20px;">
+      <li><b>X-axis: Commons ↔ Commerce</b> — shows how a country balances <i>shared-resource stewardship</i> and <i>market-first production & exchange</i>.</li>
+      <li><b>Y-axis: Club ↔ Crown</b> — shows whether a country tends toward <i>voluntary/peer associations</i> or <i>central authority/state instruments</i> for coordination.</li>
+      <li><b>Dots</b> are composite positions from multiple domains (economy, institutions, knowledge, ecology, etc.).</li>
+      <li><b>Controls</b>: Toggle layers (e.g., <b>Countries</b>) to add/remove country dots. <b>Equalize</b> resets domain weights to 1.</li>
     </ul>
   </div>
 </details>
+
+
+
 <div class="wrap">
   <div class="card">
     <h1>Perspective Plane</h1>
