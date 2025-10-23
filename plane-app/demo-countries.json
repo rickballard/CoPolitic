@@ -1,0 +1,6 @@
+[
+  { "id":"cocivium", "name":"CoCivium (strawman)", "x": -0.35, "y":  0.10 },
+  { "id":"usa",      "name":"United States",       "x":  0.35, "y":  0.15 },
+  { "id":"uk",       "name":"United Kingdom",      "x":  0.25, "y":  0.05 },
+  { "id":"de",       "name":"Germany",             "x":  0.05, "y":  0.20 }
+]
