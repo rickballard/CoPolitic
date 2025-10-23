@@ -2,7 +2,7 @@
 (() => {
   const DAYS = 14;                                 // how far back to look
   const LOG_BASE = "/status/log/";                 // CoSync jsonl directory
-  const KEY = "EVOLUTION_APPROVALS";               // localStorage key
+  const KEY = "COEV_APPROVALS";               // localStorage key
 
   const qs = sel => document.querySelector(sel);
   const statusEl = qs("#evo-status");
@@ -192,4 +192,104 @@
 
   // Optional auto-run on first load:
   // generate();
+})();
+/* --- Suggestions + Owner mode ------------------------------------------ */
+(() => {
+  const KEY_SUG = "COEV_SUGGESTIONS";
+  const KEY_ROLE = "COEV_ROLE"; // "owner" or "viewer"
+
+  const qs = s => document.querySelector(s);
+  function loadJson(k){ try{ return JSON.parse(localStorage.getItem(k)||"[]"); }catch{return [];} }
+  function saveJson(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch{} }
+
+  function ensureUi(){
+    const panel = document.querySelector(".panel");
+    if (!panel || panel.querySelector("#coevo-suggest")) return;
+
+    const box = document.createElement("div");
+    box.id = "coevo-suggest";
+    box.style.marginTop = "10px";
+    box.innerHTML = `
+      <div class="sep"></div>
+      <div class="row" style="justify-content:space-between;align-items:flex-start">
+        <div style="flex:1;min-width:260px">
+          <label class="muted">Add a suggestion</label>
+          <textarea id="sg-text" rows="3" style="width:100%;border:1px solid #233047;border-radius:8px;background:#0b1426;color:#e7eefc;padding:8px"></textarea>
+          <div class="row" style="margin-top:6px">
+            <button id="sg-add">Submit</button>
+            <button id="sg-clear">Clear all (local)</button>
+          </div>
+        </div>
+        <div style="min-width:220px">
+          <label class="muted">Role</label>
+          <div class="row">
+            <span id="role-badge" class="chip">viewer</span>
+            <button id="role-toggle">Owner mode</button>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:10px">
+        <details><summary>Submitted suggestions</summary><ul id="sg-list" class="muted" style="margin:6px 0 0 18px"></ul></details>
+      </div>
+    `;
+    panel.appendChild(box);
+
+    // Wire role toggle (simple passphrase prompt; stored locally)
+    const badge = qs("#role-badge");
+    const btnRole = qs("#role-toggle");
+    const setBadge = () => { badge.textContent = (localStorage.getItem(KEY_ROLE)||"viewer"); };
+    setBadge();
+    btnRole.addEventListener("click", () => {
+      const cur = localStorage.getItem(KEY_ROLE)||"viewer";
+      if (cur==="owner"){ localStorage.setItem(KEY_ROLE,"viewer"); setBadge(); return; }
+      const pass = prompt("Enter owner passphrase (local, not uploaded):");
+      if ((pass||"").trim().length > 0){ localStorage.setItem(KEY_ROLE,"owner"); setBadge(); }
+    });
+
+    // Submit / Clear
+    const list = qs("#sg-list");
+    function renderList(){
+      const arr = loadJson(KEY_SUG);
+      list.innerHTML = arr.map(s=>`<li><b>[${s.role}]</b> ${s.text} <span class="chip">${s.addedAt}</span></li>`).join("");
+    }
+    renderList();
+
+    qs("#sg-add").addEventListener("click", () => {
+      const t = (qs("#sg-text").value||"").trim();
+      if (!t) return;
+      const role = localStorage.getItem(KEY_ROLE)||"viewer";
+      const arr = loadJson(KEY_SUG);
+      arr.unshift({ id: crypto.randomUUID(), role, text: t, addedAt: new Date().toISOString() });
+      saveJson(KEY_SUG, arr);
+      qs("#sg-text").value = "";
+      renderList();
+    });
+    qs("#sg-clear").addEventListener("click", () => {
+      if (confirm("Clear all local suggestions?")){ localStorage.removeItem(KEY_SUG); renderList(); }
+    });
+
+    // Patch Export button to include suggestions + role, with owner bump note
+    const exportBtn = document.querySelector("#evo-export");
+    const oldOn = exportBtn.onclick;
+    exportBtn.onclick = null;
+    exportBtn.addEventListener("click", () => {
+      const payload = {
+        exportedAt: new Date().toISOString(),
+        role: localStorage.getItem(KEY_ROLE)||"viewer",
+        approvals: (function(){ try{return JSON.parse(localStorage.getItem("COEV_APPROVALS")||"{}")}catch{return{}} })(),
+        suggestions: loadJson(KEY_SUG),
+        proposals: window.__evoProposals||[],
+        notes: "Owner/CoSteward suggestions should be treated as higher priority downstream."
+      };
+      const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "coevolution-export.json";
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", ensureUi);
+  else ensureUi();
 })();
