@@ -1,17 +1,13 @@
 {
-  "ts": "2025-10-23T11:50:29-04:00",
+  "ts": "2025-10-23T11:56:51-04:00",
   "area": "site",
   "type": "status",
-  "summary": "Evolution Intent page (prototype) added at /evolution/",
+  "summary": "Nav: Evolution link in plane headers",
   "data": {
-    "actions": [
-      "generate",
-      "approve",
-      "reject",
-      "export"
+    "files": [
+      "plane-app/index.html",
+      "plane-app/preview/index.html"
     ],
-    "driver": "status/log/*.jsonl",
-    "path": "/evolution/",
-    "storage": "localStorage"
+    "href": "/evolution/"
   }
 }
