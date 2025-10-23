@@ -1,13 +1,16 @@
 {
-  "ts": "2025-10-23T11:56:51-04:00",
+  "ts": "2025-10-23T12:14:01-04:00",
   "area": "site",
   "type": "status",
-  "summary": "Nav: Evolution link in plane headers",
+  "summary": "CoEvolution page branded + CoCivium ethos footer; suggestions + owner weighting",
   "data": {
-    "files": [
-      "plane-app/index.html",
-      "plane-app/preview/index.html"
+    "features": [
+      "suggestions",
+      "owner-weight",
+      "export"
     ],
-    "href": "/evolution/"
+    "path": "/coevolution/",
+    "redirect": "/evolution/",
+    "footer": "coevo-footer"
   }
 }
