@@ -262,3 +262,28 @@
   else boot();
   new MutationObserver(boot).observe(document.body, {childList:true, subtree:true});
 })();
+
+/* plane-tooltips */
+;(() => {
+  const defs = {
+    commons:  "Shared assets & infrastructures governed for broad benefit.",
+    commerce: "Market-first production & exchange; enterprise & price signals.",
+    club:     "Voluntary/federated coordination via associations and guild-like bodies.",
+    crown:    "Centralized/state-led coordination via law, regulation, and executive action."
+  };
+  const norm = s => (s||"").trim().toLowerCase();
+  function apply(){
+    // any element with data-term="commons|commerce|club|crown"
+    document.querySelectorAll("[data-term]").forEach(el=>{
+      const t = norm(el.getAttribute("data-term"));
+      if (defs[t] && !el.title) el.title = defs[t];
+    });
+    // convenience: add titles to glossary labels if found
+    document.querySelectorAll("#plane-glossary b").forEach(b=>{
+      const t = norm(b.textContent);
+      if (defs[t] && !b.title) b.title = defs[t];
+    });
+  }
+  if (document.readyState==="loading") document.addEventListener("DOMContentLoaded", apply); else apply();
+  new MutationObserver(apply).observe(document.body,{childList:true,subtree:true});
+})();
