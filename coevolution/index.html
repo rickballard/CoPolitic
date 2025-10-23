@@ -1,54 +1,28 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>CoPolitic — CoEvolution</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <style>
-    :root { --bg:#0b1220; --fg:#e7eefc; --muted:#9fb0c6; --line:#233047; --chip:#0f1a31; }
-    body { margin:20px auto; max-width:1080px; padding:0 14px; background:var(--bg); color:var(--fg); font:14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
-    a.btn { color:var(--muted); text-decoration:none; border:1px solid var(--line); border-radius:10px; padding:6px 10px; display:inline-block }
-    header { margin:10px 0 16px; }
-    h1 { font-size:22px; margin:10px 0 6px }
-    h2 { font-size:18px; margin:18px 0 10px }
-    .panel { border:1px solid var(--line); border-radius:12px; padding:12px; background:#0d162a; }
-    .row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
-    button { background:var(--chip); color:var(--fg); border:1px solid var(--line); border-radius:10px; padding:6px 10px; cursor:pointer }
-    button[disabled]{ opacity:.6; cursor:not-allowed }
-    .list { display:grid; gap:10px; }
-    .card { border:1px solid var(--line); border-radius:12px; padding:10px; background:#0b1426 }
-    .chips { display:flex; gap:6px; flex-wrap:wrap; margin-top:6px }
-    .chip { background:var(--chip); border:1px solid var(--line); border-radius:999px; padding:2px 8px; color:var(--muted); font-size:12px }
-    .muted { color:var(--muted) }
-    .right { float:right; }
-    details { border:1px solid var(--line); border-radius:10px; padding:8px 10px; background:#0b1426 }
-    summary { cursor:pointer; color:#cfe2ff }
-    .sep { height:1px; background:var(--line); margin:14px 0 }
-    .ok { color:#a9f0c5 } .warn { color:#ffd38a } .bad { color:#ff9aa2 }
-  </style>
-</head>
+<!doctype html><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CoEvolution — proposals (prototype)</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+:root{--bg:#0b1220;--fg:#e7eefc;--muted:#9fb0c6;--line:#233047;--chip:#0f1a31}
+body{margin:20px auto;max-width:1080px;padding:0 14px;background:var(--bg);color:var(--fg);font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a.btn{color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:6px 10px;display:inline-block}
+header{margin:10px 0 16px}h1{font-size:22px;margin:10px 0 6px}h2{font-size:18px;margin:18px 0 10px}
+.panel{border:1px solid var(--line);border-radius:12px;padding:12px;background:#0d162a}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{background:#0f1a31;color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:6px 10px;cursor:pointer}
+.list{display:grid;gap:10px}.card{border:1px solid var(--line);border-radius:12px;padding:10px;background:#0b1426}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.chip{background:#0f1a31;border:1px solid var(--line);border-radius:999px;padding:2px 8px;color:var(--muted);font-size:12px}
+.muted{color:var(--muted)}.sep{height:1px;background:var(--line);margin:14px 0}.ok{color:#a9f0c5}.warn{color:#ffd38a}.bad{color:#ff9aa2}
+</style>
 <body>
   <header>
-    <nav class="row">
-      <a class="btn" href="/">← Back to CoPolitic</a>
-      <a class="btn" href="/plane-app/">Perspective Plane</a>
-    </nav>
+    <nav class="row"><a class="btn" href="/">← Back</a></nav>
     <h1>CoEvolution</h1>
-    <p class="muted" style="max-width:880px">
-      Transparent, programmatic proposals for how this site evolves. This prototype reads recent
-      <code>status/log/*.jsonl</code> CoSync receipts in this repo, applies heuristics, and suggests
-      prioritized tasks. Approvals are stored locally (browser <code>localStorage</code>) for now.
-    </p>
+    <p class="muted" style="max-width:880px">Programmatic proposals from recent <code>/status/log/*.jsonl</code>. Approvals stay local (browser <code>localStorage</code>). Export to JSON to sync upstream.</p>
   </header>
 
   <section class="panel">
     <div class="row" style="justify-content:space-between">
-      <div>
-        <b>Status:</b>
-        <span id="evo-status" class="muted">Idle</span>
-      </div>
+      <div><b>Status:</b> <span id="evo-status" class="muted">Idle</span></div>
       <div class="row">
         <button id="evo-generate">Generate proposals</button>
         <button id="evo-refresh">Refresh</button>
@@ -57,13 +31,11 @@
       </div>
     </div>
     <div class="sep"></div>
-    <details>
-      <summary>How this works (prototype)</summary>
+    <details><summary>How this works</summary>
       <ul class="muted" style="margin:6px 0 0 18px">
-        <li>Fetch most-recent <code>/status/log/YYYYMMDD.jsonl</code> files (last 14 days, if present).</li>
-        <li>Heuristics infer proposals (e.g., plane-app UX changes → A11y/legend/docs/perf follow-ups).</li>
-        <li>Approve/Reject stores to <code>localStorage</code>. “Export” downloads a JSON snapshot.</li>
-        <li>Lead/prime can later centralize this across repos and swap heuristics for AI review.</li>
+        <li>Reads recent <code>/status/log/YYYYMMDD.jsonl</code> (last 14 days).</li>
+        <li>Heuristics now; centralized AI later.</li>
+        <li>Export bundles proposals + approvals.</li>
       </ul>
     </details>
   </section>
@@ -71,6 +43,5 @@
   <h2>Proposals</h2>
   <div id="evo-list" class="list"></div>
 
-  <script src="evolution.js?v=1" defer></script>
+  <script src="coevolution.js?v=1" defer></script>
 </body>
-</html>

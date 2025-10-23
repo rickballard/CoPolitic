@@ -286,4 +286,21 @@
     window.PLANE_UI_SCALE = n;
     try { window.draw && window.draw(); } catch(e){}
   }
-};
+};function __autoUiScale(containerPx, dpr){
+  const minSide = containerPx;
+  let base = (minSide<420? 2.4 : minSide<640? 2.0 : minSide<900? 1.6 : 1.3);
+  if (dpr>=3) base *= 1.15; if (dpr<=1) base *= 0.9;
+  return Math.max(1.0, Math.min(3.2, base));
+};(() => {
+  const canvas = document.getElementById("plane-canvas"); if (!canvas) return;
+  const compute = () => {
+    const rect = canvas.getBoundingClientRect();
+    const minSide = Math.min(rect.width, rect.height);
+    const dpr = (window.devicePixelRatio||1);
+    const persisted = Number(localStorage.getItem("PLANE_UI_SCALE"));
+    if (!(Number.isFinite(persisted) && persisted>0)) { try { window.PLANE_UI_SCALE = __autoUiScale(minSide, dpr); } catch(_) {} }
+    try { window.draw && window.draw(); } catch(_) {}
+  };
+  compute();
+  try { new ResizeObserver(compute).observe(canvas); } catch(_) { window.addEventListener("resize", compute, {passive:true}); }
+})();
