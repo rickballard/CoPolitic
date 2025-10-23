@@ -1,13 +1,16 @@
 {
-  "ts": "2025-10-23T11:15:46-04:00",
+  "ts": "2025-10-23T11:34:28-04:00",
   "area": "plane-app",
   "type": "status",
-  "summary": "Add footer nav for plane pages",
+  "summary": "Plane page UX: Methods & Sources + Footer live",
   "data": {
     "files": [
       "plane-app/index.html",
       "plane-app/preview/index.html"
     ],
-    "footer": "plane-footer"
+    "sections": [
+      "plane-methods",
+      "plane-footer"
+    ]
   }
 }
