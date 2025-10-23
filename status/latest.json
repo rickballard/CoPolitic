@@ -1,16 +1,17 @@
 {
-  "ts": "2025-10-23T11:45:18-04:00",
-  "area": "plane-app",
+  "ts": "2025-10-23T11:50:29-04:00",
+  "area": "site",
   "type": "status",
-  "summary": "Perf: preconnect fonts + swap hint",
+  "summary": "Evolution Intent page (prototype) added at /evolution/",
   "data": {
-    "files": [
-      "plane-app/index.html",
-      "plane-app/preview/index.html"
+    "actions": [
+      "generate",
+      "approve",
+      "reject",
+      "export"
     ],
-    "perf": [
-      "preconnect",
-      "swap"
-    ]
+    "driver": "status/log/*.jsonl",
+    "path": "/evolution/",
+    "storage": "localStorage"
   }
 }

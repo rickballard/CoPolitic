@@ -3,3 +3,4 @@
 {"ts":"2025-10-23T11:15:46-04:00","area":"plane-app","type":"status","summary":"Add footer nav for plane pages","data":{"files":["plane-app/index.html","plane-app/preview/index.html"],"footer":"plane-footer"}}
 {"ts":"2025-10-23T11:34:28-04:00","area":"plane-app","type":"status","summary":"Plane page UX: Methods & Sources + Footer live","data":{"files":["plane-app/index.html","plane-app/preview/index.html"],"sections":["plane-methods","plane-footer"]}}
 {"ts":"2025-10-23T11:45:18-04:00","area":"plane-app","type":"status","summary":"Perf: preconnect fonts + swap hint","data":{"files":["plane-app/index.html","plane-app/preview/index.html"],"perf":["preconnect","swap"]}}
+{"ts":"2025-10-23T11:50:29-04:00","area":"site","type":"status","summary":"Evolution Intent page (prototype) added at /evolution/","data":{"actions":["generate","approve","reject","export"],"driver":"status/log/*.jsonl","path":"/evolution/","storage":"localStorage"}}
