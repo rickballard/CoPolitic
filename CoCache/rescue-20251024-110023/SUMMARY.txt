@@ -1,0 +1,3 @@
+RESCUE SUMMARY — 20251024-110023
+main @ 9a86321ed1be25ce1f6cb7cbc330fcab1c744522
+9a86321 CoSync: fix param block + ensure Mode default before switch
