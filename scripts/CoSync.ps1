@@ -1,3 +1,37 @@
+function Invoke-CoSyncAuto {
+  New-Item -ItemType Directory -Force CoCache,status\log | Out-Null
+  function Get-LastRescueInfo {
+    $dirs = Get-ChildItem CoCache -Directory -ErrorAction SilentlyContinue | ? { $_.Name -like 'rescue-*' } | Sort-Object Name
+    if (-not $dirs) { return $null }
+    $latest = $dirs[-1]; $snap = Join-Path $latest.FullName 'snapshot.json'
+    $info = @{ path=$latest.FullName; when=$latest.LastWriteTimeUtc; head=$null }
+    if (Test-Path $snap) {
+      try { $j = Get-Content $snap -Raw | ConvertFrom-Json; $info.head=$j.git.head; $info.when=[DateTime]::Parse($j.capturedAt) } catch {}
+    }
+    return $info
+  }
+  $last = Get-LastRescueInfo; $now=Get-Date
+  $minH=3; $maxH=10
+  $ageH = if ($last) { ($now - $last.when).TotalHours } else { [double]::PositiveInfinity }
+  $dirty = (git status --porcelain | Measure-Object -Line).Lines
+  $today=(Get-Date).ToString('yyyyMMdd'); $todayLog="status\log\$today.jsonl"
+  $logLines = (Test-Path $todayLog) ? ((Get-Content $todayLog | Measure-Object -Line).Lines) : 0
+  $since = if ($last -and $last.head) { [int](git rev-list "$($last.head)..HEAD" --count) } else { 9999 }
+  $overdue = $ageH -ge $maxH; $okCadence = $ageH -ge $minH
+  $should = $overdue -or ($dirty -ge 25) -or ($since -ge 15) -or ($logLines -ge 60) -or (-not $last)
+  if ($should -and $okCadence) {
+    Write-Host ("🔎 CoSync(auto): rescue (age={0:n1}h, dirty={1}, commits+{2}, statusLines={3})" -f $ageH,$dirty,$since,$logLines)
+    pwsh -File "$PSCommandPath" -Mode rescue -WithZip
+    New-Item -ItemType Directory -Force status\log | Out-Null
+    $f="status\log\$today.jsonl"
+    @{ts=(Get-Date).ToString('s')+'Z'; area='plane'; type='status';
+      summary='CoSync(auto) ran rescue'; data=@{dirty=$dirty; commits=$since; ageH=[math]::Round($ageH,1)}} |
+      ConvertTo-Json -Compress | Add-Content -Encoding UTF8 $f
+    git add $f; if ((git status --porcelain) -ne '') { git commit -m "CoSync(auto): rescue pulse"; git push }
+  } else {
+    Write-Host ("✅ CoSync(auto): no rescue (age={0:n1}h, dirty={1}, commits+{2}, statusLines={3})" -f $ageH,$dirty,$since,$logLines)
+  }
+}
 param(
   [Parameter(Mandatory=$true)][ValidateSet("rescue","handoff","bomb","seed","release","apply-zip")]
   [string]$Mode,
@@ -15,6 +49,7 @@ function LogStatus($summary,$data=@{}) {
 }
 
 switch ($Mode) {
+  'auto' { Invoke-CoSyncAuto }
   'rescue' {
     New-Item -ItemType Directory -Force docs,CoCache | Out-Null
     if (-not (Test-Path docs\RESCUE-BPOE.md)) {
