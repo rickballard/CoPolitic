@@ -1,14 +1,73 @@
-param([string]$RepoRoot = (Split-Path -Parent $PSScriptRoot))
-$ErrorActionPreference="Stop"
-Set-Location $RepoRoot
-if(Test-Path "scripts/Measure-CoDrift.ps1"){ pwsh -NoProfile -ExecutionPolicy Bypass -File "scripts/Measure-CoDrift.ps1" | Out-Host }
-if(Test-Path "scripts/Update-StatusBlock.ps1"){ pwsh -NoProfile -ExecutionPolicy Bypass -File "scripts/Update-StatusBlock.ps1" | Out-Host }
-$hadChanges=$false; git add status/ README.md 2>$null | Out-Null
-if(git diff --cached --name-only){
-  $hadChanges=$true; $msg="status: CoSync"
-  if(Test-Path "status/codrift.json"){ try{ $j=Get-Content "status/codrift.json" -Raw | ConvertFrom-Json; $msg=("status: CoSync (CDI {0}% {1})" -f [int]$j.score,[string]$j.status) }catch{} }
-  git commit -m $msg | Out-Null
+param(
+  [Parameter(Mandatory=$true)][ValidateSet("rescue","handoff","bomb","seed","release","apply-zip")]
+  [string]$Mode,
+  [string]$ZipPath,
+  [switch]$WithZip
+)
+$ErrorActionPreference='Stop'; Set-Location (git rev-parse --show-toplevel)
+
+function LogStatus($summary,$data=@{}) {
+  New-Item -ItemType Directory -Force status\log | Out-Null
+  $day=(Get-Date).ToString('yyyyMMdd'); $f="status\log\$day.jsonl"
+  @{ts=(Get-Date).ToString('s')+'Z';area='plane';type='status';summary=$summary;data=$data} |
+    ConvertTo-Json -Compress | Add-Content -Encoding UTF8 $f
+  git add $f
 }
-$pushed=$false; try{ if($hadChanges){ git push | Out-Null; $pushed=$true } }catch{}
-$cdi="n/a"; $stat="n/a"; if(Test-Path "status/codrift.json"){ try{ $j=Get-Content "status/codrift.json" -Raw | ConvertFrom-Json; $cdi=[int]$j.score; $stat=[string]$j.status }catch{} }
-Write-Host ("CoSync: CDI {0}% ({1}); committed: {2}; pushed: {3}" -f $cdi,$stat,([bool]$hadChanges),([bool]$pushed))
+
+switch ($Mode) {
+  'rescue' {
+    New-Item -ItemType Directory -Force docs,CoCache | Out-Null
+    if (-not (Test-Path docs\RESCUE-BPOE.md)) {
+@"
+# RESCUE-BPOE — Recover from a bloated session
+1) Ensure docs/INTENT.json + docs/PRIME-START.md exist.
+2) Snapshot to CoCache/rescue-YYYYMMDD-HHmmss (git meta + TODOs).
+3) Log status receipt; optional handoff zip; start a new chat.
+"@ | Set-Content -Encoding utf8 -NoNewline docs\RESCUE-BPOE.md
+    }
+    $stamp=Get-Date -Format 'yyyyMMdd-HHmmss'
+    $cap="CoCache\rescue-$stamp"; New-Item -ItemType Directory -Force $cap | Out-Null
+    $git=@{branch=(git rev-parse --abbrev-ref HEAD).Trim(); head=(git rev-parse HEAD).Trim();
+           status=(git status --porcelain); last=(git log -1 --pretty='format:%h %s')}
+    $intent=(Test-Path 'docs\INTENT.json')?(Get-Content docs\INTENT.json -Raw):'{"goal":"(add)"}'
+    @{capturedAt=(Get-Date).ToString('s')+'Z';git=$git;intentJson=(ConvertFrom-Json $intent)} |
+      ConvertTo-Json -Depth 6 | Set-Content -Encoding utf8 -NoNewline "$cap\snapshot.json"
+    "RESCUE SUMMARY — $stamp`n$($git.branch) @ $($git.head)`n$($git.last)" |
+      Set-Content -Encoding utf8 -NoNewline "$cap\SUMMARY.txt"
+    LogStatus "Rescue snapshot saved at $cap; RESCUE-BPOE.md added." @{path=$cap}
+    git add docs\RESCUE-BPOE.md $cap
+    if ((git status --porcelain) -ne ''){ git commit -m "CoSync: rescue snapshot"; git push }
+    if ($WithZip) {
+      $paths=@('plane-app','scripts','docs','data','coevolution','README.md','index.html') | ? { Test-Path $_ }
+      if ($paths){ $zip=Join-Path $HOME "Downloads\CoPolitic-rescue-$stamp.zip"
+        $tmp=Join-Path $env:TEMP ("corescue-"+[guid]::newguid()); New-Item -ItemType Directory -Force $tmp|Out-Null
+        $paths | % { Copy-Item -Recurse -Force $_ (Join-Path $tmp (Split-Path $_ -Leaf)) }
+        Compress-Archive -Path (Join-Path $tmp '*') -DestinationPath $zip -Force; Remove-Item $tmp -Recurse -Force
+        Write-Host "✅ Rescue zip: $zip"
+      }
+    }
+  }
+  'handoff' {
+    $stamp=Get-Date -Format 'yyyyMMdd-HHmmss'
+    $paths=@('plane-app','scripts','docs','data','coevolution','README.md','index.html') | ? { Test-Path $_ }
+    if (-not $paths){ throw "Nothing to package." }
+    $zip=Join-Path $HOME "Downloads\CoPolitic-prime-handoff-$stamp.zip"
+    $tmp=Join-Path $env:TEMP ("coprime-"+[guid]::newguid()); New-Item -ItemType Directory -Force $tmp|Out-Null
+    $paths | % { Copy-Item -Recurse -Force $_ (Join-Path $tmp (Split-Path $_ -Leaf)) }
+    Compress-Archive -Path (Join-Path $tmp '*') -DestinationPath $zip -Force; Remove-Item $tmp -Recurse -Force
+    LogStatus "Prime handoff zip created." @{zip=$zip}; git add .
+    if ((git status --porcelain) -ne ''){ git commit -m "CoSync: prime handoff snapshot"; git push }
+    Write-Host "✅ Handoff zip: $zip"
+  }
+  'bomb'      { pwsh -File .\bundle\Run-AdviceBomb.ps1 -RepoRoot . }
+  'seed'      { pwsh -File .\scripts\Generate-PlanePoints.ps1 -InputJson .\data\points.json }
+  'release'   { $tag="advice-bomb-v1"; if (gh release view $tag 2>$null){ gh release upload $tag .\bundle\CoLaminar-advice-bomb.zip --clobber } else { gh release create $tag .\bundle\CoLaminar-advice-bomb.zip -t "Advice-Bomb v1" -n "Portable CoEvolution + installers" } }
+  'apply-zip' {
+    if (-not $ZipPath){ throw "Pass -ZipPath <file.zip>" }
+    $tmp=Join-Path $env:TEMP ("apply-"+[guid]::newguid()); New-Item -ItemType Directory -Force $tmp|Out-Null
+    Expand-Archive -Path $ZipPath -DestinationPath $tmp -Force
+    Copy-Item -Recurse -Force (Join-Path $tmp '*') .
+    git add .; git commit -m "CoSync: apply bundle $(Split-Path $ZipPath -Leaf)"; git push
+    Remove-Item $tmp -Recurse -Force
+  }
+}

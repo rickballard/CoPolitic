@@ -10,3 +10,4 @@
 {"data":{"path":"data/points.json"},"area":"plane","type":"status","summary":"Real country points loaded (inline + demo).","ts":"2025-10-23T20:52:32Z"}
 {"data":{"playbook":"docs/RESCUE-BPOE.md","path":"CoCache\\rescue-20251023-210158"},"area":"plane","type":"status","summary":"Rescue snapshot saved at CoCache\\rescue-20251023-210158; RESCUE-BPOE.md added.","ts":"2025-10-23T21:01:59Z"}
 {"summary":"Rescue snapshot saved at CoCache\\rescue-20251023-212411; RESCUE-BPOE.md added.","area":"plane","ts":"2025-10-23T21:24:11Z","data":{"path":"CoCache\\rescue-20251023-212411"},"type":"status"}
+{"ts":"2025-10-23T21:24:27Z","summary":"Prime handoff zip created.","data":{"zip":"C:\\Users\\Chris\\Downloads\\CoPolitic-prime-handoff-20251023-212422.zip"},"area":"plane","type":"status"}
