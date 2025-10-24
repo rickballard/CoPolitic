@@ -1,0 +1,3 @@
+## Objective
+Harden **CoSync** into a reliable, bloat-aware, self-healing sync/rescue utility…
+[SNIP: use the complete “CoSync Improvement Request” content from this message]
