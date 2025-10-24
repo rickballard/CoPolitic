@@ -1,0 +1,24 @@
+{
+  "capturedAt": "2025-10-23T21:24:11Z",
+  "git": {
+    "branch": "main",
+    "last": "9b895a6 rescue: add RESCUE-BPOE + snapshot + status receipt",
+    "status": " M scripts/CoSync.ps1",
+    "head": "9b895a685a9fffbd62453e673892530b005cf858"
+  },
+  "intentJson": {
+    "goal": "Make Perspective Plane informative and evolving with real country points and notes.",
+    "next_steps": [
+      "Create data/points.json from data/points.example.json",
+      "Run scripts/Generate-PlanePoints.ps1 -InputJson data/points.json",
+      "Replace demo badge; add meta notes & sources per country"
+    ],
+    "artifacts": [
+      "plane-app/plane-hit.js",
+      "plane-app/plane-inspector.js",
+      "plane-app/plane-layers.js",
+      "plane-app/plane-a11y.js",
+      "scripts/Generate-PlanePoints.ps1"
+    ]
+  }
+}
