@@ -1,4 +1,4 @@
-[
+;(() => { try { window.__planePoints = [
   {
     "id": "cocivium",
     "name": "CoCivium (strawman)",
@@ -27,4 +27,4 @@
     "y": 0.2,
     "meta": "Placeholder rationale + sources."
   }
-]
+]; } catch(_){} })();
