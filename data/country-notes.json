@@ -1,0 +1,6 @@
+{
+  "usa": { "meta": "High commerce tilt; mixed crown/club; placeholder.",
+           "sources":[{"t":"WDI snapshot","u":"https://example.org/wdi"},
+                      {"t":"Gov overview","u":"https://example.org/gov"}]},
+  "de": { "meta": "Coordinated market economy; strong club institutions.", "sources":[] }
+}
