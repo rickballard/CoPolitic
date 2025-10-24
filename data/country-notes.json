@@ -1,6 +1,32 @@
 {
-  "usa": { "meta": "High commerce tilt; mixed crown/club; placeholder.",
-           "sources":[{"t":"WDI snapshot","u":"https://example.org/wdi"},
-                      {"t":"Gov overview","u":"https://example.org/gov"}]},
-  "de": { "meta": "Coordinated market economy; strong club institutions.", "sources":[] }
+  "usa": {
+    "meta": "High commerce tilt; mixed crown/club; placeholder.",
+    "sources": [
+      {
+        "t": "WDI snapshot",
+        "u": "https://example.org/wdi"
+      },
+      {
+        "t": "Gov overview",
+        "u": "https://example.org/gov"
+      }
+    ]
+  },
+  "de": {
+    "meta": "Coordinated market economy; strong club institutions.",
+    "sources": []
+  },
+  "uk": {
+    "sources": [
+      {
+        "u": "https://example.org/gov-uk",
+        "t": "Gov overview"
+      },
+      {
+        "u": "https://example.org/oecd-uk",
+        "t": "OECD profile"
+      }
+    ],
+    "meta": "Liberal market economy with notable services sector; crown instruments moderate; placeholder."
+  }
 }
