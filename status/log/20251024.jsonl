@@ -1,1 +1,2 @@
 {"summary":"Rescue snapshot saved at CoCache\\rescue-20251024-110023; RESCUE-BPOE.md added.","type":"status","area":"plane","data":{"path":"CoCache\\rescue-20251024-110023"},"ts":"2025-10-24T11:00:24Z"}
+{"area":"plane","data":{"dirty":0,"commits":7,"ageH":13.6},"summary":"CoSync(auto) ran rescue","ts":"2025-10-24T11:00:36Z","type":"status"}
