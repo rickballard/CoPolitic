@@ -1,0 +1,15 @@
+{
+  "exportedAt": "'" + (Get-Date).ToString("s") + "Z" + @"'",
+  "approvals": {},
+  "proposals": [
+    {
+      "id": "seed-" + [guid]::NewGuid(),
+      "title": "Seed: Document site intent & roadmap",
+      "detail": "Capture current scope, constraints, and near-term steps.",
+      "priority": 2,
+      "tags": ["docs","site"],
+      "createdAt": "'" + (Get-Date).ToString("s") + "Z" + @"'"
+    }
+  ],
+  "note": "portable coevolution seed"
+}

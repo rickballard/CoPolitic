@@ -1,0 +1,4 @@
+# QUICKSTART
+1) Edit data/points.json (copy from data/points.example.json).
+2) pwsh -File .\scripts\Generate-PlanePoints.ps1 -InputJson .\data\points.json
+3) git add plane-app\* data\points.json; git commit -m "plane: real points"; git push
