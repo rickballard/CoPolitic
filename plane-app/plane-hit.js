@@ -75,8 +75,7 @@
       if (Array.isArray(pts) && pts.length) {
         const hit = nearestPoint(c, pts, px, py);
         if (hit) {
-          detail = { id: hit.id, name: hit.name, x: hit.x, y: hit.y,
-                     meta: 'Demo country set (swap for real data).' };
+          detail = { id: hit.id, name: hit.name, x: hit.x, y: hit.y, meta: (hit.meta || "—") };
         }
       }
       emitSelect(detail);
