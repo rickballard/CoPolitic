@@ -1,3 +1,10 @@
+param(
+  [Parameter(Mandatory=$false)]
+  [ValidateSet("auto","rescue","handoff","bomb","seed","release","apply-zip")]
+  [string]$Mode = "auto",
+  [string]$ZipPath,
+  [switch]$WithZip
+)
 function Invoke-CoSyncAuto {
   New-Item -ItemType Directory -Force CoCache,status\log | Out-Null
   function Get-LastRescueInfo {
