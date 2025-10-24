@@ -8,3 +8,4 @@
 {"ts":"2025-10-23T12:14:01-04:00","area":"site","type":"status","summary":"CoEvolution page branded + CoCivium ethos footer; suggestions + owner weighting","data":{"features":["suggestions","owner-weight","export"],"path":"/coevolution/","redirect":"/evolution/","footer":"coevo-footer"}}
 {"data":{"docs":["docs/PRIME-START.md","docs/BPOE.md","docs/INTENT.json"]},"area":"plane","type":"status","summary":"Snapshot: PRIME-START, BPOE, INTENT.json added for handoff.","ts":"2025-10-23T20:42:08Z"}
 {"data":{"path":"data/points.json"},"area":"plane","type":"status","summary":"Real country points loaded (inline + demo).","ts":"2025-10-23T20:52:32Z"}
+{"data":{"playbook":"docs/RESCUE-BPOE.md","path":"CoCache\\rescue-20251023-210158"},"area":"plane","type":"status","summary":"Rescue snapshot saved at CoCache\\rescue-20251023-210158; RESCUE-BPOE.md added.","ts":"2025-10-23T21:01:59Z"}

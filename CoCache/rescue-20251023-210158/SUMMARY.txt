@@ -1,0 +1,9 @@
+RESCUE SUMMARY — 20251023-210158
+Branch: main
+Head:   2e46c6da4b6ec64cfcb1584da6a7417582aa6c04
+Last:   2e46c6d status: real points loaded
+
+TODO (next 3):
+- Create data/points.json from example
+- Run scripts/Generate-PlanePoints.ps1 -InputJson data/points.json
+- Commit + push; replace demo badge, add per-country meta/sources
