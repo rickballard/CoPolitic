@@ -1,0 +1,5 @@
+id,name,x,y,meta
+cocivium,CoCivium (strawman),-0.35,0.10,Reference baseline.
+usa,United States,0.35,0.15,High commerce tilt; placeholder.
+uk,United Kingdom,0.25,0.05,Liberal market economy; placeholder.
+de,Germany,0.05,0.20,Coordinated market economy; placeholder.
