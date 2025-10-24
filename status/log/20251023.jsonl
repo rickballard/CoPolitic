@@ -6,3 +6,4 @@
 {"ts":"2025-10-23T11:50:29-04:00","area":"site","type":"status","summary":"Evolution Intent page (prototype) added at /evolution/","data":{"actions":["generate","approve","reject","export"],"driver":"status/log/*.jsonl","path":"/evolution/","storage":"localStorage"}}
 {"ts":"2025-10-23T11:56:51-04:00","area":"site","type":"status","summary":"Nav: Evolution link in plane headers","data":{"files":["plane-app/index.html","plane-app/preview/index.html"],"href":"/evolution/"}}
 {"ts":"2025-10-23T12:14:01-04:00","area":"site","type":"status","summary":"CoEvolution page branded + CoCivium ethos footer; suggestions + owner weighting","data":{"features":["suggestions","owner-weight","export"],"path":"/coevolution/","redirect":"/evolution/","footer":"coevo-footer"}}
+{"data":{"docs":["docs/PRIME-START.md","docs/BPOE.md","docs/INTENT.json"]},"area":"plane","type":"status","summary":"Snapshot: PRIME-START, BPOE, INTENT.json added for handoff.","ts":"2025-10-23T20:42:08Z"}
