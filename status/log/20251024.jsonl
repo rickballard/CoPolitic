@@ -4,3 +4,4 @@
 {"area":"ops","ts":"2025-10-24T20:32:32Z","type":"status","summary":"Filed CoSync improvement issue for CoPrime","data":{"spec":"docs/CoSync-REQUEST.md","latestRescue":"C:\\Users\\Chris\\CoPolitic\\CoCache\\rescue-20251024-110042"}}
 {"area":"ops","ts":"2025-10-24T22:32:53Z","type":"status","summary":"Tagged CoSync issue with labels for CoPrime","data":{"labels":["ops","infra","cosync","priority:high"],"issue":14}}
 {"area":"ops","ts":"2025-10-24T22:40:45Z","type":"status","summary":"CoSync issue labeled for CoPrime","data":{"labels":["ops","infra","cosync","priority:high"],"issue":14}}
+{"area":"plane","summary":"Rescue snapshot saved at CoCache\\rescue-20251024-224157; RESCUE-BPOE.md added.","ts":"2025-10-24T22:41:58Z","type":"status","data":{"path":"CoCache\\rescue-20251024-224157"}}

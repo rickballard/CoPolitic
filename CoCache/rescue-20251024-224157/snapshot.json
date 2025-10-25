@@ -1,0 +1,24 @@
+{
+  "git": {
+    "branch": "main",
+    "head": "cf8f984c3ac7a840c2d53c67e1d0b7290d8b5290",
+    "status": null,
+    "last": "cf8f984 ops: CoSync issue labeled"
+  },
+  "intentJson": {
+    "goal": "Make Perspective Plane informative and evolving with real country points and notes.",
+    "next_steps": [
+      "Create data/points.json from data/points.example.json",
+      "Run scripts/Generate-PlanePoints.ps1 -InputJson data/points.json",
+      "Replace demo badge; add meta notes & sources per country"
+    ],
+    "artifacts": [
+      "plane-app/plane-hit.js",
+      "plane-app/plane-inspector.js",
+      "plane-app/plane-layers.js",
+      "plane-app/plane-a11y.js",
+      "scripts/Generate-PlanePoints.ps1"
+    ]
+  },
+  "capturedAt": "2025-10-24T22:41:58Z"
+}
