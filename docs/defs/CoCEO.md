@@ -2,4 +2,6 @@
 
 This label is retired.
 
-See **[TOS-AI — Transition Office Steward (AI pivots)](./TOS-AI.md)** for the current role definition and scope.
+See **[CoSteward  -  Transition Office Steward (AI pivots)](./CoSteward.md)** for the current role definition and scope.
+
+

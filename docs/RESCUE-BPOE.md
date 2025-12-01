@@ -1,4 +1,4 @@
-# RESCUE-BPOE — How to recover from a bloated session
+# RESCUE-BPOE  -  How to recover from a bloated session
 1) Write intent & next steps to repo (docs/INTENT.json).  
 2) Write a brief, human-readable resume note (docs/PRIME-START.md already points to the generator).  
 3) Snapshot current state to CoCache/rescue-YYYYMMDD-HHmmss/:

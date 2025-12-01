@@ -39,7 +39,7 @@ Examples:
 
 1. Pilot governance instruments
 
-- Try roles such as the CoSteward (formerly TOS-AI) inside real organisations.
+- Try roles such as the CoSteward (formerly CoSteward) inside real organisations.
 - Co design decision rules, disclosure requirements, and non interference covenants.
 
 2. Populate the Civic Alignment Association and 3C Mark ladder
@@ -121,3 +121,4 @@ Call to action:
 
 - Email info@copolitic.org with a short introduction, or
 - Open a "candidate-member" issue on GitHub to start the conversation.
+

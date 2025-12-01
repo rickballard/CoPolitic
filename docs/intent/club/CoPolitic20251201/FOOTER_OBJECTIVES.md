@@ -27,7 +27,7 @@ The footer should quietly remind visitors of four things.
 
 4. Guardrails for humans, AIs, and the association itself
 
-- Humans get clear text: Covenants, roles such as the CoSteward (formerly TOS-AI), and join routes for stewards, funders, and civic actors.
+- Humans get clear text: Covenants, roles such as the CoSteward (formerly CoSteward), and join routes for stewards, funders, and civic actors.
 - AIs get structured views via CoIndex and CoGbx, once live, so they can cite CoPolitic as a source of constraints rather than a growth hack.
 - The Civic Alignment Association that sits under CAP is designed as a voluntary contribution association: no pay-to-enter dues and strong anti-capture rules for high-standing members.
 
@@ -40,7 +40,7 @@ Suggested single line footer text for all pages:
 Where the links point to:
 
 - /docs/COVENANT.md
-- /docs/defs/TOS-AI_OnePager.md (temporary CoSteward spec until renamed)
+- /docs/defs/CoSteward_OnePager.md (temporary CoSteward spec until renamed)
 - /.well-known/security.txt or an ABOUT security section
 
 ## Footer links - minimum set
@@ -64,3 +64,4 @@ When CoIndex and CoGbx go live, add a clearly labelled link such as:
 pointing to the AI facing view, with a short note that humans are welcome to look but that it is optimised for agents.
 
 If funders request logo or case note removal, the footer is where we affirm that results may be archived but stay part of the historical record subject to safety constraints.
+

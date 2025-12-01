@@ -18,7 +18,7 @@ using the prototypes stored under:
 
 The live site now:
 
-- Talks about **CoStewards** instead of TOS-AI as the primary role label.
+- Talks about **CoStewards** instead of CoSteward as the primary role label.
 - Frames CAP as a **voluntary Civic Alignment Association**, not a "club".
 - States clearly that there are **no membership fees or pay-to-enter dues**.
 - Explains that **standing and influence** come from transparent, trackable contributions.
@@ -30,31 +30,31 @@ Backups of the prior index/join pages are stored alongside this advisory in the 
 
 Current reality on repo:
 
-- The role spec still lives in /docs/defs/TOS-AI_OnePager.md.
-- The UI and copy now introduce the **CoSteward** as the role name, with TOS-AI called out as a **legacy label** and temporary filename.
+- The role spec still lives in /docs/defs/CoSteward_OnePager.md.
+- The UI and copy now introduce the **CoSteward** as the role name, with CoSteward called out as a **legacy label** and temporary filename.
 
 Desired end state for Co1 to drive over time:
 
 1. **Canonical naming**
 
    - Migrate the spec file to something like /docs/defs/CoSteward_OnePager.md.
-   - Maintain a short legacy stub for TOS-AI that:
+   - Maintain a short legacy stub for CoSteward that:
      - Explains the rename,
      - Points to the CoSteward spec,
      - Remains stable for any external references already in the wild.
 
 2. **Repo-wide copy alignment**
 
-   - Replace TOS-AI with CoSteward in:
+   - Replace CoSteward with CoSteward in:
      - Roles listings,
      - Docs indexes,
-     - Any diagrams or markdown fragments that treat TOS-AI as current.
+     - Any diagrams or markdown fragments that treat CoSteward as current.
 
 3. **Indexing hooks**
 
    - Ensure CoIndex / CoGbx have clean entries for:
      - ole/CoSteward (primary),
-     - ole/TOS-AI (legacy, aliased).
+     - ole/CoSteward (legacy, aliased).
    - Include relationships to:
      - CAP,
      - Civic Alignment Association,
@@ -118,7 +118,7 @@ Suggested follow-up tasks for Co1:
 
 Still to do (for Co1 or a future CoPolitic wave):
 
-- Create the new CoSteward role file and legacy TOS-AI stub as described.
+- Create the new CoSteward role file and legacy CoSteward stub as described.
 - Add a short Association overview doc (e.g. docs/ASSOCIATION_OVERVIEW.md) linked from:
   - Home,
   - Join,
@@ -134,3 +134,4 @@ From this session's perspective:
   - Index entries.
 
 Treat this advisory as an input for Co1 to design the deeper governance and indexing rails.
+

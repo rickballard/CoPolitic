@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <a class="underline hover:text-slate-900" href="/sitemap.xml">Sitemap</a>
     <span class="text-slate-400">·</span>
     <a class="underline hover:text-slate-900" href="/.well-known/security.txt">Security</a>
-  <span class="ml-auto text-xs text-slate-400">Deployed: 2025-09-23T15:16:12 · 010536b</span> <span class="text-slate-400">·</span> <a class="underline hover:text-slate-900" href="/roles/tos-ai.html">Roles</a></div></footer>
+  <span class="ml-auto text-xs text-slate-400">Deployed: 2025-09-23T15:16:12 · 010536b</span> <span class="text-slate-400">·</span> <a class="underline hover:text-slate-900" href="/roles/CoSteward.html">Roles</a></div></footer>
 <script id="legacy-exemplar-stripper">
   (function () {
     try {
@@ -505,7 +505,7 @@ t.append(img,cap);grid.appendChild(t);avgL(img).then(l=>{if(l>0.80)t.dataset.ton
   if (document.referrer) localStorage.setItem('referrer', document.referrer);
 
   if (location.pathname.startsWith('/sponsors')) plausible('Sponsor Page');
-  if (location.pathname.includes('/docs/defs/TOS-AI_OnePager')) plausible('One-Pager Read');
+  if (location.pathname.includes('/docs/defs/CoSteward_OnePager')) plausible('One-Pager Read');
 
   document.addEventListener('click',(e)=>{
     const a = e.target.closest('a'); if(!a) return;
@@ -534,7 +534,7 @@ t.append(img,cap);grid.appendChild(t);avgL(img).then(l=>{if(l>0.80)t.dataset.ton
 (() => {
   const key = 'cap:company:revealed';
   const path = location.pathname;
-  const isLeadPage = path.startsWith('/sponsors') || path.includes('TOS-AI_OnePager');
+  const isLeadPage = path.startsWith('/sponsors') || path.includes('CoSteward_OnePager');
   if (!isLeadPage || sessionStorage.getItem(key)) return;
 
   (async () => {
@@ -556,6 +556,7 @@ t.append(img,cap);grid.appendChild(t);avgL(img).then(l=>{if(l>0.80)t.dataset.ton
     Explore the Perspective Plane →
   </a>
 </div></body></html>
+
 
 
 
