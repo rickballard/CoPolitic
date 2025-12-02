@@ -1,0 +1,2 @@
+> **Read the preprint:** [Academia Shock v1.1.1](https://github.com/rickballard/CoCivium/releases/tag/academia-shock-preprint-v1.1.1)
+> Reproducible workflows for credible AI governance. *(DOI will be added once minted.)*
