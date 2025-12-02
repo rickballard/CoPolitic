@@ -1,4 +1,4 @@
-# Bill & Melinda Gates Foundation — Extended Note
+# Bill & Melinda Gates Foundation  -  Extended Note
 
 [← Back to case note](/funders/GatesFoundation.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [gatesfoundation.org](https://www.gatesfoundation.org)
 * Global health & development
+
 

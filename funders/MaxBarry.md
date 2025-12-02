@@ -1,6 +1,6 @@
 # Max Barry
 
-> Fiction as civic rehearsal—making systems legible to the public.
+> Fiction as civic rehearsal - making systems legible to the public.
 
 **Philosophical frame**
 Fiction as civic rehearsal: exploring power, systems, and language to reveal failure modes and possibilities.
@@ -26,4 +26,5 @@ Narrative prototyping; public imagination; translation of complex civics/alignme
 
 
 **Related exemplars:** [BretVictor](/funders/BretVictor.md), [GitHub](/funders/GitHub.md), [OSF](/funders/OSF.md)
+
 

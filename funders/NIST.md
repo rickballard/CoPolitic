@@ -1,4 +1,4 @@
-# NIST (U.S.) — AI Risk & Measurement
+# NIST (U.S.)  -  AI Risk & Measurement
 **Philosophical frame**  
 Standards-first approach to safety and trust.
 
@@ -20,4 +20,5 @@ Provides the measurement substrate others adopt: ARC evals, OpenAI reporting, OS
 
 
 **Related exemplars:** [GovAI](/funders/GovAI.md), [OpenAI](/funders/OpenAI.md), [Anthropic](/funders/Anthropic.md), [ARC](/funders/ARC.md)
+
 

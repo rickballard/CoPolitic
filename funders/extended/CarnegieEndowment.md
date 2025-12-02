@@ -1,4 +1,4 @@
-# Carnegie Endowment — Extended Note
+# Carnegie Endowment  -  Extended Note
 
 [← Back to case note](/funders/CarnegieEndowment.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [carnegieendowment.org](https://carnegieendowment.org)
 * Tech & international affairs
+
 

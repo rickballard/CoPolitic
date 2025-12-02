@@ -1,4 +1,4 @@
-# Redwood Research — Extended Note
+# Redwood Research  -  Extended Note
 
 [← Back to case note](/funders/RedwoodResearch.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [redwoodresearch.org](https://www.redwoodresearch.org)
 * Research notes / experiments
+
 

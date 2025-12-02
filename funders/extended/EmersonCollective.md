@@ -1,4 +1,4 @@
-# Emerson Collective — Extended Note
+# Emerson Collective  -  Extended Note
 
 [← Back to case note](/funders/EmersonCollective.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [emersoncollective.com](https://www.emersoncollective.com)
 * Education, immigration, climate
+
 

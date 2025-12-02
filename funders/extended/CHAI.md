@@ -1,4 +1,4 @@
-# CHAI (Berkeley) — Extended Note
+# CHAI (Berkeley)  -  Extended Note
 
 [← Back to case note](/funders/CHAI.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [chai.berkeley.edu](https://humancompatible.ai/)
 * Publications & people
+
 

@@ -1,4 +1,4 @@
-# InSeed — Extended Note
+# InSeed  -  Extended Note
 
 [← Back to case note](/funders/InSeed.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [inseed.com](https://inseed.com/)
 * Founder stewardship model
+
 

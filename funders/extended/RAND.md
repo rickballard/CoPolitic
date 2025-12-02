@@ -1,4 +1,4 @@
-# RAND Corporation — Extended Note
+# RAND Corporation  -  Extended Note
 
 [← Back to case note](/funders/RAND.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [rand.org](https://www.rand.org)
 * AI policy & national security research
+
 

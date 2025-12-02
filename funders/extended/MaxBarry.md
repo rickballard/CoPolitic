@@ -1,4 +1,4 @@
-# Max Barry — Extended Note
+# Max Barry  -  Extended Note
 
 [← Back to case note](/funders/MaxBarry.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [maxbarry.com](https://www.maxbarry.com)
 * Novels: *Jennifer Government*, *Lexicon*, *Providence*
+
 

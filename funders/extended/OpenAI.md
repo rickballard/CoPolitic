@@ -1,4 +1,4 @@
-# OpenAI — Extended Note
+# OpenAI  -  Extended Note
 
 [← Back to case note](/funders/OpenAI.md) · [Exemplar Advocates](/#exemplars)
 
@@ -32,4 +32,5 @@
 - * [openai.com](https://openai.com)
 * [Research](https://openai.com/research)
 * [Safety](https://openai.com/safety)
+
 

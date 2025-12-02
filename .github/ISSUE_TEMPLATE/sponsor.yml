@@ -1,7 +1,7 @@
 name: "Sponsor CAP (no-strings)"
 description: Initiate a no-strings sponsorship discussion
 labels: ["sponsor"]
-title: "Sponsor CAP — <Your Org>"
+title: "Sponsor CAP  -  <Your Org>"
 body:
   - type: input
     id: org
@@ -19,3 +19,4 @@ body:
     id: public
     attributes: { label: Public listing OK?, options: ["Yes","No"] }
     validations: { required: true }
+

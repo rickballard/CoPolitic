@@ -1,4 +1,4 @@
-# Survival & Flourishing Fund (SFF) — Extended Note
+# Survival & Flourishing Fund (SFF)  -  Extended Note
 
 [← Back to case note](/funders/SFF.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [survivalandflourishing.fund](https://survivalandflourishing.fund)
 * Public grantmaking info
+
 

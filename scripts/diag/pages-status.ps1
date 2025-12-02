@@ -6,5 +6,6 @@ $local =(git rev-parse --short=7 HEAD).Trim()
 $html  =(Invoke-WebRequest "https://copolitic.org/?bust=$ts" -UseBasicParsing).Content
 Write-Host "Served: $served | Local: $local"
 if($served -ne $local){ throw "Live not on latest artifact." }
-if($html -match 'id="tosai-(explainer|checklist)"' -or $html -match 'Request a TOS-AI'){ throw "Deprecated block still present." }
+if($html -match 'id="tosai-(explainer|checklist)"' -or $html -match 'Request a CoSteward'){ throw "Deprecated block still present." }
 Write-Host "✅ Live good."
+

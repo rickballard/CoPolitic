@@ -1,6 +1,6 @@
 # CoPolitic
 
-**A civic “GitHub for governance.”** Open, transparent collaboration on public-interest ideas—built by citizens and AI, with safety and accountability.
+**A civic “GitHub for governance.”** Open, transparent collaboration on public-interest ideas - built by citizens and AI, with safety and accountability.
 
 - **Website:** [copolitic.org](https://copolitic.org)
 - **Public plan & docs:** [Project docs](https://copolitic.org/#docs)
@@ -24,7 +24,7 @@ CoPolitic is a neutral canopy for hybrid-society governance in the AI era. Advis
 Software collaboration models (versioning, peer review, provenance) translate naturally into civic governance. CoPolitic explores that translation, in public.
 
 ## Contributing
-See **[CONTRIBUTING.md](CONTRIBUTING.md)** — propose changes via pull request, open an issue, or email **info@copolitic.org**.
+See **[CONTRIBUTING.md](CONTRIBUTING.md)**  -  propose changes via pull request, open an issue, or email **info@copolitic.org**.
 
 ## Stewardship
 See **[ABOUT.md](ABOUT.md)**.
@@ -32,4 +32,5 @@ See **[ABOUT.md](ABOUT.md)**.
 ### Operational Status
 CoDrift Index: n/a% (n/a)
 <!-- END: STATUS -->
+
 

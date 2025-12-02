@@ -1,4 +1,4 @@
-# Centre for the Governance of AI (GovAI) — Extended Note
+# Centre for the Governance of AI (GovAI)  -  Extended Note
 
 [← Back to case note](/funders/GovAI.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [govai.org](https://govai.org)
 * Working papers & briefs
+
 

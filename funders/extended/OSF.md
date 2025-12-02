@@ -1,4 +1,4 @@
-# Open Society Foundations (OSF) — Extended Note
+# Open Society Foundations (OSF)  -  Extended Note
 
 [← Back to case note](/funders/OSF.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [opensocietyfoundations.org](https://www.opensocietyfoundations.org)
 * Democracy, rights & civic programs
+
 

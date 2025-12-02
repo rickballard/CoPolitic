@@ -1,4 +1,4 @@
-# Chris Lehane — Extended Note
+# Chris Lehane  -  Extended Note
 
 [← Back to case note](/funders/ChrisLehane.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * Public profiles & talks
 * Strategic communications & civic narratives
+
 

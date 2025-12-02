@@ -1,4 +1,4 @@
-# Anthropic — Extended Note
+# Anthropic  -  Extended Note
 
 [← Back to case note](/funders/Anthropic.md) · [Exemplar Advocates](/#exemplars)
 
@@ -32,4 +32,5 @@
 - * [anthropic.com](https://www.anthropic.com)
 * Research & interpretability
 * Policy resources
+
 

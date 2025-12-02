@@ -1,4 +1,4 @@
-# Skoll Foundation — Extended Note
+# Skoll Foundation  -  Extended Note
 
 [← Back to case note](/funders/SkollFoundation.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [skoll.org](https://www.skoll.org)
 * Social entrepreneurship & awards
+
 

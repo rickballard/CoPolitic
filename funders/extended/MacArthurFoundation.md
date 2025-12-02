@@ -1,4 +1,4 @@
-# MacArthur Foundation — Extended Note
+# MacArthur Foundation  -  Extended Note
 
 [← Back to case note](/funders/MacArthurFoundation.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [macfound.org](https://www.macfound.org)
 * Democracy & climate initiatives
+
 

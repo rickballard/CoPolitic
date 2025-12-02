@@ -1,4 +1,4 @@
-# Foresight Institute — Extended Note
+# Foresight Institute  -  Extended Note
 
 [← Back to case note](/funders/ForesightInstitute.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [foresight.org](https://foresight.org)
 * Technical groups & workshops
+
 

@@ -1,4 +1,4 @@
-# GitHub — Extended Note
+# GitHub  -  Extended Note
 
 [← Back to case note](/funders/GitHub.md) · [Exemplar Advocates](/#exemplars)
 
@@ -32,4 +32,5 @@
 - * [github.com](https://github.com)
 * Open governance workflows (issues/PRs)
 * Civic repos & standards (various)
+
 

@@ -1,4 +1,4 @@
-# Bret Victor — Extended Note
+# Bret Victor  -  Extended Note
 
 [← Back to case note](/funders/BretVictor.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [worrydream.com](https://worrydream.com)
 * Talks & explorable explanations
+
 

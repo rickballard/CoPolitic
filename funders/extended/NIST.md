@@ -1,4 +1,4 @@
-# NIST (U.S.) — Extended Note
+# NIST (U.S.)  -  Extended Note
 
 [← Back to case note](/funders/NIST.md) · [Exemplar Advocates](/#exemplars)
 
@@ -31,4 +31,5 @@
 ## References (selected)
 - * [nist.gov/ai](https://www.nist.gov/ai)
 * AI Risk Management Framework
+
 
