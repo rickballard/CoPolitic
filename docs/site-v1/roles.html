@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CoPolitic · Roles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="How stewards, elites and youth can use CoPolitic and the CoCivium labs together with AI." />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-elevated: #0b1020;
+      --fg: #f5f7ff;
+      --muted: #b0b7d6;
+      --accent: #58c4ff;
+      --accent-soft: rgba(88, 196, 255, 0.12);
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --danger: #ff6b81;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #101731 0, #050816 50%, #02040b 100%);
+      color: var(--fg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border-subtle);
+      background: linear-gradient(to right, rgba(88,196,255,0.08), transparent);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.8rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.98rem;
+      text-transform: uppercase;
+    }
+
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #ffffff, #58c4ff 40%, #050816 100%);
+      box-shadow: 0 0 18px rgba(88,196,255,0.45);
+    }
+
+    .nav-main {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-link {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      color: var(--muted);
+    }
+
+    .nav-link span {
+      opacity: 0.8;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    .nav-link.is-active {
+      background: var(--accent-soft);
+      color: var(--fg);
+      border: 1px solid rgba(88,196,255,0.55);
+    }
+
+    .nav-pill {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 2rem auto 3rem;
+      padding: 0 1.25rem 3rem;
+    }
+
+    .page-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .page-title {
+      font-size: clamp(1.9rem, 3vw, 2.3rem);
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      max-width: 48rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .page-subtitle strong {
+      color: var(--fg);
+      font-weight: 550;
+    }
+
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    @media (max-width: 880px) {
+      .nav-main {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .roles-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .role-card {
+      border-radius: 1.3rem;
+      padding: 1.1rem 1.1rem 1.15rem;
+      background: radial-gradient(circle at top, rgba(88,196,255,0.18), transparent 60%),
+                  radial-gradient(circle at bottom, rgba(3, 190, 150, 0.16), transparent 55%);
+      background-color: rgba(8, 12, 28, 0.96);
+      border: 1px solid rgba(109, 119, 190, 0.55);
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.65),
+        0 0 0 1px rgba(12, 17, 40, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .role-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--muted);
+      margin-bottom: 0.55rem;
+    }
+
+    .role-pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(88,196,255,0.85);
+    }
+
+    .role-title {
+      font-size: 1.02rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .role-tagline {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .role-list {
+      padding-left: 1.1rem;
+      margin: 0.45rem 0 0.7rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .role-list li + li {
+      margin-top: 0.15rem;
+    }
+
+    .role-foot {
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px dashed rgba(255,255,255,0.16);
+      padding-top: 0.45rem;
+      margin-top: 0.45rem;
+    }
+
+    .role-foot a {
+      font-weight: 500;
+    }
+
+    .hint-banner {
+      margin-top: 2.2rem;
+      border-radius: 1.1rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(4, 10, 34, 0.96);
+      padding: 0.9rem 1rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 1rem;
+      align-items: center;
+    }
+
+    @media (max-width: 780px) {
+      .hint-banner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hint-main {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hint-main strong {
+      color: var(--fg);
+    }
+
+    .hint-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #8be2ff);
+      color: #020412;
+      font-weight: 600;
+      box-shadow:
+        0 0 18px rgba(88,196,255, 0.55),
+        0 14px 30px rgba(0,0,0,0.75);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.06);
+      text-decoration: none;
+    }
+
+    .btn-quiet {
+      border-color: var(--border-subtle);
+      color: var(--muted);
+      background: rgba(5, 10, 32, 0.9);
+    }
+
+    .btn-quiet:hover {
+      border-color: rgba(255,255,255,0.28);
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 1.3rem 1.25rem 1.8rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-align: center;
+      background: radial-gradient(circle at top, rgba(88,196,255,0.09), transparent 60%);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-shell">
+      <div class="logo-row">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <div>
+          <div>CoPolitic</div>
+        </div>
+      </div>
+      <div class="nav-main" aria-label="Site navigation">
+        <a class="nav-link" href="index.html"><span>Home</span></a>
+        <a class="nav-link" href="why-now.html"><span>Why now</span></a>
+        <a class="nav-link" href="for-stewards.html"><span>For stewards</span></a>
+        <a class="nav-link" href="for-elites.html"><span>For elites</span></a>
+        <a class="nav-link" href="for-youth.html"><span>For youth</span></a>
+        <a class="nav-link" href="labs.html"><span>Labs</span></a>
+        <span class="nav-pill">Roles</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-kicker">Roles · How to use this site</div>
+    <h1 class="page-title">Three roles. One shared civic lab.</h1>
+    <p class="page-subtitle">
+      CoPolitic is an experiment in <strong>power-aware, AI-literate governance</strong>.
+      Most visitors show up wearing one of three hats. This page helps you pick your lane,
+      then plug into the rest of the site and the CoCivium labs without guessing.
+    </p>
+
+    <section aria-label="Primary roles">
+      <div class="roles-grid">
+        <article class="role-card">
+          <div class="role-pill">
+            <span class="role-pill-dot"></span>
+            <span>Stewards</span>
+          </div>
+          <h2 class="role-title">Stewards & operators</h2>
+          <p class="role-tagline">
+            Builders, public servants, organizers, technologists and researchers who want
+            to make new guardrails real.
+          </p>
+          <ul class="role-list">
+            <li>Start with <strong>Why now</strong> to lock context and language.</li>
+            <li>Use <strong>For stewards</strong> as a working brief you can annotate with your team and AI tools.</li>
+            <li>Book a <strong>Perspective Plane Lab</strong> or <strong>Guardrail Jam</strong> to stress‑test your org or policy idea.</li>
+          </ul>
+          <div class="role-foot">
+            Your main hallway: <a href="for-stewards.html">For stewards</a> ·
+            When ready to run experiments: <a href="labs.html">Labs</a>
+          </div>
+        </article>
+
+        <article class="role-card">
+          <div class="role-pill">
+            <span class="role-pill-dot"></span>
+            <span>Elites</span>
+          </div>
+          <h2 class="role-title">Elites & power‑holders</h2>
+          <p class="role-tagline">
+            Investors, executives, funders, public figures and institutional leaders whose
+            decisions steer whole systems.
+          </p>
+          <ul class="role-list">
+            <li>Scan <strong>Home</strong> and <strong>Why now</strong> for the high‑level thesis in under five minutes.</li>
+            <li>Use <strong>For elites</strong> for board decks, LP updates and public positioning.</li>
+            <li>Point your staff to a <strong>Civic Twin Sprint</strong> lab if you want a low‑risk, high‑signal pilot.</li>
+          </ul>
+          <div class="role-foot">
+            Your main hallway: <a href="for-elites.html">For elites</a> ·
+            Hand this link to your chief of staff: <a href="labs.html">Labs</a>
+          </div>
+        </article>
+
+        <article class="role-card">
+          <div class="role-pill">
+            <span class="role-pill-dot"></span>
+            <span>Youth</span>
+          </div>
+          <h2 class="role-title">Youth & emerging voices</h2>
+          <p class="role-tagline">
+            Students, early‑career builders, organizers and everyday citizens who want a say
+            in how AI‑powered institutions evolve.
+          </p>
+          <ul class="role-list">
+            <li>Begin with <strong>For youth</strong> for plain‑language context and prompts.</li>
+            <li>Use the copy blocks there as input for your own projects, clubs or campaigns.</li>
+            <li>Apply with a mentor or educator to join a lab cohort, or propose a new lab format.</li>
+          </ul>
+          <div class="role-foot">
+            Your main hallway: <a href="for-youth.html">For youth</a> ·
+            When you are ready to co‑run something: <a href="labs.html">Labs</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="hint-banner" aria-label="Next steps">
+      <div class="hint-main">
+        <strong>Using AI with CoPolitic.</strong>
+        CoPolitic is designed to be read by both humans and AI tools. If you work with CoAgent,
+        CoCivium or any other AI co‑pilot, you can safely point it at this site and the
+        <em>CoIndex</em> pointers linked from the Labs and Why now pages.
+      </div>
+      <div class="hint-actions">
+        <a class="btn btn-primary" href="labs.html">Explore the labs</a>
+        <a class="btn btn-quiet" href="why-now.html">Read “Why now”</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    CoPolitic is part of the CoCivium / CoSuite experiment in edge‑owned civic guardrails.
+    To explore collaborations or bespoke labs, contact InSeed at
+    <a href="mailto:contact@InSeed.com">contact@InSeed.com</a>.
+  </footer>
+</body>
+</html>
