@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Become a Sponsor — CoPolitic / CAP</title>
+  <title>Become a Sponsor  -  CoPolitic / CAP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Back the Civic Alignment Protectorate (CAP) at CoPolitic.org — neutral, transparent stewardship for AI-era civic governance. No-strings sponsorships only.">
+  <meta name="description" content="Back the Civic Alignment Protectorate (CAP) at CoPolitic.org  -  neutral, transparent stewardship for AI-era civic governance. No-strings sponsorships only.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://copolitic.org/sponsors/">
   <style>
@@ -56,10 +56,10 @@
     <div class="chip">Neutral • Transparent • Non-partisan</div>
     <section class="hero">
       <h1>Become a Sponsor of CAP at CoPolitic.org</h1>
-      <p>Fund a <strong>neutral, public-interest protectorate</strong> stewarding governance in the AI era — advisory, not controlling; transparent, not partisan.</p>
+      <p>Fund a <strong>neutral, public-interest protectorate</strong> stewarding governance in the AI era  -  advisory, not controlling; transparent, not partisan.</p>
       <div class="cta">
         <a class="btn primary" href="https://github.com/rickballard/CoPolitic/issues/new?title=Sponsor%20CAP%20(no-strings)&labels=sponsor&body=Org%20name%3A%0AContact%3A%0AIntent%20(note%3A%20sponsorship%20confers%20no%20governance%20control)%3A%0APublic%20listing%20OK%20(Y%2FN)%3A%0A">Sponsor (no-strings)</a>
-        <a class="btn" href="/docs/defs/TOS-AI_OnePager.html">Read: TOS-AI one-pager</a>
+        <a class="btn" href="/docs/defs/CoSteward_OnePager.html">Read: CoSteward one-pager</a>
         <span class="pill">Listing ≠ endorsement ≠ influence</span>
       </div>
     </section>
@@ -71,7 +71,7 @@
       </div>
       <div class="card">
         <h3>Execution in 1–2 quarters</h3>
-        <p>TOS-AI drives strategy, governance, and operating-model pivots on a defined timeline with exit criteria.</p>
+        <p>CoSteward drives strategy, governance, and operating-model pivots on a defined timeline with exit criteria.</p>
       </div>
       <div class="card">
         <h3>Radical transparency</h3>
@@ -120,7 +120,7 @@
   if (document.referrer) localStorage.setItem('referrer', document.referrer);
 
   if (location.pathname.startsWith('/sponsors')) plausible('Sponsor Page');
-  if (location.pathname.includes('/docs/defs/TOS-AI_OnePager')) plausible('One-Pager Read');
+  if (location.pathname.includes('/docs/defs/CoSteward_OnePager')) plausible('One-Pager Read');
 
   document.addEventListener('click',(e)=>{
     const a = e.target.closest('a'); if(!a) return;
@@ -137,7 +137,7 @@
         const ref  = decodeURIComponent(localStorage.getItem('referrer')||'');
         const utms = ['utm_source','utm_medium','utm_campaign','utm_content']
           .map(k=>`${k}=${encodeURIComponent(localStorage.getItem(k)||'')}`).join('&');
-        url.searchParams.set('body', body + `\n\n—\nReferrer: ${ref}\n${utms}`);
+        url.searchParams.set('body', body + `\n\n - \nReferrer: ${ref}\n${utms}`);
         a.setAttribute('href', url.toString());
       }catch{}
     }
@@ -149,7 +149,7 @@
 (() => {
   const key = 'cap:company:revealed';
   const path = location.pathname;
-  const isLeadPage = path.startsWith('/sponsors') || path.includes('TOS-AI_OnePager');
+  const isLeadPage = path.startsWith('/sponsors') || path.includes('CoSteward_OnePager');
   if (!isLeadPage || sessionStorage.getItem(key)) return;
 
   (async () => {
@@ -167,6 +167,8 @@
 </script>
 </body>
 </html>
+
+
 
 
 

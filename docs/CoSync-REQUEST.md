@@ -68,7 +68,7 @@ Harden **CoSync** into a reliable, bloat-aware, self-healing sync/rescue utility
      - Appends **one line** JSON per event with shape:  
        `{ts, area, type, summary, data}` where:
        - `ts`: ISO8601 + 'Z'
-       - `area`: `"plane"` (default—configurable later)
+       - `area`: `"plane"` (default - configurable later)
        - `type`: `"status" | "session" | "ops"`
    - Used by `auto`, `rescue`, `handoff`, `apply-zip`.
 

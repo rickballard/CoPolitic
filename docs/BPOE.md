@@ -1,4 +1,4 @@
-# BPOE — Execution Patterns
+# BPOE  -  Execution Patterns
 1) Keep edits idempotent & small; prefer scripts over manual pastes.
 2) Log actions to `/status/log/YYYYMMDD.jsonl` (area=plane/type=status/summary).
 3) Package installers as a single zip; execute from Downloads (avoids path drift).
@@ -11,3 +11,4 @@
   - Time since last rescue ≥ 10h (hard ceiling)
   - Dirty files ≥ 25  •  Commits since last rescue ≥ 15  •  Today’s status lines ≥ 60
 - Rescue writes `CoCache/rescue-YYYYMMDD-HHmmss/` and appends a `status/log/YYYYMMDD.jsonl` pulse.
+
