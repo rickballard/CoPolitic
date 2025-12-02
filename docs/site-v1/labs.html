@@ -1,96 +1,149 @@
 <!doctype html>
 <html lang="en">
   <head>
-<meta charset="utf-8">
-<title>CoPolitic</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="CoPolitic.org is the civic face of CoCivium, working on edge-balanced futures for AI and democracy.">
-<style>
-  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 0; background: #050816; color: #f5f5f5; }
-  header { padding: 16px 24px; border-bottom: 1px solid #1f2933; display: flex; align-items: center; justify-content: space-between; }
-  header .brand { display:flex; align-items:center; gap:8px; font-weight:600; letter-spacing:0.04em; }
-  header .brand img { height:32px; border-radius:6px; }
-  header .brand .wordmark { font-size:1rem; }
-  nav a { margin-left: 16px; color: #a5b4fc; text-decoration: none; font-size: 0.95rem; }
-  nav a:hover { text-decoration: underline; }
-  main { max-width: 960px; margin: 24px auto 64px auto; padding: 0 16px; }
-  h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
-  h2 { font-size: 1.4rem; margin-top: 2rem; }
-  p { line-height: 1.6; font-size: 1rem; }
-  .hero { padding: 32px 24px; border-radius: 16px; background: radial-gradient(circle at top left, #1d2a5c, #050816); border: 1px solid #1f2933; }
-  .hero h1 { font-size: 2.4rem; margin-bottom: 0.5rem; }
-  .hero p { font-size: 1.05rem; max-width: 640px; }
-  .cta-row { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; }
-  .btn { padding: 10px 18px; border-radius: 999px; border: 1px solid #4f46e5; background: #4f46e5; color: #f9fafb; text-decoration: none; font-size: 0.95rem; }
-  .btn.secondary { border-color: #374151; background: transparent; color: #e5e7eb; }
-  .btn:hover { filter: brightness(1.05); }
-  ul { line-height: 1.6; }
-  .pill-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-  .pill { border-radius:999px; border:1px solid #374151; padding:6px 12px; font-size:0.85rem; color:#e5e7eb; background:rgba(15,23,42,0.6); }
-  footer { border-top: 1px solid #1f2933; padding: 16px 24px; font-size: 0.8rem; color: #9ca3af; max-width: 960px; margin: 0 auto; }
-  a { color: #a5b4fc; }
-</style>
-
+    <meta charset="utf-8">
+    <title>CoPolitic – Labs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 0; background: #050816; color: #f5f5f5; }
+      header { padding: 16px 24px; border-bottom: 1px solid #1f2933; display: flex; align-items: center; justify-content: space-between; }
+      header .brand { display:flex; align-items:center; gap:8px; font-weight:600; letter-spacing:0.04em; }
+      header .brand img { height:32px; border-radius:6px; }
+      header .brand .wordmark { font-size:1rem; }
+      nav a { margin-left: 16px; color: #a5b4fc; text-decoration: none; font-size: 0.95rem; }
+      nav a:hover { text-decoration: underline; }
+      main { max-width: 960px; margin: 24px auto 64px auto; padding: 0 16px; }
+      h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+      h2 { font-size: 1.4rem; margin-top: 2rem; }
+      p { line-height: 1.6; font-size: 1rem; }
+      .lab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+      .lab-card { padding: 16px 18px; border-radius: 14px; background: radial-gradient(circle at top left, #1d2a5c, #050816); border: 1px solid #1f2933; }
+      .lab-card h2 { margin-top: 0; margin-bottom: 0.5rem; font-size: 1.25rem; }
+      .lab-card h3 { margin-top: 0.75rem; margin-bottom: 0.25rem; font-size: 1.0rem; }
+      ul { line-height: 1.6; }
+      footer { border-top: 1px solid #1f2933; padding: 16px 24px; font-size: 0.8rem; color: #9ca3af; max-width: 960px; margin: 0 auto; }
+      a { color: #a5b4fc; }
+    </style>
   </head>
   <body>
-<header>
-  <div class="brand">
-    <img src="assets/CoPolitic_Logo.svg" alt="CoPolitic logo">
-    <span class="wordmark">CoPolitic</span>
-  </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="why-now.html">Why now</a>
-    <a href="for-stewards.html">For stewards</a>
-    <a href="for-elites.html">For elites</a>
-    <a href="for-youth.html">For youth</a>
-    <a href="labs.html">Labs</a>
-  </nav>
-</header>
-
+    <header>
+      <div class="brand">
+        <img src="assets/CoPolitic_Logo.svg" alt="CoPolitic logo">
+        <span class="wordmark">CoPolitic</span>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="why-now.html">Why now</a>
+        <a href="for-stewards.html">For stewards</a>
+        <a href="for-elites.html">For elites</a>
+        <a href="for-youth.html">For youth</a>
+        <a href="labs.html">Labs</a>
+      </nav>
+    </header>
     <main>
       <h1>Labs</h1>
       <p>
-        CoPolitic Labs are small, concrete experiments where people test edge balanced ideas in the real world. They are meant to be simple enough to copy, adapt, or critique.
+        CoPolitic Labs are small, honest experiments where humans and AIs think together about rules,
+        guardrails, and futures. We run them with stewards, elites, and youth who are ready to test
+        better ways of sharing power with AI.
       </p>
-
-      <h2>Lab 1: Perspective Plan workshop</h2>
       <p>
-        A short workshop where a mixed group maps one decision or institution on the Perspective Plan axes – commons power, stewardship, and truth alignment – and then designs one step toward better balance.
-      </p>
-      <ul>
-        <li><strong>Who it is for:</strong> councils, boards, civic groups, youth organisations.</li>
-        <li><strong>Timebox:</strong> 90–150 minutes.</li>
-        <li><strong>Output:</strong> a simple one-page map and a public note of what you will try next.</li>
-      </ul>
-
-      <h2>Lab 2: Edge owned evidence sprint</h2>
-      <p>
-        A small team picks one recurring decision – funding, hiring, policy, or product – and commits to running it on edge owned evidence for a cycle, with receipts and guardrails open for review.
+        When we say "labs" we do not mean billion-dollar buildings full of white coats. We mean focused,
+        time-bound experiments where:
       </p>
       <ul>
-        <li><strong>Who it is for:</strong> public bodies, NGOs, mission-driven firms.</li>
-        <li><strong>Timebox:</strong> one decision cycle.</li>
-        <li><strong>Output:</strong> a shared dashboard of evidence, tradeoffs, and who was in the loop.</li>
+        <li>a few people who can move real systems,</li>
+        <li>sit with people who are affected by those systems,</li>
+        <li>and use AI tools as thinking partners instead of oracles.</li>
       </ul>
-
-      <h2>Lab 3: Youth co-governance sandbox</h2>
       <p>
-        Youth design and run a small “commons” – a fund, a space, or a project – using AI tools as staff but keeping all key choices in human hands, with public guardrails.
+        Each lab is designed to be forkable: you should be able to take the pattern home and rerun it in
+        your own city, institution, or community.
+      </p>
+
+      <div class="lab-grid">
+        <div class="lab-card">
+          <h2>Perspective Plane Lab</h2>
+          <p>
+            A cross-tribal workshop where people bring their own stories about AI and place them on a
+            shared perspective map.
+          </p>
+          <h3>Inputs</h3>
+          <ul>
+            <li>6–20 participants from at least two "tribes".</li>
+            <li>One or two concrete questions (e.g., AI in classrooms).</li>
+            <li>A facilitator brief that frames the map as a tool, not a verdict.</li>
+          </ul>
+          <h3>Outputs</h3>
+          <ul>
+            <li>A rough map of lived stories.</li>
+            <li>Written reflections about what each side learned from the other.</li>
+            <li>Questions to carry into guardrail conversations.</li>
+          </ul>
+        </div>
+
+        <div class="lab-card">
+          <h2>Guardrail Jam</h2>
+          <p>
+            A design session where stewards, affected people, and technologists co-write visible,
+            testable guardrails for a specific AI use case.
+          </p>
+          <h3>Inputs</h3>
+          <ul>
+            <li>A real decision area (e.g., housing, admissions, moderation).</li>
+            <li>Policy docs, model cards, or decision logs (as available).</li>
+            <li>People with power and people affected by it in the same room.</li>
+          </ul>
+          <h3>Outputs</h3>
+          <ul>
+            <li>A draft guardrail charter in plain language.</li>
+            <li>A shortlist of traces and metrics to make guardrails auditable.</li>
+            <li>Options for low-tech and high-tech implementation.</li>
+          </ul>
+        </div>
+
+        <div class="lab-card">
+          <h2>Civic Twin Sprint</h2>
+          <p>
+            A sprint where a small institution imagines two or three futures for its AI use and chooses
+            concrete steps toward an edge-balanced one.
+          </p>
+          <h3>Inputs</h3>
+          <ul>
+            <li>3–8 people who understand the institution from different angles.</li>
+            <li>A basic map of current tools, data, and decision flows.</li>
+            <li>Time for a half-day intensive or several shorter sessions.</li>
+          </ul>
+          <h3>Outputs</h3>
+          <ul>
+            <li>A "before / after" narrative for the institution.</li>
+            <li>3–5 ranked interventions (policy, tooling, practice).</li>
+            <li>A minimal pilot plan that fits into 3–6 months.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Work with us</h2>
+      <p>
+        CoPolitic Labs are early-stage experiments. They do <strong>not</strong> represent endorsements
+        from any government, university, or funder.
+      </p>
+      <p>
+        If you are a steward, leader, or youth organizer who wants to run a lab or adapt one:
       </p>
       <ul>
-        <li><strong>Who it is for:</strong> schools, youth councils, community groups.</li>
-        <li><strong>Timebox:</strong> a school term or season.</li>
-        <li><strong>Output:</strong> a visible record of what was tried, what failed, and what might scale.</li>
+        <li>Email: <a href="mailto:contact@InSeed.com">contact@InSeed.com</a></li>
+        <li>Mail: Ballard, 1673 Lakeshore Rd W, Mississauga, ON L5J 1J4</li>
+        <li>Phone: +1.416.414.8100 (mobile)</li>
       </ul>
-
       <p>
-        These Labs are starting points, not blueprints. CoPolitic and CoCivium treat each run as a source of evidence about what works, what fails, and where new guardrails are needed.
+        For now, InSeed helps host and coordinate these experiments. Over time, we expect many of them
+        to be run by local stewards, unions, and civic groups, with CoCivium tools quietly supporting
+        them in the background.
       </p>
     </main>
-<footer>
-  CoPolitic.org is part of the CoCivium project for edge balanced AI civilization.
-</footer>
-
+    <footer>
+      CoPolitic.org is part of the CoCivium project for edge balanced AI civilization. · Contact: contact@InSeed.com
+    </footer>
   </body>
 </html>
