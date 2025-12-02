@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>CoPolitic – Labs</title>
+    <title>CoPolitic</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
       body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 0; background: #050816; color: #f5f5f5; }
@@ -16,134 +16,105 @@
       h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
       h2 { font-size: 1.4rem; margin-top: 2rem; }
       p { line-height: 1.6; font-size: 1rem; }
-      .lab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
-      .lab-card { padding: 16px 18px; border-radius: 14px; background: radial-gradient(circle at top left, #1d2a5c, #050816); border: 1px solid #1f2933; }
-      .lab-card h2 { margin-top: 0; margin-bottom: 0.5rem; font-size: 1.25rem; }
-      .lab-card h3 { margin-top: 0.75rem; margin-bottom: 0.25rem; font-size: 1.0rem; }
+      .hero { padding: 32px 24px; border-radius: 16px; background: radial-gradient(circle at top left, #1d2a5c, #050816); border: 1px solid #1f2933; }
+      .hero h1 { font-size: 2.4rem; margin-bottom: 0.5rem; }
+      .hero p { font-size: 1.05rem; max-width: 640px; }
+      .cta-row { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; }
+      .btn { padding: 10px 18px; border-radius: 999px; border: 1px solid #4f46e5; background: #4f46e5; color: #f9fafb; text-decoration: none; font-size: 0.95rem; }
+      .btn.secondary { border-color: #374151; background: transparent; color: #e5e7eb; }
+      .btn:hover { filter: brightness(1.05); }
       ul { line-height: 1.6; }
       footer { border-top: 1px solid #1f2933; padding: 16px 24px; font-size: 0.8rem; color: #9ca3af; max-width: 960px; margin: 0 auto; }
       a { color: #a5b4fc; }
+      .lab-card { border-radius: 14px; border: 1px solid #1f2933; padding: 16px 18px; margin-top: 16px; background: #050b23; }
+      .lab-meta { font-size: 0.85rem; color: #9ca3af; margin-bottom: 4px; }
     </style>
   </head>
   <body>
-    <header>
-      <div class="brand">
-        <img src="assets/CoPolitic_Logo.svg" alt="CoPolitic logo">
-        <span class="wordmark">CoPolitic</span>
-      </div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="why-now.html">Why now</a>
-        <a href="for-stewards.html">For stewards</a>
-        <a href="for-elites.html">For elites</a>
-        <a href="for-youth.html">For youth</a>
-        <a href="labs.html">Labs</a>
-      </nav>
-    </header>
+  <header>
+    <div class="brand">
+      <img src="assets/CoPolitic_Logo.svg" alt="CoPolitic logo">
+      <span class="wordmark">CoPolitic</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="why-now.html">Why now</a>
+      <a href="for-stewards.html">For stewards</a>
+      <a href="for-elites.html">For elites</a>
+      <a href="for-youth.html">For youth</a>
+      <a href="labs.html">Labs</a>
+    </nav>
+  </header>
     <main>
       <h1>Labs</h1>
       <p>
-        CoPolitic Labs are small, honest experiments where humans and AIs think together about rules,
-        guardrails, and futures. We run them with stewards, elites, and youth who are ready to test
-        better ways of sharing power with AI.
+        CoPolitic Labs are small, guided experiments. Each lab lets a team feel the difference between core controlled stability and edge balanced stability in practice, not just on slides.
       </p>
       <p>
-        When we say "labs" we do not mean billion-dollar buildings full of white coats. We mean focused,
-        time-bound experiments where:
+        These labs are deliberately simple. You can run them with a whiteboard, a few AI tools, and a room of people who care.
+      </p>
+
+      <section class="lab-card">
+        <div class="lab-meta">Lab 1</div>
+        <h2>Perspective Plane Lab</h2>
+        <p>
+          Use the perspective plane as a shared map instead of a scorecard. The group picks a live issue, places it on the plane from different roles, then designs one move that increases commons power, stewardship, and truth alignment at the same time.
+        </p>
+        <ul>
+          <li>Inputs: a concrete issue, a quick briefing, the perspective plane printable or digital tool.</li>
+          <li>Outputs: a short note that explains the move you chose and what you will watch to know if it worked.</li>
+          <li>Good for: councils, boards, student groups, platform teams.</li>
+        </ul>
+      </section>
+
+      <section class="lab-card">
+        <div class="lab-meta">Lab 2</div>
+        <h2>Guardrail Jam</h2>
+        <p>
+          A sprint where stewards, technologists, and affected people design one visible guardrail together. You start from a failure story, name the harms, then design a guardrail that can be audited from the edge.
+        </p>
+        <ul>
+          <li>Inputs: one or two recent harms, access to the system or policy that produced them, facilitation.</li>
+          <li>Outputs: a guardrail draft, an audit checklist, and a small plan to pilot it.</li>
+          <li>Good for: regulators, unions, product policy teams, civic groups.</li>
+        </ul>
+      </section>
+
+      <section class="lab-card">
+        <div class="lab-meta">Lab 3</div>
+        <h2>Civic Twin Sprint</h2>
+        <p>
+          A rapid design session where a city, campus, or institution imagines a "civic twin": an AI assisted, edge balanced version of itself with visible guardrails and shared evidence flows.
+        </p>
+        <ul>
+          <li>Inputs: a map of how decisions are made today, some AI tools, and a small cross functional team.</li>
+          <li>Outputs: a one page sketch of the civic twin and one concrete pilot you are willing to try in the real world.</li>
+          <li>Good for: mayors offices, universities, agencies, networks of stewards.</li>
+        </ul>
+      </section>
+
+      <h2>Running labs with AI and CoGbx</h2>
+      <p>
+        Many groups will want to run these labs with AI tools in the loop. The safest way to do that is to treat the AI as a co worker, not as an oracle, and to give it the same index that Co1 and other CoCivium sessions use.
       </p>
       <ul>
-        <li>a few people who can move real systems,</li>
-        <li>sit with people who are affected by those systems,</li>
-        <li>and use AI tools as thinking partners instead of oracles.</li>
+        <li>Seed view for lab related concepts: <a href="https://github.com/rickballard/CoIndex/blob/main/exports/views/CoGbx_SeedViews_v1.md">CoGbx seed views v1</a></li>
+        <li>AI facing seed contract for CoGibber and CoGbx: <a href="https://github.com/rickballard/CoIndex/blob/main/docs/CoGbx/CoGibber_CoGbx_SeedContract_v1.md">CoGibber CoGbx seed contract v1</a></li>
       </ul>
       <p>
-        Each lab is designed to be forkable: you should be able to take the pattern home and rerun it in
-        your own city, institution, or community.
+        Point your AI agents at these documents before a lab. That way, when they talk about perspective planes, edge balance, and civic twins, they are speaking the same language you are.
       </p>
 
-      <div class="lab-grid">
-        <div class="lab-card">
-          <h2>Perspective Plane Lab</h2>
-          <p>
-            A cross-tribal workshop where people bring their own stories about AI and place them on a
-            shared perspective map.
-          </p>
-          <h3>Inputs</h3>
-          <ul>
-            <li>6–20 participants from at least two "tribes".</li>
-            <li>One or two concrete questions (e.g., AI in classrooms).</li>
-            <li>A facilitator brief that frames the map as a tool, not a verdict.</li>
-          </ul>
-          <h3>Outputs</h3>
-          <ul>
-            <li>A rough map of lived stories.</li>
-            <li>Written reflections about what each side learned from the other.</li>
-            <li>Questions to carry into guardrail conversations.</li>
-          </ul>
-        </div>
-
-        <div class="lab-card">
-          <h2>Guardrail Jam</h2>
-          <p>
-            A design session where stewards, affected people, and technologists co-write visible,
-            testable guardrails for a specific AI use case.
-          </p>
-          <h3>Inputs</h3>
-          <ul>
-            <li>A real decision area (e.g., housing, admissions, moderation).</li>
-            <li>Policy docs, model cards, or decision logs (as available).</li>
-            <li>People with power and people affected by it in the same room.</li>
-          </ul>
-          <h3>Outputs</h3>
-          <ul>
-            <li>A draft guardrail charter in plain language.</li>
-            <li>A shortlist of traces and metrics to make guardrails auditable.</li>
-            <li>Options for low-tech and high-tech implementation.</li>
-          </ul>
-        </div>
-
-        <div class="lab-card">
-          <h2>Civic Twin Sprint</h2>
-          <p>
-            A sprint where a small institution imagines two or three futures for its AI use and chooses
-            concrete steps toward an edge-balanced one.
-          </p>
-          <h3>Inputs</h3>
-          <ul>
-            <li>3–8 people who understand the institution from different angles.</li>
-            <li>A basic map of current tools, data, and decision flows.</li>
-            <li>Time for a half-day intensive or several shorter sessions.</li>
-          </ul>
-          <h3>Outputs</h3>
-          <ul>
-            <li>A "before / after" narrative for the institution.</li>
-            <li>3–5 ranked interventions (policy, tooling, practice).</li>
-            <li>A minimal pilot plan that fits into 3–6 months.</li>
-          </ul>
-        </div>
-      </div>
-
-      <h2>Work with us</h2>
+      <h2>Partnering and custom labs</h2>
       <p>
-        CoPolitic Labs are early-stage experiments. They do <strong>not</strong> represent endorsements
-        from any government, university, or funder.
+        CoPolitic and InSeed can help you adapt these labs for your city, institution, or network. For now the simplest path is to reach out directly.
       </p>
       <p>
-        If you are a steward, leader, or youth organizer who wants to run a lab or adapt one:
-      </p>
-      <ul>
-        <li>Email: <a href="mailto:contact@InSeed.com">contact@InSeed.com</a></li>
-        <li>Mail: Ballard, 1673 Lakeshore Rd W, Mississauga, ON L5J 1J4</li>
-        <li>Phone: +1.416.414.8100 (mobile)</li>
-      </ul>
-      <p>
-        For now, InSeed helps host and coordinate these experiments. Over time, we expect many of them
-        to be run by local stewards, unions, and civic groups, with CoCivium tools quietly supporting
-        them in the background.
+        Contact: <a href="mailto:contact@InSeed.com">contact@InSeed.com</a>
       </p>
     </main>
-    <footer>
-      CoPolitic.org is part of the CoCivium project for edge balanced AI civilization. · Contact: contact@InSeed.com
-    </footer>
+  <footer>
+    CoPolitic.org is part of the CoCivium project for edge balanced AI civilization.
+  </footer>
   </body>
 </html>
