@@ -51,15 +51,15 @@ jobs:
             echo "Lead-like activity at CoPolitic.org (last 24h)"
             echo
             echo "Signals:"
-            jq -r '.results[] | select(."event:name"=="Sponsor Issue Open" or ."event:name"=="Email Click" or ."event:name"=="Sponsor Page" or ."event:name"=="One-Pager Read") | "\(.["event:name"]) — \(.events) events"' events.json
+            jq -r '.results[] | select(."event:name"=="Sponsor Issue Open" or ."event:name"=="Email Click" or ."event:name"=="Sponsor Page" or ."event:name"=="One-Pager Read") | "\(.["event:name"])  -  \(.events) events"' events.json
             echo
             echo "Companies (if detected):"
-            jq -r '.results[] | select(.["event:props:company"] != null) | "\(.["event:props:company"]) — \(.events) events"' companies.json
+            jq -r '.results[] | select(.["event:props:company"] != null) | "\(.["event:props:company"])  -  \(.events) events"' companies.json
             echo
             echo "Top referrers:"
-            jq -r '.results[] | "\(.referrer) — \(.visitors) v"' refs.json
+            jq -r '.results[] | "\(.referrer)  -  \(.visitors) v"' refs.json
             echo
-            echo "—"
+            echo " - "
             echo "Dashboard: https://plausible.io/copolitic.org"
           } > body.txt
 
@@ -71,8 +71,9 @@ jobs:
           server_port: ${{ secrets.SMTP_PORT }}
           username: ${{ secrets.SMTP_USERNAME }}
           password: ${{ secrets.SMTP_PASSWORD }}
-          subject: "Lead-like activity — CoPolitic.org (last 24h)"
+          subject: "Lead-like activity  -  CoPolitic.org (last 24h)"
           to: ${{ secrets.MAIL_TO }}
           from: CoPolitic Alerts <${{ secrets.MAIL_FROM }}>
           body: file://body.txt
           content_type: text/plain
+
