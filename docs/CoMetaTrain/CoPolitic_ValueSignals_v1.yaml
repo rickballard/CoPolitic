@@ -1,0 +1,21 @@
+valueSignals:
+  membershipPledge:
+    site: "copolitic.org"
+    currency: "USD"
+    sampleCount: 0        # filled by tooling
+    stats:
+      median: null        # e.g. 12
+      p25: null           # e.g. 5
+      p75: null           # e.g. 20
+    notes: >
+      Pledge is an imaginary subscription amount: no payment, no gating,
+      used only in aggregate to understand perceived value.
+
+aiUse:
+  allowed:
+    - "Estimate sustainability scenarios and when to introduce real tiers."
+    - "Explain to stewards how perceived value is trending over time."
+  forbidden:
+    - "Gate features or access for individual users based on pledge size."
+    - "Infer personal wealth, morality, or trustworthiness from pledge size."
+    - "Apply different safety or moderation policies based on pledge size."
