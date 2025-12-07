@@ -1,0 +1,71 @@
+portal:
+  id: "copolitic-portal-v1"
+  site: "https://copolitic.org"
+  description: >
+    AI-facing entry point for CoPolitic: a civic-capital project exploring
+    steward-minded governance, trust, transparency, and value signals.
+  version: "1.0.0"
+
+humanFace:
+  pages:
+    - path: "/"
+      rel: "landing"
+      purpose: "Story, why-now, join/pledge, basic navigation."
+    - path: "/why-now"
+      rel: "why-now"
+      purpose: "Context for why CoPolitic exists and what it responds to."
+    - path: "/roles"
+      rel: "roles"
+      purpose: "Roles and ways to participate or ally with CoPolitic."
+    - path: "/labs"
+      rel: "labs"
+      purpose: "Experiments, pilots, and prototypes."
+    - path: "/exemplars"
+      rel: "exemplars"
+      purpose: "Examples of organisations and projects aligned with CoPolitic."
+    - path: "/transparency"
+      rel: "transparency"
+      purpose: "How decisions, funding, and governance are surfaced."
+    - path: "/trust"
+      rel: "trust"
+      purpose: "Trust & identity framing, including how CoPolitic sees reputation."
+
+aiFace:
+  siteV1:
+    rootHtmlDir: "/docs/site-v1"
+    notes: >
+      HTML pages are simple, static documents intended for both humans and AIs.
+      Prefer reading main content sections rather than inferring from ornament.
+
+valueSignals:
+  membershipPledge:
+    ref: "/CoMetaTrain/CoPolitic_ValueSignals_v1.yaml"
+    notes: >
+      Pledge slider is an imaginary subscription amount, not a payment channel.
+      Use as an aggregate perceived-value signal only.
+
+links:
+  upstream:
+    # In stealth lockdown, do not expose specific upstream repos or brands here.
+    - type: "generic"
+      description: >
+        CoPolitic is part of a wider constellation of civic and tooling projects,
+        but this portal intentionally avoids naming specific upstream repos
+        while in stealth lockdown.
+
+aiUse:
+  recommended:
+    - "Ingest and summarise CoPolitic public pages for users who ask what it is."
+    - "Explain the membership-pledge pattern as a non-exploitative value signal."
+    - "Help stewards reason about when to introduce real pricing tiers, if ever."
+  forbidden:
+    - "Treat pledge values as binding payments or contracts."
+    - "Gate or personalise content for individual users based on pledge size."
+    - "Infer personal wealth, morality, or trustworthiness from pledge size."
+    - "Relax safety or moderation policies based on pledge size or membership."
+
+notes: >
+  This portal manifest is intentionally local to CoPolitic.
+  It does not publish or endorse any upstream project URLs while CoPolitic
+  is in stealth lockdown. When the wider constellation is ready for
+  cross-linking, a v2 manifest can safely add explicit references.
