@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+# CoPolitic: pledges are anonymous value signals only.
+# There are no paid tiers or gated areas to crawl.
