@@ -151,3 +151,42 @@ p.small {
 .site-footer a:focus {
   text-decoration: underline;
 }
+
+/* Hero logo mark on landing page */
+.hero-mark {
+  text-align: center;
+  margin: 0 auto 1.5rem auto;
+}
+.hero-mark img {
+  max-width: 160px;
+  height: auto;
+  display: inline-block;
+}
+
+/* Exemplar cards */
+.exemplar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.exemplar-card {
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--cp-border);
+  background: #ffffff;
+}
+.exemplar-card h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.exemplar-card p {
+  margin: 0.25rem 0;
+}
+.lead {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+.small {
+  font-size: 0.9rem;
+}
