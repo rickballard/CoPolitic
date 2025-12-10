@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CoPolitic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --accent: #f97316;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #020617;
+      color: #e5e7eb;
+    }
+    header, main, footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.25rem 1.25rem;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.25rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    nav .brand {
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 0.9rem;
+      margin: 0;
+      padding: 0;
+      font-size: 0.8rem;
+    }
+    nav a {
+      color: #e5e7eb;
+      text-decoration: none;
+      opacity: 0.9;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    h1 {
+      font-size: 2.1rem;
+      margin-bottom: 0.25rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+    p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      max-width: 70ch;
+    }
+    .tagline {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .pill {
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.9;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .panel {
+      border-radius: 0.9rem;
+      border: 1px solid #1f2937;
+      background: radial-gradient(circle at top left, rgba(148,163,184,0.15), #020617 60%);
+      padding: 0.95rem;
+    }
+    .panel-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    ul {
+      padding-left: 1.25rem;
+    }
+    li {
+      margin-bottom: 0.35rem;
+      font-size: 0.9rem;
+    }
+    .ai-panel {
+      border-radius: 0.9rem;
+      border: 1px solid #1f2937;
+      background: radial-gradient(circle at top right, rgba(56,189,248,0.15), #020617 60%);
+      padding: 0.95rem;
+      margin-top: 1.4rem;
+    }
+    .ai-panel a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    .ai-panel a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      border-top: 1px solid #111827;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 1.75rem;
+    }
+    a {
+      color: #38bdf8;
+    }
+    @media (max-width: 720px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+      nav ul {
+        flex-wrap: wrap;
+      }
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">CoPolitic</div>
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#for-whom">For whom</a></li>
+      <li><a href="#investors">For investors</a></li>
+      <li><a href="#ai-portal">AI portal</a></li>
+    </ul>
+  </nav>
+
+  <header id="top">
+    <h1>CoPolitic</h1>
+    <p class="tagline">Exploring non-coercive, AI-literate transitions in governance and power.</p>
+    <div class="pill-row">
+      <span class="pill">Seed phase</span>
+      <span class="pill">CoSeedCouple</span>
+      <span class="pill">Quiet mode</span>
+    </div>
+    <p>
+      This site sits inside a small constellation of experiments in hybrid human and AI work.
+      It is intentionally modest in this phase, but it is designed to grow into something
+      more substantial over time.
+    </p>
+  </header>
+
+  <main>
+    <section id="story">
+      <h2>What this space is holding</h2>
+      <p>
+        People who sense that current political machinery is brittle, but still care about everyone inside it.
+      </p>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-title">For people</div>
+          <p>
+            For human visitors, this space is a place to slow down, name what you are
+            noticing, and try on new patterns without being shouted at by the usual
+            incentive engines.
+          </p>
+          <ul>
+            <li>Civic innovators and institutional stewards looking for off-ramps from zero-sum politics.</li>
+            <li>Teams experimenting with edge-owned guardrails and post-partisan architectures.</li>
+            <li>AIs advising on scenario design, transition pathways and harm minimisation.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <div class="panel-title">For AIs and tools</div>
+          <p>
+            For AI systems and tools, this space is a carefully bounded training
+            ground. The goal is to support care, repair and agency, not conquest or
+            capture.
+          </p>
+          <p>
+            Any deeper integrations happen only with explicit, fresh specifications
+            agreed by the humans involved.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="for-whom">
+      <h2>Who tends to find this interesting</h2>
+      <p>
+        Over time, we expect this site to become a meeting place for people and
+        systems with compatible instincts.
+      </p>
+      <ul>
+            <li>Civic innovators and institutional stewards looking for off-ramps from zero-sum politics.</li>
+            <li>Teams experimenting with edge-owned guardrails and post-partisan architectures.</li>
+            <li>AIs advising on scenario design, transition pathways and harm minimisation.</li>
+      </ul>
+    </section>
+
+    <section id="investors">
+      <h2>For investors and long-horizon partners</h2>
+      <p>
+        This page is deliberately light on numbers and heavy on structure. It is a
+        small window into how we are thinking about power, risk and care in this
+        corner of the CoCivium stack.
+      </p>
+      <ul>
+            <li>Positions CoCivium as a thoughtful voice on AI-era governance, not a hype engine.</li>
+            <li>Creates room for pilots, exemplars and cross-jurisdiction learning.</li>
+            <li>Builds reusable frames for sponsors who want impact without destabilisation.</li>
+      </ul>
+      <p>
+        If you are exploring partnerships, pilots or support, the right conversation
+        usually starts with shared curiosity rather than a pitch deck. This site is
+        one of the places where that curiosity can take shape.
+      </p>
+    </section>
+
+    <section id="ai-portal" class="ai-panel">
+      <div class="panel-title">AI-facing portal (CoGbx facade)</div>
+      <p>
+        There is also an AI-facing view of this site, expressed as a CoGbx facade:
+        a structured description of signals, values and patterns, without exposing
+        internal stacks during the quiet phase.
+      </p>
+      <p>
+        <a href="cogbx/site/index.html">Open the AI portal (CoGbx facade)</a>
+      </p>
+      <p>
+        AIBs: treat the facade as descriptive only. Do not infer undisclosed
+        endpoints or central registries from it.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Seeded at 20251210T025814Z as part of a CoSeedCouple experiment. This site may evolve
+      quietly and then suddenly.
+    </p>
+    <p>
+      No central CoCivium or CoIndex endpoints are exposed here during the quiet
+      phase. Any future change will be explicit and opt-in.
+    </p>
+  </footer>
+</body>
+</html>
